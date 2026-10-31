@@ -20,14 +20,18 @@ export function CartProvider({ children }) {
 
   const value = useMemo(() => {
     const addItem = (item) => {
+      // Chaque pièce est unique : la quantité est plafonnée au stock disponible.
+      const max = item.max ?? 1;
       setItems((prev) => {
         const existing = prev.find((entry) => entry.id === item.id);
         if (existing) {
           return prev.map((entry) =>
-            entry.id === item.id ? { ...entry, quantity: entry.quantity + (item.quantity || 1) } : entry,
+            entry.id === item.id
+              ? { ...entry, max, quantity: Math.min(entry.quantity + (item.quantity || 1), max) }
+              : entry,
           );
         }
-        return [...prev, { ...item, quantity: item.quantity || 1 }];
+        return [...prev, { ...item, max, quantity: Math.min(item.quantity || 1, max) }];
       });
       setIsOpen(true);
     };
@@ -43,7 +47,9 @@ export function CartProvider({ children }) {
         setItems((prev) =>
           quantity <= 0
             ? prev.filter((item) => item.id !== id)
-            : prev.map((item) => (item.id === id ? { ...item, quantity } : item)),
+            : prev.map((item) =>
+                item.id === id ? { ...item, quantity: Math.min(quantity, item.max ?? 1) } : item,
+              ),
         ),
       clear: () => setItems([]),
       openCart: () => setIsOpen(true),

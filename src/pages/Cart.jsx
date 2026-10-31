@@ -130,14 +130,16 @@ export default function Cart() {
                           <Minus className="h-3 w-3" />
                         </button>
                         <span className="min-w-7 text-center text-xs">{item.quantity}</span>
-                        <button
-                          type="button"
-                          onClick={() => setQuantity(item.id, item.quantity + 1)}
-                          className="px-3 py-2 text-ink/60 hover:text-ink"
-                          aria-label="Augmenter"
-                        >
-                          <Plus className="h-3 w-3" />
-                        </button>
+                        {item.quantity < (item.max ?? 1) && (
+                          <button
+                            type="button"
+                            onClick={() => setQuantity(item.id, item.quantity + 1)}
+                            className="px-3 py-2 text-ink/60 hover:text-ink"
+                            aria-label="Augmenter"
+                          >
+                            <Plus className="h-3 w-3" />
+                          </button>
+                        )}
                       </div>
                       <button
                         type="button"

@@ -49,7 +49,7 @@ export default function ReviewsSection() {
         </div>
 
         <p className="mt-8 text-[12px] font-light leading-relaxed text-ink/50">
-          Ces avis concernent les ateliers de fabrication. Ils sont publiés tels qu’ils ont été écrits,{' '}
+          Ces avis concernent les ateliers création. Ils sont publiés tels qu’ils ont été écrits,{' '}
           <Link to="/ateliers" className="border-b border-ink/25 pb-0.5 text-ink hover:border-ink">
             réservez le vôtre
           </Link>

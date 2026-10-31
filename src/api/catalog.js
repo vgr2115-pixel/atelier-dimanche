@@ -2,15 +2,28 @@ import { base44 } from '@/api/base44Client';
 
 const asArray = (data) => (Array.isArray(data) ? data : data?.items ?? []);
 
+// Les pièces vendues restent visibles (badge « Vendu ») mais passent en fin de liste.
+const sortByStatus = (list) =>
+  [...list].sort((a, b) => {
+    const soldA = a.is_available === false ? 1 : 0;
+    const soldB = b.is_available === false ? 1 : 0;
+    return soldA - soldB || (a.position ?? 0) - (b.position ?? 0);
+  });
+
 export async function getProducts() {
   const data = await base44.entities.Product.list('position', 200);
-  return asArray(data).filter((product) => product.is_available !== false);
+  return sortByStatus(asArray(data));
+}
+
+export async function getAvailableProducts() {
+  const products = await getProducts();
+  return products.filter((product) => product.is_available !== false);
 }
 
 export async function getProductsByCategory(category) {
   if (!category || category === 'Tout') return getProducts();
   const data = await base44.entities.Product.filter({ category });
-  return asArray(data);
+  return sortByStatus(asArray(data));
 }
 
 export async function getProductBySlug(slug) {
@@ -21,7 +34,7 @@ export async function getProductBySlug(slug) {
 export async function getRelatedProducts(product) {
   if (!product) return [];
   const data = await base44.entities.Product.filter({ category: product.category });
-  return asArray(data)
+  return sortByStatus(asArray(data))
     .filter((item) => item.id !== product.id && item.slug !== product.slug)
     .slice(0, 3);
 }

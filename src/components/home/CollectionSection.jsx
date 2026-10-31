@@ -4,7 +4,7 @@ import { ArrowRight, Truck, Store } from 'lucide-react';
 import Container from '@/components/site/Container';
 import ProductCard from '@/components/product/ProductCard';
 import { useCart } from '@/components/cart/CartContext';
-import { getProducts } from '@/api/catalog';
+import { getAvailableProducts } from '@/api/catalog';
 
 export default function CollectionSection() {
   const { addItem } = useCart();
@@ -12,7 +12,7 @@ export default function CollectionSection() {
 
   useEffect(() => {
     let active = true;
-    getProducts().then((data) => {
+    getAvailableProducts().then((data) => {
       if (active) setProducts(data.slice(0, 4));
     });
     return () => {
@@ -29,6 +29,7 @@ export default function CollectionSection() {
       image: product.image,
       meta: product.leather,
       type: 'product',
+      max: product.stock ?? 1,
     });
 
   return (

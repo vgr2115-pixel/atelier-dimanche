@@ -34,6 +34,7 @@ export default function Shop() {
       image: product.image,
       meta: product.leather,
       type: 'product',
+      max: product.stock ?? 1,
     });
 
   return (

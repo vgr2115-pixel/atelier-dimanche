@@ -42,7 +42,8 @@ export default function ConditionsVente() {
           <section>
             <h2 className="font-display text-xl text-ink">3. Prix</h2>
             <p className="mt-3">
-              Les prix sont indiqués en euros, toutes taxes comprises. Les frais de livraison
+              Les prix sont indiqués en euros. TVA non applicable, article 293 B du Code général des
+              impôts. Les frais de livraison
               apparaissent avant la validation de la commande. Le prix facturé est celui affiché au
               moment de l’enregistrement de la commande.
             </p>

@@ -77,14 +77,16 @@ export default function CartDrawer() {
                             <Minus className="h-3 w-3" />
                           </button>
                           <span className="min-w-7 text-center text-xs text-ink">{item.quantity}</span>
-                          <button
-                            type="button"
-                            onClick={() => setQuantity(item.id, item.quantity + 1)}
-                            className="px-2 py-1.5 text-ink/60 hover:text-ink"
-                            aria-label="Augmenter la quantité"
-                          >
-                            <Plus className="h-3 w-3" />
-                          </button>
+                          {item.quantity < (item.max ?? 1) && (
+                            <button
+                              type="button"
+                              onClick={() => setQuantity(item.id, item.quantity + 1)}
+                              className="px-2 py-1.5 text-ink/60 hover:text-ink"
+                              aria-label="Augmenter la quantité"
+                            >
+                              <Plus className="h-3 w-3" />
+                            </button>
+                          )}
                         </div>
                         <p className="text-sm text-ink">{formatPrice(item.price * item.quantity)}</p>
                       </div>

@@ -300,6 +300,9 @@ export default function Workshops() {
                       </p>
                     )}
                   </div>
+                  <p className="mt-2 text-[10px] font-light leading-relaxed text-ink/40">
+                    Calendrier d’exemple pour la maquette — chaque date est confirmée par email.
+                  </p>
 
                   <div className="mt-5">
                     <label className="text-[10px] uppercase tracking-[0.2em] text-ink/40" htmlFor="participants">

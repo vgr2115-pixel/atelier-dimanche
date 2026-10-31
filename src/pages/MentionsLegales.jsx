@@ -18,6 +18,8 @@ export default function MentionsLegales() {
               <br />
               SIRET : 795 268 812 00034.
               <br />
+              TVA non applicable, article 293 B du Code général des impôts.
+              <br />
               Contact : marie@atelier-dimanche.fr
             </p>
           </section>

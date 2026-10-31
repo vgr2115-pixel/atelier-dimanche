@@ -61,6 +61,9 @@ export default function ProductDetail() {
     );
   }
 
+  const soldOut = product.is_available === false;
+  const maxQuantity = Math.max(1, product.stock ?? 1);
+
   const handleAdd = () =>
     addItem({
       id: product.id,
@@ -70,7 +73,8 @@ export default function ProductDetail() {
       image: product.image,
       meta: product.leather,
       type: 'product',
-      quantity,
+      quantity: Math.min(quantity, maxQuantity),
+      max: maxQuantity,
     });
 
   const gallery = product.gallery?.length ? product.gallery : [product.image];
@@ -123,33 +127,46 @@ export default function ProductDetail() {
               )}
             </div>
             <p className="mt-6 text-[15px] font-light leading-[1.8] text-ink/65">{product.description}</p>
+            {soldOut && (
+              <p className="mt-4 inline-block border border-ink/15 px-3 py-2 text-[10px] uppercase tracking-[0.18em] text-ink/55">
+                Pièce vendue — un seul exemplaire
+              </p>
+            )}
 
             <div className="mt-8 flex items-stretch gap-3">
-              <div className="flex items-center border border-ink/20">
-                <button
-                  type="button"
-                  onClick={() => setQuantity((value) => Math.max(1, value - 1))}
-                  className="px-4 py-3 text-ink/60 hover:text-ink"
-                  aria-label="Diminuer la quantité"
-                >
-                  <Minus className="h-3.5 w-3.5" />
-                </button>
-                <span className="min-w-8 text-center text-sm text-ink">{quantity}</span>
-                <button
-                  type="button"
-                  onClick={() => setQuantity((value) => value + 1)}
-                  className="px-4 py-3 text-ink/60 hover:text-ink"
-                  aria-label="Augmenter la quantité"
-                >
-                  <Plus className="h-3.5 w-3.5" />
-                </button>
-              </div>
+              {maxQuantity > 1 ? (
+                <div className="flex items-center border border-ink/20">
+                  <button
+                    type="button"
+                    onClick={() => setQuantity((value) => Math.max(1, value - 1))}
+                    className="px-4 py-3 text-ink/60 hover:text-ink"
+                    aria-label="Diminuer la quantité"
+                  >
+                    <Minus className="h-3.5 w-3.5" />
+                  </button>
+                  <span className="min-w-8 text-center text-sm text-ink">{quantity}</span>
+                  <button
+                    type="button"
+                    onClick={() => setQuantity((value) => Math.min(maxQuantity, value + 1))}
+                    disabled={quantity >= maxQuantity}
+                    className="px-4 py-3 text-ink/60 hover:text-ink disabled:opacity-30"
+                    aria-label="Augmenter la quantité"
+                  >
+                    <Plus className="h-3.5 w-3.5" />
+                  </button>
+                </div>
+              ) : (
+                <span className="flex items-center border border-ink/20 px-4 text-[10px] uppercase tracking-[0.18em] text-ink/50">
+                  Pièce unique
+                </span>
+              )}
               <button
                 type="button"
                 onClick={handleAdd}
-                className="flex flex-1 items-center justify-center bg-ink px-6 py-4 text-[11px] uppercase tracking-[0.24em] text-cream transition-colors hover:bg-forest"
+                disabled={soldOut}
+                className="flex flex-1 items-center justify-center bg-ink px-6 py-4 text-[11px] uppercase tracking-[0.24em] text-cream transition-colors hover:bg-forest disabled:cursor-not-allowed disabled:bg-ink/30"
               >
-                Ajouter au panier
+                {soldOut ? 'Pièce vendue' : 'Ajouter au panier'}
               </button>
             </div>
 
@@ -160,7 +177,7 @@ export default function ProductDetail() {
               </p>
               <p className="flex items-start gap-3">
                 <Truck className="mt-0.5 h-4 w-4 shrink-0 text-forest" strokeWidth={1.3} />
-                Expédiée depuis Lyon sous 3 à 4 jours ouvrés · retrait gratuit à l’atelier-boutique.
+                Expédition suivie depuis Lyon sous 3 à 4 jours ouvrés · retrait gratuit à l’atelier-boutique.
               </p>
               <p className="flex items-start gap-3">
                 <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-forest" strokeWidth={1.3} />
@@ -193,7 +210,14 @@ export default function ProductDetail() {
                   <Plus className="h-3.5 w-3.5 transition-transform group-open:rotate-45" strokeWidth={1.4} />
                 </summary>
                 <div className="mt-4 space-y-2 text-[13px] font-light leading-relaxed text-ink/60">
-                  {product.dimensions && <p>Dimensions : {product.dimensions}</p>}
+                  {product.dimensions ? (
+                    <p>Dimensions : {product.dimensions}</p>
+                  ) : (
+                    <p>
+                      Dimensions et poids précis communiqués sur demande : chaque pièce est taillée à
+                      l’unité, dans une peau différente.
+                    </p>
+                  )}
                   <p>
                     Nourrir le cuir une à deux fois par an avec une crème incolore. Éviter l’exposition
                     prolongée au soleil : le cuir tanné végétal se patine, c’est normal et c’est beau.
@@ -247,6 +271,7 @@ export default function ProductDetail() {
                     image: entry.image,
                     meta: entry.leather,
                     type: 'product',
+                    max: entry.stock ?? 1,
                   })
                 }
               />
