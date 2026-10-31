@@ -1,4 +1,4 @@
-import Image from '@/components/ui/image';
+import { Image } from '@/components/ui/image';
 import Cta from '@/components/site/Cta';
 import Container from '@/components/site/Container';
 import { IMAGES } from '@/lib/catalog';

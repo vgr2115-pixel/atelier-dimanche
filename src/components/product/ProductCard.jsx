@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Plus } from 'lucide-react';
-import Image from '@/components/ui/image';
+import { Image } from '@/components/ui/image';
 import { formatPrice } from '@/lib/format';
 
 export default function ProductCard({ product, onQuickAdd, className = '' }) {

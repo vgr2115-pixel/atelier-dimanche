@@ -1,11 +1,36 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import Container from '@/components/site/Container';
 import ProductCard from '@/components/product/ProductCard';
 import BookingCard from '@/components/home/BookingCard';
-import { PRODUCTS, WORKSHOPS } from '@/lib/catalog';
+import { useCart } from '@/components/cart/CartContext';
+import { getProducts } from '@/api/catalog';
 
-export default function DualEngine({ onQuickAdd }) {
+export default function DualEngine() {
+  const { addItem } = useCart();
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    let active = true;
+    getProducts().then((data) => {
+      if (active) setProducts(data.slice(0, 4));
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const handleAdd = (product) =>
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      meta: product.leather,
+      type: 'product',
+    });
+
   return (
     <section id="collection" className="bg-cream py-20 lg:py-28">
       <Container>
@@ -28,15 +53,19 @@ export default function DualEngine({ onQuickAdd }) {
             </div>
 
             <div className="mt-9 grid grid-cols-2 gap-x-5 gap-y-10 sm:gap-x-7">
-              {PRODUCTS.map((product, index) => (
+              {products.map((product, index) => (
                 <ProductCard
                   key={product.id}
                   product={product}
-                  onQuickAdd={onQuickAdd}
+                  onQuickAdd={handleAdd}
                   className={index % 2 === 1 ? 'sm:mt-14' : ''}
                 />
               ))}
             </div>
+
+            {products.length === 0 && (
+              <p className="mt-10 text-sm font-light text-ink/40">La collection arrive dans quelques instants…</p>
+            )}
 
             <Link
               to="/boutique"
@@ -46,7 +75,7 @@ export default function DualEngine({ onQuickAdd }) {
             </Link>
           </div>
 
-          <BookingCard workshop={WORKSHOPS[0]} />
+          <BookingCard />
         </div>
       </Container>
     </section>

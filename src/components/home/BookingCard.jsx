@@ -1,11 +1,25 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Star, ArrowRight } from 'lucide-react';
 import { formatPrice } from '@/lib/format';
-import { upcomingSessions } from '@/lib/sessions';
+import { getUpcomingSessions } from '@/api/catalog';
 
-export default function BookingCard({ workshop }) {
-  const sessions = upcomingSessions(3);
-  const total = workshop?.price ?? 120;
+export default function BookingCard() {
+  const [sessions, setSessions] = useState([]);
+  const [workshop, setWorkshop] = useState(null);
+
+  useEffect(() => {
+    let active = true;
+    getUpcomingSessions(60).then((all) => {
+      if (!active) return;
+      const belt = all.filter((session) => session.workshop_slug === 'atelier-ceinture').slice(0, 3);
+      setSessions((belt.length ? belt : all).slice(0, 3));
+      setWorkshop(all[0] ?? null);
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
 
   return (
     <div className="lg:sticky lg:top-28">
@@ -29,23 +43,30 @@ export default function BookingCard({ workshop }) {
         </div>
 
         <div className="mt-6 flex items-baseline justify-between border-y border-ink/10 py-4">
-          <p className="font-display text-2xl text-ink">{formatPrice(total)}</p>
+          <p className="font-display text-2xl text-ink">{formatPrice(120)}</p>
           <p className="text-[11px] uppercase tracking-[0.14em] text-ink/45">2 à 6 personnes · 3 h</p>
         </div>
 
         <p className="mt-6 text-[10px] uppercase tracking-[0.22em] text-ink/40">Prochaines dates</p>
-        <ul className="mt-3 divide-y divide-ink/8">
+        <ul className="mt-3 divide-y divide-ink/10">
+          {sessions.length === 0 && (
+            <li className="py-3 text-[13px] font-light text-ink/40">Dates communiquées très vite par email.</li>
+          )}
           {sessions.map((session) => (
-            <li key={session.toISOString()}>
+            <li key={session.id}>
               <Link
-                to={`/ateliers?date=${session.toISOString().slice(0, 10)}`}
-                className="group flex items-center justify-between py-3 transition-colors hover:text-clay"
+                to={`/ateliers?date=${session.date}&heure=${session.time}`}
+                className="group flex items-center justify-between gap-3 py-3 transition-colors hover:text-clay"
               >
                 <span className="text-[13px] capitalize text-ink/80">
-                  {session.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' })}
+                  {new Date(session.date).toLocaleDateString('fr-FR', {
+                    weekday: 'long',
+                    day: 'numeric',
+                    month: 'long',
+                  })}
                 </span>
                 <span className="flex items-center gap-2 text-[11px] uppercase tracking-[0.14em] text-ink/40">
-                  14h
+                  {session.time}
                   <ArrowRight
                     className="h-3 w-3 -translate-x-1 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
                     strokeWidth={1.5}
@@ -65,6 +86,11 @@ export default function BookingCard({ workshop }) {
         <p className="mt-4 text-center text-[11px] font-light text-ink/40">
           Bon cadeau disponible · valable 12 mois
         </p>
+        {workshop && (
+          <p className="mt-1 text-center text-[10px] uppercase tracking-[0.16em] text-ink/25">
+            Prochaine session confirmée
+          </p>
+        )}
       </div>
 
       <Link

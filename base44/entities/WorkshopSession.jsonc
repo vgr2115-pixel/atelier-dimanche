@@ -1,0 +1,31 @@
+{
+  "name": "WorkshopSession",
+  "type": "object",
+  "properties": {
+    "workshop_slug": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "time": {
+      "type": "string"
+    },
+    "spots_total": {
+      "type": "number"
+    },
+    "spots_taken": {
+      "type": "number",
+      "default": 0
+    },
+    "location": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "workshop_slug",
+    "date",
+    "time"
+  ]
+}

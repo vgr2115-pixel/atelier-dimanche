@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { X, Minus, Plus, Trash2 } from 'lucide-react';
 import { useCart } from '@/components/cart/CartContext';
 import { formatPrice } from '@/lib/format';
-import Image from '@/components/ui/image';
+import { Image } from '@/components/ui/image';
 
 export default function CartDrawer() {
   const { items, isOpen, closeCart, subtotal, setQuantity, removeItem } = useCart();

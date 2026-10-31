@@ -1,0 +1,57 @@
+{
+  "name": "Booking",
+  "type": "object",
+  "properties": {
+    "reference": {
+      "type": "string"
+    },
+    "workshop_slug": {
+      "type": "string"
+    },
+    "workshop_name": {
+      "type": "string"
+    },
+    "session_id": {
+      "type": "string"
+    },
+    "session_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "session_time": {
+      "type": "string"
+    },
+    "participants": {
+      "type": "number"
+    },
+    "total": {
+      "type": "number"
+    },
+    "customer_name": {
+      "type": "string"
+    },
+    "customer_email": {
+      "type": "string"
+    },
+    "customer_phone": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "demande",
+        "confirmee",
+        "annulee"
+      ],
+      "default": "demande"
+    }
+  },
+  "required": [
+    "workshop_slug",
+    "customer_name",
+    "customer_email"
+  ]
+}
