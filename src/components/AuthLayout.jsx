@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Image } from '@/components/ui/image';
 
-const LOGO = 'https://media.base44.com/images/public/6ae661bd4abd749615dd969a/4544a06cb_logo.png';
+const LOGO = 'https://static.wixstatic.com/media/dc3d95_41d0602a48d84f8484424ea1e1a89b9a~mv2_d_2418_1413_s_2.png';
 
 export const authInputClass =
   'h-12 rounded-none border-ink/20 bg-cream pl-10 text-[14px] text-ink placeholder:text-ink/30 focus-visible:border-ink focus-visible:ring-forest';

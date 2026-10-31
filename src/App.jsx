@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
+import AccessDenied from '@/components/site/AccessDenied';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import ScrollToTop from './components/ScrollToTop';
 import { CartProvider } from '@/components/cart/CartContext';
@@ -29,7 +30,7 @@ import MentionsLegales from '@/pages/MentionsLegales';
 import ConditionsVente from '@/pages/ConditionsVente';
 
 const AuthenticatedApp = () => {
-  const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
+  const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin, user, isAuthenticated } = useAuth();
 
   // Show loading spinner while checking app public settings or auth
   if (isLoadingPublicSettings || isLoadingAuth) {
@@ -49,6 +50,11 @@ const AuthenticatedApp = () => {
       navigateToLogin();
       return null;
     }
+  }
+
+  // Seul le compte de l'atelier (admin) peut entrer : tout autre compte connecté est retenu.
+  if (isAuthenticated && user && user.role !== 'admin') {
+    return <AccessDenied />;
   }
 
   // Render the main app
