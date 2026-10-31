@@ -23,8 +23,9 @@ export default function VisitSection() {
               <span className="block italic text-clay">Lyon 1ᵉʳ.</span>
             </h2>
             <p className="mt-6 max-w-[30rem] text-[15px] font-light leading-[1.8] text-ink/65">
-              Vous hésitez entre deux modèles, deux cuirs, ou vous avez un projet en tête ? Passez
-              pendant les horaires d’ouverture, ou prenons rendez-vous à un autre moment.
+              Vous hésitez entre deux cuirs, vous voulez voir la teinte en vrai ou parler d’un projet ?
+              Passez pendant les horaires d’ouverture, ou prenons rendez-vous à un autre moment. C’est
+              aussi ici que je répare et entretiens les pièces.
             </p>
 
             <div className="mt-8 grid gap-6 border-t border-ink/10 pt-7 sm:grid-cols-2">
@@ -37,6 +38,14 @@ export default function VisitSection() {
                     <br />
                     69001 Lyon
                   </p>
+                  <a
+                    href="https://maps.google.com/?q=23+rue+Burdeau+69001+Lyon"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-2 inline-block border-b border-ink/25 pb-0.5 text-[11px] uppercase tracking-[0.14em] text-ink/70 hover:border-ink hover:text-ink"
+                  >
+                    Voir sur la carte
+                  </a>
                 </div>
               </div>
               <div className="flex gap-3">
@@ -66,7 +75,7 @@ export default function VisitSection() {
                 to="/contact"
                 className="inline-flex items-center gap-2 border-b border-ink/25 pb-1 text-[11px] uppercase tracking-[0.2em] text-ink/60 transition-colors hover:border-ink hover:text-ink"
               >
-                Nous écrire
+                Écrire à Marie
                 <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.4} />
               </Link>
             </div>

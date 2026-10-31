@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Image } from '@/components/ui/image';
 import Cta from '@/components/site/Cta';
@@ -41,9 +42,9 @@ export default function Hero() {
               transition={{ duration: 0.9, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
               className="mt-7 max-w-[30rem] text-[15px] font-light leading-[1.75] text-ink/65"
             >
-              Des pièces uniques façonnées à partir de chutes de cuir de grandes maisons et de cuirs
-              tannés végétal. Chaque couture, chaque tranche, chaque finition : à la main, dans mon
-              atelier lyonnais.
+              Je m’appelle Marie Bodilis. Depuis 2015, je dessine, découpe et couds chaque pièce dans
+              mon atelier lyonnais, à partir de chutes de cuir de grandes maisons et de cuirs au
+              tannage végétal. Aucune série : chaque modèle n’existe qu’en un exemplaire.
             </motion.p>
 
             <motion.div
@@ -52,7 +53,7 @@ export default function Hero() {
               transition={{ duration: 0.9, delay: 0.28, ease: [0.22, 1, 0.36, 1] }}
               className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center"
             >
-              <Cta to="/boutique">Découvrir la collection</Cta>
+              <Cta to="/boutique">Voir les pièces disponibles</Cta>
               <Cta to="/ateliers" variant="outline">
                 Réserver un atelier
               </Cta>
@@ -64,11 +65,11 @@ export default function Hero() {
               transition={{ duration: 1, delay: 0.45 }}
               className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-ink/10 pt-6 text-[10px] uppercase tracking-[0.24em] text-ink/40 lg:mt-16"
             >
-              <span>Cuirs upcyclés</span>
+              <span>Cuirs de grandes maisons</span>
               <span className="h-3 w-px bg-ink/15" />
-              <span>Pièces uniques</span>
+              <span>Point sellier &amp; fil de lin</span>
               <span className="h-3 w-px bg-ink/15" />
-              <span>Fabrication française</span>
+              <span>Fabriqué à Lyon</span>
             </motion.div>
           </div>
 
@@ -83,10 +84,18 @@ export default function Hero() {
                 focalPointY={0.45}
               />
             </motion.div>
-            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-ink/55 via-ink/10 to-transparent p-6 lg:p-10">
-              <p className="max-w-[16rem] text-[11px] uppercase tracking-[0.2em] text-cream/90">
-                Couture sellier · fil de lin ciré
-              </p>
+            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-ink/60 via-ink/10 to-transparent p-6 lg:p-10">
+              <div>
+                <p className="max-w-[16rem] text-[11px] uppercase tracking-[0.2em] text-cream/90">
+                  Découpe, parage, couture main
+                </p>
+                <Link
+                  to="/savoir-faire"
+                  className="mt-3 inline-block border-b border-cream/40 pb-1 text-[10px] uppercase tracking-[0.2em] text-cream transition-colors hover:border-cream hover:text-sand"
+                >
+                  Voir le geste
+                </Link>
+              </div>
               <p className="hidden text-[11px] uppercase tracking-[0.2em] text-cream/60 sm:block">
                 Atelier Dimanche, Lyon
               </p>

@@ -5,9 +5,9 @@ import Container from '@/components/site/Container';
 import { IMAGES } from '@/lib/images';
 
 const STATS = [
-  { value: '2015', label: 'Reconversion de Marie' },
-  { value: '100 %', label: 'Fait main à Lyon' },
-  { value: '1', label: 'Pièce, 1 seule fois' },
+  { value: '2015', label: 'Naissance de Dimanche' },
+  { value: '2016', label: 'CAP maroquinerie' },
+  { value: '1', label: 'Paire de mains' },
 ];
 
 export default function StorySection() {
@@ -19,34 +19,41 @@ export default function StorySection() {
             <div className="overflow-hidden bg-linen">
               <Image
                 src={IMAGES.portrait}
-                alt="L’atelier Dimanche : étagères de fils, rouleaux de cuir et enseigne de la maison"
+                alt="Marie Bodilis à l’établi, dans son atelier de maroquinerie à Lyon"
                 className="aspect-[4/5] w-full"
                 fittingType="fill"
-                focalPointY={0.4}
+                focalPointY={0.35}
               />
             </div>
-            <div className="mt-6 flex items-center gap-4 lg:absolute lg:-bottom-8 lg:-right-8 lg:mt-0 lg:max-w-[240px] lg:flex-col lg:items-start lg:bg-cream lg:p-6 lg:shadow-[0_24px_50px_-40px_rgba(26,26,26,0.6)]">
-              <p className="font-display text-[15px] italic text-clay">« Le cuir d’une grande maison, sauvé d’un carton, devient un cabas que l’on garde vingt ans. »</p>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-ink/40">Marie Bodilis</p>
+            <div className="mt-6 flex items-center gap-4 lg:absolute lg:-bottom-8 lg:-right-8 lg:mt-0 lg:max-w-[260px] lg:flex-col lg:items-start lg:bg-cream lg:p-6 lg:shadow-[0_24px_50px_-40px_rgba(26,26,26,0.6)]">
+              <p className="font-display text-[15px] italic leading-snug text-clay">
+                « Personne ne veut me donner de boulot alors je vais faire mon propre boulot et on
+                verra. »
+              </p>
+              <p className="text-[10px] uppercase leading-relaxed tracking-[0.18em] text-ink/40">
+                Marie Bodilis · Étonnantes, 2019
+              </p>
             </div>
           </div>
 
           <div>
-            <p className="eyebrow text-forest/80">L’histoire</p>
+            <p className="eyebrow text-forest/80">La marque</p>
             <h2 className="mt-4 font-display text-[2rem] leading-[1.12] tracking-[-0.01em] text-ink sm:text-[2.7rem]">
               De graphiste à maroquinière,
               <span className="block italic text-clay">en 2015.</span>
             </h2>
             <div className="mt-6 space-y-4 text-[15px] font-light leading-[1.8] text-ink/65">
               <p>
-                Dimanche naît d’une reconversion : après des années derrière un écran, Marie choisit
-                le cuir, les outils et le geste. Depuis, elle dessine, découpe, coud et vend
-                elle-même chaque pièce — sans intermédiaire.
+                Dimanche naît au printemps 2015, quand Marie Bodilis quitte le graphisme pour
+                l’établi : une semaine d’initiation au cuir, puis un CAP de maroquinerie passé en
+                2016. La marque démarre avec quelques pochettes et n’a jamais grossi plus vite que la
+                paire de mains qui la fait vivre.
               </p>
               <p>
-                Les cuirs viennent de chutes de grandes maisons de maroquinerie, dans une démarche
-                d’upcycling, ou de tanneries végétales respectueuses de l’environnement. Des
-                matières nobles, déjà là, qu’il ne reste plus qu’à révéler.
+                Les cuirs viennent des chutes et sur-stocks de grandes maisons de maroquinerie,
+                choisis un à un, à la sensation. Le tannage végétal s’est imposé ensuite, pour sa
+                tenue et sa patine. Tout se passe aujourd’hui au 23 rue Burdeau, à Lyon : la
+                conception, la fabrication et les ateliers.
               </p>
             </div>
 
@@ -65,7 +72,7 @@ export default function StorySection() {
               to="/histoire"
               className="mt-9 inline-flex items-center gap-3 border-b border-ink/25 pb-2 text-[11px] uppercase tracking-[0.2em] text-ink transition-colors hover:border-ink hover:text-clay"
             >
-              Lire l’histoire complète
+              Lire la marque
               <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.4} />
             </Link>
           </div>

@@ -4,9 +4,9 @@ import Container from '@/components/site/Container';
 import { IMAGES } from '@/lib/images';
 
 const FACTS = [
-  { value: '3 h', label: 'Le temps qu’il faut' },
-  { value: '2', label: 'Participants maximum' },
-  { value: '1', label: 'Ceinture à emporter' },
+  { value: '1 h 45 – 3 h', label: 'Selon l’atelier' },
+  { value: '2 à 4', label: 'Personnes maximum' },
+  { value: '55 € – 95 €', label: 'Tout compris' },
 ];
 
 export default function WorkshopSection() {
@@ -26,19 +26,19 @@ export default function WorkshopSection() {
           <div>
             <p className="eyebrow text-sand/80">Les ateliers</p>
             <h2 className="mt-4 font-display text-[2rem] leading-[1.12] tracking-[-0.01em] text-cream sm:text-[2.8rem]">
-              Trois heures pour repartir
-              <span className="block italic text-sand">avec votre ceinture.</span>
+              Trois ateliers, deux mains,
+              <span className="block italic text-sand">une pièce à vous.</span>
             </h2>
             <p className="mt-6 max-w-[32rem] text-[15px] font-light leading-[1.8] text-cream/65">
-              En petit comité, dans l’atelier-boutique : la découpe du cuir, la couture à la main,
-              le travail des tranches. Aucun prérequis, tous les outils sont fournis, et le cuir
-              vient de nos chutes de grandes maisons.
+              Ceinture, porte-monnaie ou boucles d’oreilles : on découpe, on perce, on coud. Le cuir,
+              les outils et les finitions sont compris, et vous repartez avec votre pièce. Les trois
+              ateliers abordent des gestes différents : vous pouvez les enchaîner.
             </p>
 
             <div className="mt-10 grid grid-cols-3 gap-4 border-y border-cream/15 py-6">
               {FACTS.map((fact) => (
                 <div key={fact.label}>
-                  <p className="font-display text-[26px] text-sand">{fact.value}</p>
+                  <p className="font-display text-[22px] leading-tight text-sand">{fact.value}</p>
                   <p className="mt-1 text-[10px] uppercase leading-relaxed tracking-[0.16em] text-cream/40">
                     {fact.label}
                   </p>
@@ -46,12 +46,12 @@ export default function WorkshopSection() {
               ))}
             </div>
 
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
               <Cta to="/ateliers" variant="sand">
-                Réserver mon atelier
+                Voir les dates
               </Cta>
-              <p className="text-[11px] uppercase tracking-[0.16em] text-cream/40">
-                95 € · tout compris
+              <p className="text-[11px] uppercase leading-relaxed tracking-[0.16em] text-cream/40">
+                Mercredi soir, samedi matin et après-midi
               </p>
             </div>
           </div>
