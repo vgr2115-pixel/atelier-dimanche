@@ -42,10 +42,18 @@ export default function Header() {
       >
         <div className="mx-auto flex h-[72px] w-full max-w-[1400px] items-center justify-between px-6 sm:px-10 lg:h-20 lg:px-16">
           <Link to="/" className="flex items-center" aria-label="Dimanche — Atelier Dimanche, accueil">
+            {/* Mobile : l'emblème seul reste lisible dans une barre étroite. */}
+            <Image
+              src={IMAGES.monogram}
+              alt="Dimanche"
+              className="h-9 w-[54px] sm:hidden"
+              fittingType="fit"
+            />
+            {/* Dès qu'il y a de la place : le logo complet, l'inscription se lit. */}
             <Image
               src={IMAGES.logo}
               alt="Dimanche"
-              className="h-9 w-[116px] lg:h-11 lg:w-[146px]"
+              className="hidden h-11 w-[75px] sm:block lg:h-14 lg:w-[96px]"
               fittingType="fit"
             />
           </Link>

@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Image } from '@/components/ui/image';
-
-const LOGO = 'https://static.wixstatic.com/media/dc3d95_41d0602a48d84f8484424ea1e1a89b9a~mv2_d_2418_1413_s_2.png';
+import { IMAGES } from '@/lib/images';
 
 export const authInputClass =
   'h-12 rounded-none border-ink/20 bg-cream pl-10 text-[14px] text-ink placeholder:text-ink/30 focus-visible:border-ink focus-visible:ring-forest';
@@ -17,11 +16,12 @@ export default function AuthLayout({ title, subtitle, footer, children }) {
       <header className="relative border-b border-ink/10">
         <div className="mx-auto flex w-full max-w-[1400px] items-center justify-between gap-4 px-6 py-5 sm:px-10 lg:px-16">
           <Link to="/" className="flex items-center gap-3" aria-label="Atelier Dimanche, retour à l’accueil">
+            {/* Page de connexion : logo complet, il n'y a rien d'autre à lire à côté. */}
             <Image
-              src={LOGO}
+              src={IMAGES.logo}
               alt="Atelier Dimanche"
               fittingType="fit"
-              className="h-10 w-[120px]"
+              className="h-12 w-[82px]"
             />
           </Link>
           <Link

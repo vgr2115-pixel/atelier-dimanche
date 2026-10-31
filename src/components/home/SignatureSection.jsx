@@ -33,7 +33,8 @@ export default function SignatureSection() {
               <span className="text-[11px] font-light leading-relaxed text-ink/45">
                 L’atelier, 23 rue Burdeau — images tournées sur place.
               </span>
-              <Image src={IMAGES.logo} alt="Dimanche" className="h-7 w-[92px] shrink-0" fittingType="fit" />
+              {/* Signature discrète : emblème seul, l'inscription serait illisible à cette taille. */}
+              <Image src={IMAGES.monogram} alt="Dimanche" className="h-7 w-[42px] shrink-0" fittingType="fit" />
             </figcaption>
           </figure>
 

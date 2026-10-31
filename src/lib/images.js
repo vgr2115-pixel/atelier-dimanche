@@ -31,7 +31,10 @@ export const IMAGES = {
 
   boutique: media('dc3d95_83d8c9d59d2449c598b255aedd66e7f8~mv2.png'),
   interieur: media('dc3d95_b641681c0ecf4a9d82cbcee148ee1e7f~mv2.png'),
+  // Logo complet : emblème + inscription « DIMANCHE ». Pour les grands formats où la marque se présente.
   logo: media('dc3d95_41d0602a48d84f8484424ea1e1a89b9a~mv2_d_2418_1413_s_2.png'),
+  // Emblème seul, sans inscription : pour les petits formats, les aplats serrés et les icônes.
+  monogram: media('dc3d95_cd173c15ca4347f58f4d58596433a605~mv2.png'),
 
   // Vidéo tournée à l'atelier par Fierce Productions (1er mai 2021).
   video: 'https://video.wixstatic.com/video/dc3d95_9e5d643abfdf41b6b1017dc670aeb221/1080p/mp4/file.mp4',

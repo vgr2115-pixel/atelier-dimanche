@@ -45,7 +45,7 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr]">
           <div>
             <Link to="/" className="inline-flex items-center bg-cream px-4 py-3" aria-label="Dimanche — accueil">
-              <Image src={IMAGES.logo} alt="Dimanche" className="h-8 w-[108px]" fittingType="fit" />
+              <Image src={IMAGES.logo} alt="Dimanche" className="h-10 w-[68px]" fittingType="fit" />
             </Link>
             <p className="mt-6 max-w-xs text-sm font-light leading-relaxed text-cream/60">
               Maroquinerie artisanale et ateliers de fabrication, au cœur de Lyon. Cuirs de grandes
