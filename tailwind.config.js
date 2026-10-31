@@ -51,6 +51,12 @@ module.exports = {
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
   			},
+  			ink: '#1A1A1A',
+  			cream: '#FDFBF7',
+  			linen: '#F4EEE5',
+  			sand: '#D2B48C',
+  			forest: '#2D4739',
+  			clay: '#8C6B4F',
   			sidebar: {
   				DEFAULT: 'hsl(var(--sidebar-background))',
   				foreground: 'hsl(var(--sidebar-foreground))',
