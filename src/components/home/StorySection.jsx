@@ -12,9 +12,9 @@ const STATS = [
 
 export default function StorySection() {
   return (
-    <section className="border-t border-ink/10 bg-cream py-20 lg:py-28">
+    <section className="border-t border-ink/10 bg-cream py-14 lg:py-28">
       <Container>
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+        <div className="grid items-center gap-9 sm:gap-12 lg:grid-cols-2 lg:gap-20">
           <div className="relative">
             <div className="overflow-hidden bg-linen">
               <Image

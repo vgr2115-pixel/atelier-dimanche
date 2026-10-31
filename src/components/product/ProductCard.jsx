@@ -46,12 +46,15 @@ export default function ProductCard({ product, onQuickAdd, className = '' }) {
         )}
       </div>
 
-      <div className="mt-4 flex items-start justify-between gap-4">
+      <div className="mt-3.5 flex flex-col gap-1 sm:mt-4 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
         <div>
-          <Link to={`/produit/${product.slug}`} className="font-display text-[17px] leading-snug text-ink hover:text-clay">
+          <Link
+            to={`/produit/${product.slug}`}
+            className="font-display text-[15px] leading-snug text-ink hover:text-clay sm:text-[17px]"
+          >
             {product.name}
           </Link>
-          <p className="mt-1 text-[11px] uppercase tracking-[0.16em] text-ink/55">
+          <p className="mt-1 text-[10px] uppercase tracking-[0.14em] text-ink/55 sm:text-[11px] sm:tracking-[0.16em]">
             {soldOut ? 'Pièce vendue' : product.leather}
           </p>
         </div>

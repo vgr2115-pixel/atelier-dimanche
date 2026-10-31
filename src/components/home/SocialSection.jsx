@@ -11,9 +11,9 @@ const SHOTS = [
 
 export default function SocialSection() {
   return (
-    <section className="border-t border-ink/10 bg-linen/50 py-20 lg:py-28">
+    <section className="border-t border-ink/10 bg-linen/50 py-14 lg:py-28">
       <Container>
-        <div className="flex flex-col justify-between gap-6 border-b border-ink/10 pb-7 sm:flex-row sm:items-end">
+        <div className="flex flex-col justify-between gap-5 border-b border-ink/10 pb-6 sm:flex-row sm:items-end sm:gap-6 sm:pb-7">
           <div>
             <p className="eyebrow text-forest/80">L’atelier au quotidien</p>
             <h2 className="mt-4 font-display text-[2rem] leading-[1.1] tracking-[-0.01em] text-ink sm:text-[2.6rem]">

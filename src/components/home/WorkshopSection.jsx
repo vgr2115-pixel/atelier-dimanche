@@ -11,9 +11,9 @@ const FACTS = [
 
 export default function WorkshopSection() {
   return (
-    <section className="bg-ink py-20 text-cream lg:py-28">
+    <section className="bg-ink py-14 text-cream lg:py-28">
       <Container>
-        <div className="grid items-center gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
+        <div className="grid items-center gap-9 sm:gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
           <div className="overflow-hidden">
             <Image
               src={IMAGES.atelierCeinture}
@@ -35,7 +35,7 @@ export default function WorkshopSection() {
               ateliers abordent des gestes différents : vous pouvez les enchaîner.
             </p>
 
-            <div className="mt-10 grid grid-cols-3 gap-4 border-y border-cream/15 py-6">
+            <div className="mt-8 grid grid-cols-3 gap-3 border-y border-cream/15 py-5 sm:gap-4 sm:py-6">
               {FACTS.map((fact) => (
                 <div key={fact.label}>
                   <p className="font-display text-[22px] leading-tight text-sand">{fact.value}</p>

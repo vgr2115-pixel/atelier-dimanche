@@ -13,9 +13,9 @@ const HOURS = [
 
 export default function VisitSection() {
   return (
-    <section className="border-t border-ink/10 bg-linen py-20 lg:py-28">
+    <section className="border-t border-ink/10 bg-linen py-14 lg:py-28">
       <Container>
-        <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-20">
+        <div className="grid items-center gap-9 sm:gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-20">
           <div>
             <p className="eyebrow text-forest/80">L’atelier-boutique</p>
             <h2 className="mt-4 font-display text-[2rem] leading-[1.12] tracking-[-0.01em] text-ink sm:text-[2.6rem]">

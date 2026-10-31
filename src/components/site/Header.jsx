@@ -9,6 +9,7 @@ const NAV = [
   { label: 'Boutique', to: '/boutique' },
   { label: 'Ateliers création', to: '/ateliers' },
   { label: 'Savoir-faire', to: '/savoir-faire' },
+  { label: 'Avis', to: '/avis' },
   { label: 'La marque', to: '/histoire' },
   { label: 'Visite & contact', to: '/contact' },
 ];
@@ -49,12 +50,12 @@ export default function Header() {
             />
           </Link>
 
-          <nav className="hidden items-center gap-6 md:flex lg:gap-8">
+          <nav className="hidden items-center gap-5 lg:flex xl:gap-7">
             {NAV.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
-                className={`text-[11px] uppercase tracking-[0.22em] transition-colors duration-300 hover:text-ink ${
+                className={`text-[10px] uppercase tracking-[0.14em] transition-colors duration-300 hover:text-ink xl:text-[11px] xl:tracking-[0.2em] ${
                   pathname === item.to ? 'text-ink' : 'text-ink/55'
                 }`}
               >
@@ -81,7 +82,7 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setMenuOpen((open) => !open)}
-              className="flex items-center justify-center p-2 text-ink md:hidden"
+              className="flex items-center justify-center p-2 text-ink lg:hidden"
               aria-label="Menu"
             >
               {menuOpen ? <X className="h-5 w-5" strokeWidth={1.3} /> : <Menu className="h-5 w-5" strokeWidth={1.3} />}
@@ -90,7 +91,7 @@ export default function Header() {
         </div>
 
         {menuOpen && (
-          <div className="border-t border-ink/10 bg-cream md:hidden">
+          <div className="border-t border-ink/10 bg-cream lg:hidden">
             <nav className="flex flex-col px-6 py-4">
               {NAV.map((item) => (
                 <Link

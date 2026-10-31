@@ -14,6 +14,7 @@ import Shop from '@/pages/Shop';
 import ProductDetail from '@/pages/ProductDetail';
 import Workshops from '@/pages/Workshops';
 import SavoirFaire from '@/pages/SavoirFaire';
+import Avis from '@/pages/Avis';
 import Story from '@/pages/Story';
 import Contact from '@/pages/Contact';
 import Cart from '@/pages/Cart';
@@ -52,6 +53,7 @@ const AuthenticatedApp = () => {
         <Route path="/boutique" element={<Shop />} />
         <Route path="/produit/:slug" element={<ProductDetail />} />
         <Route path="/savoir-faire" element={<SavoirFaire />} />
+        <Route path="/avis" element={<Avis />} />
         <Route path="/ateliers" element={<Workshops />} />
         <Route path="/histoire" element={<Story />} />
         <Route path="/contact" element={<Contact />} />

@@ -12,9 +12,9 @@ const STATS = [
 
 export default function SignatureSection() {
   return (
-    <section className="border-t border-ink/10 bg-cream py-20 lg:py-28">
+    <section className="border-t border-ink/10 bg-cream py-14 lg:py-28">
       <Container>
-        <div className="grid items-center gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16">
+        <div className="grid items-center gap-9 sm:gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:gap-16">
           <figure className="order-2 lg:order-1">
             <div className="relative overflow-hidden bg-ink">
               <video

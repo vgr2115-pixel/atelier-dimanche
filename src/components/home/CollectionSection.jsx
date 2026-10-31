@@ -33,9 +33,9 @@ export default function CollectionSection() {
     });
 
   return (
-    <section id="collection" className="bg-cream py-20 lg:py-28">
+    <section id="collection" className="bg-cream py-14 lg:py-28">
       <Container>
-        <div className="flex flex-col justify-between gap-6 border-b border-ink/10 pb-7 sm:flex-row sm:items-end">
+        <div className="flex flex-col justify-between gap-5 border-b border-ink/10 pb-6 sm:flex-row sm:items-end sm:gap-6 sm:pb-7">
           <div>
             <p className="eyebrow text-forest/80">La boutique</p>
             <h2 className="mt-4 font-display text-[2rem] leading-[1.1] tracking-[-0.01em] text-ink sm:text-[2.6rem]">
@@ -55,7 +55,7 @@ export default function CollectionSection() {
           </Link>
         </div>
 
-        <div className="mt-10 grid grid-cols-2 gap-x-5 gap-y-10 sm:gap-x-8 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-2 gap-x-4 gap-y-8 sm:mt-10 sm:gap-x-8 sm:gap-y-10 lg:grid-cols-4">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} onQuickAdd={handleAdd} />
           ))}
