@@ -15,7 +15,7 @@ const SIGNS = [
 
 export default function HandmadeChecklist() {
   return (
-    <section id="reconnaitre" className="scroll-mt-28 border-t border-ink/10 bg-cream py-16 lg:py-24">
+    <section id="reconnaitre" className="scroll-mt-28 border-t border-ink/10 py-14 lg:py-20">
       <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
         <div>
           <p className="eyebrow text-forest/80">Le doute est légitime</p>

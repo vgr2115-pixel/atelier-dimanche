@@ -11,49 +11,82 @@ export default function MentionsLegales() {
           <section>
             <h2 className="font-display text-xl text-ink">Éditeur du site</h2>
             <p className="mt-3">
-              Atelier Dimanche — maroquinerie artisanale, entreprise individuelle représentée par Marie
-              Bodilis.
+              Le site atelier-dimanche.fr est diffusé par la micro-entreprise Marie Bodilis,
+              représentée par Marie Bodilis, artisan maroquinier.
               <br />
               23 rue Burdeau, 69001 Lyon, France.
               <br />
-              Contact : marie@atelier-dimanche.fr
+              SIRET : 795 268 812 00034.
               <br />
-              Numéro SIRET : à compléter.
+              Contact : marie@atelier-dimanche.fr
+            </p>
+          </section>
+
+          <section>
+            <h2 className="font-display text-xl text-ink">Directeur de la publication</h2>
+            <p className="mt-3">Marie Bodilis, en qualité de responsable de la publication.</p>
+          </section>
+
+          <section>
+            <h2 className="font-display text-xl text-ink">Activité</h2>
+            <p className="mt-3">
+              Création et fabrication artisanale de maroquinerie en cuir, vente en ligne et à
+              l’atelier-boutique, ateliers d’initiation à la maroquinerie.
             </p>
           </section>
 
           <section>
             <h2 className="font-display text-xl text-ink">Hébergement</h2>
             <p className="mt-3">
-              Le site est hébergé sur la plateforme Base44. Les photographies et textes sont la
-              propriété de l’Atelier Dimanche.
+              Ce site est hébergé sur la plateforme Base44 (www.base44.app). Les coordonnées de
+              l’hébergeur peuvent être obtenues en écrivant à marie@atelier-dimanche.fr.
             </p>
           </section>
 
           <section>
             <h2 className="font-display text-xl text-ink">Propriété intellectuelle</h2>
             <p className="mt-3">
-              L’ensemble des contenus du site (textes, photographies, créations, modèles) est protégé
-              par le droit d’auteur. Toute reproduction, même partielle, est interdite sans accord
-              écrit préalable.
+              L’ensemble des contenus du site (textes, photographies, créations, modèles, logo) est la
+              propriété de Marie Bodilis et protégé par le droit d’auteur. Toute reproduction, même
+              partielle, suppose une autorisation écrite préalable.
+            </p>
+            <p className="mt-3">
+              Crédits photo : les portraits d’atelier ont été réalisés par Rémy Lidereau pour
+              Étonnantes (2019) ; la vidéo d’atelier par Fierce Productions (2021).
             </p>
           </section>
 
           <section>
             <h2 className="font-display text-xl text-ink">Données personnelles</h2>
             <p className="mt-3">
-              Les informations transmises via les formulaires (commande, atelier, contact, newsletter)
-              servent uniquement à traiter votre demande et à vous informer des actualités de
-              l’atelier si vous y avez consenti. Elles ne sont jamais vendues ni transmises à des tiers.
-              Vous pouvez demander leur suppression à tout moment à marie@atelier-dimanche.fr.
+              Les informations transmises via les formulaires (commande, réservation d’atelier,
+              contact, newsletter) servent uniquement à traiter votre demande, à préparer votre
+              commande et, si vous y avez consenti, à vous informer des nouvelles pièces. Elles ne sont
+              ni vendues ni transmises à des tiers en dehors des prestataires nécessaires au
+              traitement du paiement et de la livraison.
+            </p>
+            <p className="mt-3">
+              Vous disposez d’un droit d’accès, de rectification, d’effacement et d’opposition sur vos
+              données. Pour l’exercer, écrivez à marie@atelier-dimanche.fr. En cas de désaccord, vous
+              pouvez saisir la CNIL (www.cnil.fr).
             </p>
           </section>
 
           <section>
             <h2 className="font-display text-xl text-ink">Cookies</h2>
             <p className="mt-3">
-              Le site ne dépose aucun cookie publicitaire. Seul le stockage local du navigateur est
-              utilisé pour conserver le contenu de votre panier entre deux visites.
+              Le site ne dépose aucun cookie publicitaire ni traceur tiers. Seul le stockage local de
+              votre navigateur conserve le contenu de votre panier entre deux visites.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="font-display text-xl text-ink">Médiation de la consommation</h2>
+            <p className="mt-3">
+              Conformément aux articles L. 611-1 et suivants du code de la consommation, tout client
+              particulier peut recourir gratuitement à un médiateur de la consommation en vue de la
+              résolution amiable d’un litige, après avoir tenté de le résoudre directement auprès de
+              l’atelier.
             </p>
           </section>
         </div>

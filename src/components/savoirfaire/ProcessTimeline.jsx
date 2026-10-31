@@ -30,7 +30,7 @@ const STEPS = [
 
 export default function ProcessTimeline() {
   return (
-    <section className="border-t border-ink/10 bg-cream py-16 lg:py-24">
+    <section className="border-t border-ink/10 py-14 lg:py-20">
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="overflow-hidden bg-linen">
           <Image

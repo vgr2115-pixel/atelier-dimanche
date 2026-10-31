@@ -153,18 +153,18 @@ export default function ProductDetail() {
               </button>
             </div>
 
-            <div className="mt-6 grid gap-3 border-y border-ink/10 py-5 text-[12px] font-light text-ink/55">
-              <p className="flex items-center gap-3">
-                <Scissors className="h-4 w-4 text-forest" strokeWidth={1.3} />
-                Pièce unique — {product.duration || 'faite main à Lyon'}
+            <div className="mt-6 grid gap-3 border-y border-ink/10 py-5 text-[12px] font-light leading-relaxed text-ink/55">
+              <p className="flex items-start gap-3">
+                <Scissors className="mt-0.5 h-4 w-4 shrink-0 text-forest" strokeWidth={1.3} />
+                Pièce unique — cousue main par Marie à Lyon. Un seul exemplaire disponible.
               </p>
-              <p className="flex items-center gap-3">
-                <Truck className="h-4 w-4 text-forest" strokeWidth={1.3} />
-                Expédition sous 3 jours ouvrés · offerte dès 150 € · retrait à l’atelier possible
+              <p className="flex items-start gap-3">
+                <Truck className="mt-0.5 h-4 w-4 shrink-0 text-forest" strokeWidth={1.3} />
+                Expédiée depuis Lyon sous 3 à 4 jours ouvrés · retrait gratuit à l’atelier-boutique.
               </p>
-              <p className="flex items-center gap-3">
-                <ShieldCheck className="h-4 w-4 text-forest" strokeWidth={1.3} />
-                Garantie à vie sur les coutures, retouche offerte en atelier
+              <p className="flex items-start gap-3">
+                <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-forest" strokeWidth={1.3} />
+                Échange sous 14 jours · réparation des pièces métalliques à l’atelier.
               </p>
             </div>
 
@@ -179,6 +179,11 @@ export default function ProductDetail() {
                   {(product.details || []).map((detail) => (
                     <li key={detail}>{detail}</li>
                   ))}
+                  <li>
+                    Peau choisie une à une dans les chutes et sur-stocks de grandes maisons, ou cuir au
+                    tannage végétal. Couture au point sellier, fil de lin ciré, tranches teintées et
+                    marquage à chaud dans l’atelier.
+                  </li>
                 </ul>
               </details>
 
@@ -202,10 +207,21 @@ export default function ProductDetail() {
                   <Plus className="h-3.5 w-3.5 transition-transform group-open:rotate-45" strokeWidth={1.4} />
                 </summary>
                 <div className="mt-4 space-y-2 text-[13px] font-light leading-relaxed text-ink/60">
-                  <p>Expédition sous 3 jours ouvrés en France métropolitaine, 6,90 € — offerte dès 150 €.</p>
                   <p>
-                    Retrait gratuit à l’atelier-boutique, 23 rue Burdeau, Lyon 1ᵉʳ. Retour possible sous 14
-                    jours si la pièce n’a pas été portée.
+                    Expédition en lettre suivie sous 3 à 4 jours ouvrés, ou retrait gratuit à
+                    l’atelier-boutique, 23 rue Burdeau, Lyon 1ᵉʳ.
+                  </p>
+                  <p>
+                    Quatorze jours après réception pour changer d’avis, sur une pièce non portée :
+                    échange ou avoir, hors frais de port. Les pièces personnalisées ne sont pas reprises.
+                  </p>
+                  <p>
+                    <Link
+                      to="/savoir-faire#faq"
+                      className="border-b border-ink/25 pb-0.5 text-ink hover:border-ink"
+                    >
+                      Questions fréquentes
+                    </Link>
                   </p>
                 </div>
               </details>

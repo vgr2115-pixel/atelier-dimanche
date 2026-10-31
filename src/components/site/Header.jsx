@@ -4,10 +4,11 @@ import { Menu, X, ShoppingBag } from 'lucide-react';
 import { useCart } from '@/components/cart/CartContext';
 
 const NAV = [
-  { label: 'L’Histoire', to: '/histoire' },
   { label: 'Boutique', to: '/boutique' },
+  { label: 'Savoir-faire', to: '/savoir-faire' },
   { label: 'Ateliers', to: '/ateliers' },
-  { label: 'Contact', to: '/contact' },
+  { label: 'La marque', to: '/histoire' },
+  { label: 'L’atelier', to: '/contact' },
 ];
 
 export default function Header() {
@@ -42,7 +43,7 @@ export default function Header() {
             <span className="font-display text-[19px] italic tracking-[0.08em] text-clay">Dimanche</span>
           </Link>
 
-          <nav className="hidden items-center gap-10 md:flex">
+          <nav className="hidden items-center gap-7 md:flex lg:gap-9">
             {NAV.map((item) => (
               <Link
                 key={item.to}

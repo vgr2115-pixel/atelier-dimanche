@@ -7,19 +7,20 @@ const COLUMNS = [
   {
     title: 'La maison',
     links: [
-      { label: 'L’histoire de Dimanche', to: '/histoire' },
+      { label: 'La marque', to: '/histoire' },
+      { label: 'Le savoir-faire', to: '/savoir-faire' },
       { label: 'Les ateliers', to: '/ateliers' },
       { label: 'La boutique', to: '/boutique' },
-      { label: 'Nous écrire', to: '/contact' },
     ],
   },
   {
     title: 'Informations',
     links: [
-      { label: 'Mentions légales', to: '/mentions-legales' },
-      { label: 'Conditions de vente', to: '/conditions-de-vente' },
+      { label: 'Questions fréquentes', to: '/savoir-faire#faq' },
+      { label: 'Entretien & réparation', to: '/savoir-faire' },
       { label: 'Livraison & retours', to: '/conditions-de-vente#livraison' },
-      { label: 'Prendre rendez-vous', to: '/contact' },
+      { label: 'Conditions de vente', to: '/conditions-de-vente' },
+      { label: 'Mentions légales', to: '/mentions-legales' },
     ],
   },
 ];
@@ -32,7 +33,7 @@ export default function Footer() {
           <div>
             <p className="eyebrow text-cream/40">Les nouvelles pièces</p>
             <p className="mt-3 max-w-md font-display text-[22px] leading-snug text-cream">
-              Une pièce unique par semaine, parfois moins. Recevez-les avant tout le monde.
+              Chaque pièce est unique. Recevez-les avant qu’elles ne partent.
             </p>
           </div>
           <NewsletterForm />
@@ -45,8 +46,8 @@ export default function Footer() {
               <span className="font-display text-[22px] italic tracking-[0.08em] text-sand">Dimanche</span>
             </Link>
             <p className="mt-6 max-w-xs text-sm font-light leading-relaxed text-cream/60">
-              Maroquinerie artisanale et ateliers de fabrication, au cœur de Lyon. Cuirs upcyclés de
-              grandes maisons, pièces uniques, fait main.
+              Maroquinerie artisanale et ateliers de fabrication, au cœur de Lyon. Cuirs de grandes
+              maisons réemployés, pièces uniques, tout fait main dans l’atelier.
             </p>
             <div className="mt-8 flex items-center gap-5">
               <a
@@ -112,9 +113,15 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-cream/15 pt-6 text-[11px] uppercase tracking-[0.2em] text-cream/35 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Atelier Dimanche — Lyon</p>
-          <p>Fait main, à Lyon, une pièce à la fois.</p>
+        <div className="mt-14 border-t border-cream/15 pt-6">
+          <p className="text-[11px] font-light leading-relaxed text-cream/45">
+            Dimanche — Marie Bodilis, micro-entreprise · SIRET 795 268 812 00034 · 23 rue Burdeau,
+            69001 Lyon · marie@atelier-dimanche.fr
+          </p>
+          <div className="mt-4 flex flex-col gap-2 text-[11px] uppercase tracking-[0.18em] text-cream/35 sm:flex-row sm:items-center sm:justify-between">
+            <p>© {new Date().getFullYear()} Atelier Dimanche — Lyon</p>
+            <p>Fait main, à Lyon, une pièce à la fois.</p>
+          </div>
         </div>
       </Container>
     </footer>

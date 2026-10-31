@@ -50,7 +50,7 @@ const QUESTIONS = [
 
 export default function Faq() {
   return (
-    <section id="faq" className="scroll-mt-28 border-t border-ink/10 bg-cream py-16 lg:py-24">
+    <section id="faq" className="scroll-mt-28 border-t border-ink/10 py-14 lg:py-20">
       <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
         <div>
           <p className="eyebrow text-forest/80">Questions fréquentes</p>

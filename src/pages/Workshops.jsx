@@ -125,8 +125,8 @@ export default function Workshops() {
         <p className="eyebrow text-forest/80">Les ateliers</p>
         <div className="mt-4 grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
           <h1 className="font-display text-[2.4rem] leading-[1.05] tracking-[-0.02em] text-ink sm:text-[3.4rem]">
-            Trois heures, deux mains,
-            <span className="block italic text-clay">une ceinture à vous.</span>
+            Trois ateliers, deux mains,
+            <span className="block italic text-clay">une pièce à vous.</span>
           </h1>
           <p className="max-w-md text-[15px] font-light leading-[1.8] text-ink/60 lg:pb-2">
             En petit comité dans l’atelier-boutique : découpe, couture sellier, finitions. Tous les
@@ -135,13 +135,13 @@ export default function Workshops() {
         </div>
         <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.16em] text-ink/40">
           <span className="flex items-center gap-2">
-            <Star className="h-3 w-3 fill-sand text-sand" strokeWidth={0} /> 4,9/5 sur Google
+            <Users className="h-3 w-3" strokeWidth={1.4} /> 2 à 4 personnes
           </span>
           <span className="flex items-center gap-2">
-            <Users className="h-3 w-3" strokeWidth={1.4} /> 2 à 6 personnes
+            <Clock className="h-3 w-3" strokeWidth={1.4} /> 1 h 45 à 3 h
           </span>
           <span className="flex items-center gap-2">
-            <Clock className="h-3 w-3" strokeWidth={1.4} /> Durée 2 h à 3 h
+            <Star className="h-3 w-3 fill-sand text-sand" strokeWidth={0} /> Avis reçus à l’atelier
           </span>
         </div>
       </Container>

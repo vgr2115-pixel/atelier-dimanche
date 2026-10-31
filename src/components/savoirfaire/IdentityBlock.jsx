@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function IdentityBlock() {
   return (
-    <section className="border-t border-ink/10 bg-linen py-14">
+    <section className="border-t border-ink/10 py-12">
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <p className="eyebrow text-forest/80">Qui vous répond</p>

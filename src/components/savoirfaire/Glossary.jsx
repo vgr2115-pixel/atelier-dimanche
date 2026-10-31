@@ -35,7 +35,7 @@ const WORDS = [
 
 export default function Glossary() {
   return (
-    <section className="border-t border-ink/10 bg-linen/60 py-16 lg:py-24">
+    <section className="border-t border-ink/10 py-14 lg:py-20">
       <p className="eyebrow text-forest/80">Les mots justes</p>
       <h2 className="mt-4 max-w-2xl font-display text-[1.9rem] leading-[1.15] text-ink sm:text-[2.4rem]">
         Le vocabulaire du cuir, sans marketing.

@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Star, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { formatPrice } from '@/lib/format';
 import { getUpcomingSessions } from '@/api/catalog';
 
 export default function BookingCard() {
   const [sessions, setSessions] = useState([]);
-  const [workshop, setWorkshop] = useState(null);
 
   useEffect(() => {
     let active = true;
@@ -14,7 +13,6 @@ export default function BookingCard() {
       if (!active) return;
       const belt = all.filter((session) => session.workshop_slug === 'atelier-ceinture').slice(0, 3);
       setSessions((belt.length ? belt : all).slice(0, 3));
-      setWorkshop(all[0] ?? null);
     });
     return () => {
       active = false;

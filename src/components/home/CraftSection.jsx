@@ -66,7 +66,7 @@ export default function CraftSection() {
                 controls
                 playsInline
                 preload="metadata"
-                poster={IMAGES.atelier}
+                poster={IMAGES.atelierLarge}
                 className="aspect-video w-full object-cover"
               >
                 <source src={IMAGES.video} type="video/mp4" />

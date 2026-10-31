@@ -23,7 +23,7 @@ const SERVICES = [
 
 export default function AfterSalesSection() {
   return (
-    <section className="border-t border-ink/10 bg-linen/60 py-16 lg:py-24">
+    <section className="border-t border-ink/10 py-14 lg:py-20">
       <div className="grid gap-12 lg:grid-cols-[1fr_0.8fr] lg:gap-16">
         <div>
           <p className="eyebrow text-forest/80">Après l’achat</p>
