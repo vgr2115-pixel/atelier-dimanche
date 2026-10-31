@@ -83,39 +83,42 @@ export default function Workshops() {
     }
 
     setStatus('submitting');
-    const reference = `DIM-${Math.random().toString(36).slice(2, 7).toUpperCase()}`;
 
     try {
-      await base44.entities.Booking.create({
-        reference,
+      const response = await base44.functions.invoke('bookWorkshop', {
         workshop_slug: workshop.slug,
-        workshop_name: workshop.name,
         session_id: session.id,
-        session_date: session.date,
-        session_time: session.time,
         participants,
-        total,
         customer_name: form.name,
         customer_email: form.email,
         customer_phone: form.phone,
         notes: form.notes,
-        status: 'demande',
       });
-      await base44.entities.WorkshopSession.update(session.id, {
-        spots_taken: (session.spots_taken || 0) + participants,
-      });
+      const booking = response.data;
 
-      setConfirmation({ reference, session, workshop, participants, total, email: form.email });
+      setConfirmation({
+        reference: booking.reference,
+        session: { date: booking.session_date, time: booking.session_time },
+        workshop: { name: booking.workshop_name },
+        participants: booking.participants,
+        total: booking.total,
+        email: form.email,
+      });
       setStatus('done');
       setForm(EMPTY_FORM);
       setSessions((prev) =>
         prev.map((item) =>
-          item.id === session.id ? { ...item, spots_taken: (item.spots_taken || 0) + participants } : item,
+          item.id === session.id
+            ? { ...item, spots_taken: (item.spots_taken || 0) + booking.participants }
+            : item,
         ),
       );
     } catch (submitError) {
       setStatus('idle');
-      setError("La réservation n'a pas pu être enregistrée. Réessayez dans un instant.");
+      setError(
+        submitError?.response?.data?.error ||
+          "La réservation n'a pas pu être enregistrée. Réessayez dans un instant.",
+      );
     }
   };
 
