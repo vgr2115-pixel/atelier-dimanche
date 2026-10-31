@@ -4,7 +4,7 @@ import { useCart } from '@/components/cart/CartContext';
 import { useEffect, useState } from 'react';
 import { getProductsByCategory } from '@/api/catalog';
 
-const CATEGORIES = ['Tout', 'Sacs', 'Ceintures', 'Petite maroquinerie', 'Accessoires'];
+const CATEGORIES = ['Tout', 'Sacs', 'Bananes', 'Petite maroquinerie', 'Accessoires'];
 
 export default function Shop() {
   const { addItem } = useCart();

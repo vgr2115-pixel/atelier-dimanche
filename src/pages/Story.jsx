@@ -60,7 +60,7 @@ export default function Story() {
           <div className="overflow-hidden bg-linen sm:col-span-2">
             <Image
               src={IMAGES.portrait}
-              alt="Marie dans son atelier, une pièce de cuir à la main"
+              alt="L’atelier de Marie : étagères de fils, rouleaux de cuir et enseigne Dimanche"
               className="aspect-[16/10] w-full"
               fittingType="fill"
               focalPointY={0.35}

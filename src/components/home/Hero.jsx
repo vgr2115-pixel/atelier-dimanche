@@ -76,7 +76,7 @@ export default function Hero() {
             <motion.div style={{ y: imageY }} className="absolute inset-0 h-[112%]">
               <Image
                 src={IMAGES.hero}
-                alt="Mains d’artisan cousant au point sellier deux épaisseurs de cuir fauve"
+                alt="Cuirs tannés végétaux découpés sur l’établi de l’atelier Dimanche"
                 className="h-full w-full"
                 fittingType="fill"
                 focalPointX={0.5}

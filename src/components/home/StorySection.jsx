@@ -19,7 +19,7 @@ export default function StorySection() {
             <div className="overflow-hidden bg-linen">
               <Image
                 src={IMAGES.portrait}
-                alt="Marie, fondatrice et maroquinière de l’Atelier Dimanche, dans son atelier lyonnais"
+                alt="L’atelier Dimanche : étagères de fils, rouleaux de cuir et enseigne de la maison"
                 className="aspect-[4/5] w-full"
                 fittingType="fill"
                 focalPointY={0.4}

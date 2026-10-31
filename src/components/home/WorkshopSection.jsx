@@ -5,7 +5,7 @@ import { IMAGES } from '@/lib/images';
 
 const FACTS = [
   { value: '3 h', label: 'Le temps qu’il faut' },
-  { value: '6', label: 'Participants maximum' },
+  { value: '2', label: 'Participants maximum' },
   { value: '1', label: 'Ceinture à emporter' },
 ];
 
@@ -17,7 +17,7 @@ export default function WorkshopSection() {
           <div className="overflow-hidden">
             <Image
               src={IMAGES.atelierCeinture}
-              alt="Une participante perçant une ceinture en cuir dans l’atelier"
+              alt="Une ceinture en cuir terminée, tenue au-dessus du tapis de découpe de l’atelier"
               className="aspect-[4/3] w-full lg:aspect-[4/5]"
               fittingType="fill"
             />
@@ -51,7 +51,7 @@ export default function WorkshopSection() {
                 Réserver mon atelier
               </Cta>
               <p className="text-[11px] uppercase tracking-[0.16em] text-cream/40">
-                120 € · dates chaque semaine
+                95 € · tout compris
               </p>
             </div>
           </div>

@@ -39,12 +39,12 @@ export default function BookingCard() {
               <Star key={star} className="h-3 w-3 fill-sand text-sand" strokeWidth={0} />
             ))}
           </div>
-          <p className="text-[11px] uppercase tracking-[0.14em] text-ink/45">4,9/5 · 200+ participants</p>
+          <p className="text-[11px] uppercase tracking-[0.14em] text-ink/45">Ateliers en petit comité</p>
         </div>
 
         <div className="mt-6 flex items-baseline justify-between border-y border-ink/10 py-4">
-          <p className="font-display text-2xl text-ink">{formatPrice(120)}</p>
-          <p className="text-[11px] uppercase tracking-[0.14em] text-ink/45">2 à 6 personnes · 3 h</p>
+          <p className="font-display text-2xl text-ink">{formatPrice(95)}</p>
+          <p className="text-[11px] uppercase tracking-[0.14em] text-ink/45">2 personnes max · 3 h</p>
         </div>
 
         <p className="mt-6 text-[10px] uppercase tracking-[0.22em] text-ink/40">Prochaines dates</p>

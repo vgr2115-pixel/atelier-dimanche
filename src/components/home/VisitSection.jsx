@@ -75,7 +75,7 @@ export default function VisitSection() {
           <div className="overflow-hidden bg-cream">
             <Image
               src={IMAGES.boutique}
-              alt="Intérieur de l’atelier-boutique Dimanche à Lyon : établi, cuirs et pièces finies"
+              alt="La vitrine de l’atelier-boutique Dimanche, 23 rue Burdeau à Lyon"
               className="aspect-[3/2] w-full"
               fittingType="fill"
             />
