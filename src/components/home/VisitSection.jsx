@@ -2,7 +2,7 @@ import { MapPin, Clock, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Image } from '@/components/ui/image';
 import Container from '@/components/site/Container';
-import { IMAGES } from '@/lib/catalog';
+import { IMAGES } from '@/lib/images';
 
 const HOURS = [
   ['Mercredi', '14h – 19h'],

@@ -10,6 +10,15 @@ import { CartProvider } from '@/components/cart/CartContext';
 import SiteLayout from '@/components/site/SiteLayout';
 // Add page imports here
 import Home from '@/pages/Home';
+import Shop from '@/pages/Shop';
+import ProductDetail from '@/pages/ProductDetail';
+import Workshops from '@/pages/Workshops';
+import Story from '@/pages/Story';
+import Contact from '@/pages/Contact';
+import Cart from '@/pages/Cart';
+import OrderConfirmation from '@/pages/OrderConfirmation';
+import MentionsLegales from '@/pages/MentionsLegales';
+import ConditionsVente from '@/pages/ConditionsVente';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -39,6 +48,15 @@ const AuthenticatedApp = () => {
     <Routes>
       <Route element={<SiteLayout />}>
         <Route path="/" element={<Home />} />
+        <Route path="/boutique" element={<Shop />} />
+        <Route path="/produit/:slug" element={<ProductDetail />} />
+        <Route path="/ateliers" element={<Workshops />} />
+        <Route path="/histoire" element={<Story />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/panier" element={<Cart />} />
+        <Route path="/commande/confirmation" element={<OrderConfirmation />} />
+        <Route path="/mentions-legales" element={<MentionsLegales />} />
+        <Route path="/conditions-de-vente" element={<ConditionsVente />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>

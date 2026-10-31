@@ -1,7 +1,7 @@
 import { Image } from '@/components/ui/image';
 import Cta from '@/components/site/Cta';
 import Container from '@/components/site/Container';
-import { IMAGES } from '@/lib/catalog';
+import { IMAGES } from '@/lib/images';
 
 const FACTS = [
   { value: '3 h', label: 'Le temps qu’il faut' },

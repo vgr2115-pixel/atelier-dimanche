@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Instagram, Facebook, Mail } from 'lucide-react';
 import Container from '@/components/site/Container';
+import NewsletterForm from '@/components/site/NewsletterForm';
 
 const COLUMNS = [
   {
@@ -27,6 +28,16 @@ export default function Footer() {
   return (
     <footer className="bg-ink text-cream/80">
       <Container className="py-16 lg:py-20">
+        <div className="mb-14 flex flex-col gap-6 border-b border-cream/15 pb-10 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="eyebrow text-cream/40">Les nouvelles pièces</p>
+            <p className="mt-3 max-w-md font-display text-[22px] leading-snug text-cream">
+              Une pièce unique par semaine, parfois moins. Recevez-les avant tout le monde.
+            </p>
+          </div>
+          <NewsletterForm />
+        </div>
+
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr]">
           <div>
             <Link to="/" className="flex flex-col leading-[0.95]">
