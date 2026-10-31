@@ -112,7 +112,7 @@ export default function Cart() {
                   <div className="flex flex-1 flex-col">
                     <div className="flex items-start justify-between gap-4">
                       <div>
-                        <Link to={`/produit/${item.id}`} className="font-display text-[17px] text-ink hover:text-clay">
+                        <Link to={`/produit/${item.slug ?? item.id}`} className="font-display text-[17px] text-ink hover:text-clay">
                           {item.name}
                         </Link>
                         <p className="mt-1 text-[11px] uppercase tracking-[0.16em] text-ink/40">{item.meta}</p>

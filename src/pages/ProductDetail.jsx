@@ -64,6 +64,7 @@ export default function ProductDetail() {
   const handleAdd = () =>
     addItem({
       id: product.id,
+      slug: product.slug,
       name: product.name,
       price: product.price,
       image: product.image,
@@ -224,6 +225,7 @@ export default function ProductDetail() {
                 onQuickAdd={(entry) =>
                   addItem({
                     id: entry.id,
+                    slug: entry.slug,
                     name: entry.name,
                     price: entry.price,
                     image: entry.image,
