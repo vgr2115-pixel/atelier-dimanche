@@ -24,8 +24,8 @@ export default function VisitSection() {
             </h2>
             <p className="mt-6 max-w-[30rem] text-[15px] font-light leading-[1.8] text-ink/65">
               Vous hésitez entre deux cuirs, vous voulez voir la teinte en vrai ou parler d’un projet ?
-              Passez pendant les horaires d’ouverture, ou prenons rendez-vous à un autre moment. C’est
-              aussi ici que je répare et entretiens les pièces.
+              Passez pendant les horaires d’ouverture, ou prenez rendez-vous à un autre moment. C’est
+              aussi ici que les pièces sont réparées et entretenues.
             </p>
 
             <div className="mt-8 grid gap-6 border-t border-ink/10 pt-7 sm:grid-cols-2">
@@ -75,7 +75,7 @@ export default function VisitSection() {
                 to="/contact"
                 className="inline-flex items-center gap-2 border-b border-ink/25 pb-1 text-[11px] uppercase tracking-[0.2em] text-ink/60 transition-colors hover:border-ink hover:text-ink"
               >
-                Écrire à Marie
+                Écrire à l’atelier
                 <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.4} />
               </Link>
             </div>

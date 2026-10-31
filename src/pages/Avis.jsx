@@ -125,7 +125,7 @@ export default function Avis() {
                 className="inline-flex items-center justify-center gap-2 bg-ink px-8 py-4 text-[11px] uppercase tracking-[0.24em] text-cream transition-colors hover:bg-forest"
               >
                 <Mail className="h-3.5 w-3.5" strokeWidth={1.4} />
-                Écrire à Marie
+                Écrire à l’atelier
               </a>
             </div>
           </div>

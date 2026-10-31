@@ -19,7 +19,7 @@ export default function StorySection() {
             <div className="overflow-hidden bg-linen">
               <Image
                 src={IMAGES.portrait}
-                alt="Marie Bodilis à l’établi, dans son atelier de maroquinerie à Lyon"
+                alt="Un cuir à l’établi de l’atelier Dimanche, à Lyon"
                 className="aspect-[4/5] w-full"
                 fittingType="fill"
                 focalPointY={0.35}
@@ -33,29 +33,21 @@ export default function StorySection() {
                 Initiation au cuir en 2015, CAP maroquinerie en 2016, et depuis, chaque pièce coupée
                 et cousue au 23 rue Burdeau.
               </p>
-              <a
-                href="https://www.atelier-dimanche.fr/"
-                target="_blank"
-                rel="noreferrer"
-                className="text-[10px] uppercase leading-relaxed tracking-[0.16em] text-ink/40 transition-colors hover:text-ink"
-              >
-                Source : site officiel de Dimanche
-              </a>
             </div>
           </div>
 
           <div>
             <p className="eyebrow text-forest/80">La marque</p>
             <h2 className="mt-4 font-display text-[2rem] leading-[1.12] tracking-[-0.01em] text-ink sm:text-[2.7rem]">
-              De graphiste à maroquinière,
-              <span className="block italic text-clay">en 2015.</span>
+              Des pièces uniques,
+              <span className="block italic text-clay">cousues une à une.</span>
             </h2>
             <div className="mt-6 space-y-4 text-[15px] font-light leading-[1.8] text-ink/65">
               <p>
-                Dimanche naît au printemps 2015, quand Marie Bodilis quitte le graphisme pour
-                l’établi : une semaine d’initiation au cuir, puis un CAP de maroquinerie passé en
-                2016. La marque démarre avec quelques pochettes et n’a jamais grossi plus vite que la
-                paire de mains qui la fait vivre.
+                Dimanche naît au printemps 2015 avec quelques pochettes vendues sur des salons de
+                créateurs : une semaine d’initiation au cuir, puis un CAP de maroquinerie passé en
+                2016. La marque n’a jamais grossi plus vite que la paire de mains qui la fait vivre :
+                chaque modèle est choisi, paré et cousu dans l’atelier.
               </p>
               <p>
                 Les cuirs viennent des chutes et sur-stocks de grandes maisons de maroquinerie,

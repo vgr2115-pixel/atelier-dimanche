@@ -13,9 +13,9 @@ export default function StoryHero() {
           </h1>
           <div className="mt-8 space-y-4 text-[15px] font-light leading-[1.85] text-ink/65">
             <p>
-              Je m’appelle Marie Bodilis. J’ai été graphiste-coloriste avant d’être maroquinière, et
-              cette bascule explique beaucoup de choses : le goût des couleurs, le soin du détail, et
-              l’envie de faire moi-même plutôt que de faire faire.
+              Dimanche est né d’une bascule : graphiste-coloriste d’abord, maroquinière ensuite. Le
+              goût des couleurs et le soin du détail viennent de là, comme l’envie de faire soi-même
+              plutôt que de faire faire.
             </p>
             <p>
               Dimanche naît au printemps 2015, avec quelques pochettes vendues sur des salons de
@@ -30,7 +30,7 @@ export default function StoryHero() {
           <div className="overflow-hidden bg-linen">
             <Image
               src={IMAGES.portraitAtelier}
-              alt="Marie Bodilis dans son atelier de maroquinerie, un cuir à la main"
+              alt="Un cuir travaillé à la main dans l’atelier Dimanche, à Lyon"
               className="aspect-[4/5] w-full"
               fittingType="fill"
               focalPointY={0.35}

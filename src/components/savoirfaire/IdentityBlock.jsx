@@ -5,10 +5,10 @@ export default function IdentityBlock() {
     <section className="border-t border-ink/10 py-12">
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         <div>
-          <p className="eyebrow text-forest/80">Qui vous répond</p>
-          <p className="mt-3 font-display text-[18px] text-ink">Marie Bodilis</p>
+          <p className="eyebrow text-forest/80">La marque</p>
+          <p className="mt-3 font-display text-[18px] text-ink">Dimanche</p>
           <p className="mt-1 text-[12px] font-light leading-relaxed text-ink/55">
-            Artisan maroquinier, fondatrice de Dimanche
+            Maroquinerie artisanale, pièces uniques en cuir
           </p>
         </div>
         <div>

@@ -31,7 +31,7 @@ export const IMAGES = {
 
   boutique: media('dc3d95_83d8c9d59d2449c598b255aedd66e7f8~mv2.png'),
   interieur: media('dc3d95_b641681c0ecf4a9d82cbcee148ee1e7f~mv2.png'),
-  logo: media('dc3d95_41d0602a48d84f8484424ea1e1a89b9a~mv2_d_2418_1413_s_2.png'),
+  logo: 'https://media.base44.com/images/public/6ae661bd4abd749615dd969a/4544a06cb_logo.png',
 
   // Vidéo tournée à l'atelier par Fierce Productions (1er mai 2021).
   video: 'https://video.wixstatic.com/video/dc3d95_9e5d643abfdf41b6b1017dc670aeb221/1080p/mp4/file.mp4',

@@ -44,8 +44,8 @@ export default function Contact() {
             <span className="block italic text-clay">une envie de cuir ?</span>
           </h1>
           <p className="max-w-md text-[15px] font-light leading-[1.8] text-ink/60 lg:pb-2">
-            Une commande à suivre, un atelier à offrir, une pièce à imaginer ensemble : écrivez-moi,
-            je réponds moi-même, en général sous 24 h.
+            Une commande à suivre, un atelier à offrir, une pièce à imaginer ensemble : écrivez à
+            l’atelier, la réponse arrive en général sous 24 h.
           </p>
         </div>
 
@@ -58,7 +58,7 @@ export default function Contact() {
                 </div>
                 <h2 className="mt-5 font-display text-2xl text-ink">Message reçu, merci.</h2>
                 <p className="mt-3 text-[14px] font-light leading-relaxed text-ink/60">
-                  Marie vous répond par email sous 24 h ouvrées. Pour une urgence, passez à
+                  L’atelier vous répond par email sous 24 h ouvrées. Pour une urgence, passez à
                   l’atelier-boutique pendant les horaires d’ouverture.
                 </p>
                 <button

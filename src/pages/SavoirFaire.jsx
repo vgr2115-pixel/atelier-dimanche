@@ -28,8 +28,8 @@ export default function SavoirFaire() {
             <span className="block italic text-clay">ça se voit, et ça s’explique.</span>
           </h1>
           <p className="max-w-md text-[15px] font-light leading-[1.8] text-ink/60 lg:pb-2">
-            Je ne sous-traite rien. Du choix de la peau au dernier coup de chiffon, tout se passe dans
-            mon atelier lyonnais. Voici les étapes, les matières et les mots exacts, pour que vous
+            Aucune sous-traitance. Du choix de la peau au dernier coup de chiffon, tout se passe dans
+            l’atelier lyonnais. Voici les étapes, les matières et les mots exacts, pour que vous
             sachiez précisément ce que vous achetez.
           </p>
         </div>

@@ -35,8 +35,8 @@ export default function MaterialsSection() {
               <span className="block italic text-clay">avant d’acheter du cuir.</span>
             </h2>
             <p className="mt-6 max-w-lg text-[14px] font-light leading-[1.8] text-ink/60">
-              Le vocabulaire de la maroquinerie est souvent flou, parfois trompeur. Voici les mots que
-              j’emploie, expliqués sans marketing.
+              Le vocabulaire de la maroquinerie est souvent flou, parfois trompeur. Voici les mots
+              exacts, expliqués sans marketing.
             </p>
 
             <dl className="mt-9 divide-y divide-ink/10 border-t border-ink/10">

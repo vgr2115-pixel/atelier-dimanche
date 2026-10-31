@@ -9,7 +9,7 @@ import { IMAGES } from '@/lib/images';
 import useDocumentTitle from '@/hooks/useDocumentTitle';
 
 export default function Story() {
-  useDocumentTitle('La marque — Marie Bodilis, Atelier Dimanche à Lyon');
+  useDocumentTitle('La marque — Atelier Dimanche, maroquinerie artisanale à Lyon');
 
   return (
     <div className="bg-cream">
@@ -55,8 +55,8 @@ export default function Story() {
             <div>
               <p className="eyebrow text-forest/80">Ils en ont parlé</p>
               <p className="mt-3 max-w-2xl font-display text-[17px] leading-[1.6] text-ink/80">
-                « Marie, artisan maroquinière et créatrice de Dimanche » — un reportage d’Étonnantes
-                (2019), textes de Solenn Cosotti, photographies de Rémy Lidereau.
+                Un reportage consacré à l’atelier et à ses pièces — Étonnantes (2019), textes de
+                Solenn Cosotti, photographies de Rémy Lidereau.
               </p>
             </div>
             <a

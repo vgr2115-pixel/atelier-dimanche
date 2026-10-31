@@ -206,8 +206,8 @@ export default function Cart() {
                 />
                 <textarea
                   rows={3}
-                  aria-label="Message pour Marie"
-                  placeholder="Un mot pour Marie (emballage cadeau, retrait à l’atelier…)"
+                  aria-label="Message pour l’atelier"
+                  placeholder="Un mot pour l’atelier (emballage cadeau, retrait sur place…)"
                   value={form.notes}
                   onChange={(event) => setForm({ ...form, notes: event.target.value })}
                   className="w-full border border-ink/15 bg-cream px-3 py-3 text-sm placeholder:text-ink/30 focus:border-forest focus:outline-none sm:col-span-2"

@@ -173,7 +173,7 @@ export default function ProductDetail() {
             <div className="mt-6 grid gap-3 border-y border-ink/10 py-5 text-[12px] font-light leading-relaxed text-ink/55">
               <p className="flex items-start gap-3">
                 <Scissors className="mt-0.5 h-4 w-4 shrink-0 text-forest" strokeWidth={1.3} />
-                Pièce unique — cousue main par Marie à Lyon. Un seul exemplaire disponible.
+                Pièce unique — cousue main à l’atelier de Lyon. Un seul exemplaire disponible.
               </p>
               <p className="flex items-start gap-3">
                 <Truck className="mt-0.5 h-4 w-4 shrink-0 text-forest" strokeWidth={1.3} />

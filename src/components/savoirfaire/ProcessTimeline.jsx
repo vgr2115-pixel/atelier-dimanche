@@ -43,7 +43,7 @@ export default function ProcessTimeline() {
         <div className="overflow-hidden bg-linen">
           <Image
             src={IMAGES.geste}
-            alt="Marie travaillant le cuir à l’établi de l’atelier"
+            alt="Le cuir travaillé à l’établi de l’atelier"
             className="aspect-[4/3] w-full"
             fittingType="fill"
           />

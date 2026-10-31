@@ -45,13 +45,13 @@ export default function Hero() {
               className="mt-5 max-w-[30rem] text-[14px] font-light leading-[1.7] text-ink/65 sm:mt-7 sm:text-[15px] sm:leading-[1.75]"
             >
               <span className="sm:hidden">
-                Pièces uniques en cuir réemployé, découpées et cousues main par Marie Bodilis, au 23
-                rue Burdeau.
+                Pièces uniques en cuir réemployé, découpées et cousues main à l’atelier, au 23 rue
+                Burdeau.
               </span>
               <span className="hidden sm:inline">
-                Je m’appelle Marie Bodilis. Depuis 2015, je dessine, découpe et couds chaque pièce dans
-                mon atelier lyonnais, à partir de chutes de cuir de grandes maisons et de cuirs au
-                tannage végétal. Aucune série : chaque modèle n’existe qu’en un exemplaire.
+                Depuis 2015, chaque pièce est dessinée, découpée et cousue dans l’atelier lyonnais, à
+                partir de chutes de cuir de grandes maisons et de cuirs au tannage végétal. Aucune
+                série : chaque modèle n’existe qu’en un exemplaire.
               </span>
             </motion.p>
 

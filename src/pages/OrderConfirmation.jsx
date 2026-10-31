@@ -23,7 +23,7 @@ export default function OrderConfirmation() {
             </p>
           )}
           <p className="mt-6 text-[15px] font-light leading-[1.8] text-ink/65">
-            Marie prépare votre pièce elle-même. Vous recevez sous 24 h un lien de paiement sécurisé,
+            Votre pièce est préparée à l’atelier. Vous recevez sous 24 h un lien de paiement sécurisé,
             puis un email d’expédition dès que le colis part de l’atelier.
           </p>
 

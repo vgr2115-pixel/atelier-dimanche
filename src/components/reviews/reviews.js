@@ -5,7 +5,7 @@
 export const REVIEW_THEMES = [
   {
     title: 'La pédagogie',
-    text: 'Les avis reviennent sur la manière dont Marie transmet les gestes, pas à pas.',
+    text: 'Les avis reviennent sur la manière dont les gestes sont transmis, pas à pas.',
   },
   {
     title: 'Le petit comité',

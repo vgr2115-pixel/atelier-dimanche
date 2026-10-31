@@ -238,7 +238,7 @@ export default function Workshops() {
                     </p>
                   </div>
                   <p className="mt-5 text-[12px] font-light leading-relaxed text-ink/55">
-                    Marie vous confirme votre place par email à {confirmation.email} sous 24 h, avec
+                    L’atelier vous confirme votre place par email à {confirmation.email} sous 24 h, avec
                     l’adresse exacte et le lien de paiement. Aucun prélèvement n’a lieu sur ce site.
                   </p>
                   <button
