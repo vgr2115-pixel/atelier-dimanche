@@ -12,6 +12,9 @@ import { CartProvider } from '@/components/cart/CartContext';
 import SiteLayout from '@/components/site/SiteLayout';
 // Add page imports here
 import Login from '@/pages/Login';
+import Register from '@/pages/Register';
+import ForgotPassword from '@/pages/ForgotPassword';
+import ResetPassword from '@/pages/ResetPassword';
 import Admin from '@/pages/Admin';
 import Home from '@/pages/Home';
 import Shop from '@/pages/Shop';
@@ -72,6 +75,9 @@ const AuthenticatedApp = () => {
         <Route path="/conditions-de-vente" element={<ConditionsVente />} />
       </Route>
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
       <Route
         element={
           <ProtectedRoute

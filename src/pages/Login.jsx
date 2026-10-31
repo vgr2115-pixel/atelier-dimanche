@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { base44 } from "@/api/base44Client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,6 +17,7 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   // Destination après connexion (le consentement MCP renvoie ici avec returnTo).
   const returnTo = safeReturnTo();
+  const query = returnTo !== "/" ? "?returnTo=" + encodeURIComponent(returnTo) : "";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,6 +37,14 @@ export default function Login() {
     <AuthLayout
       title="Se connecter"
       subtitle="L’espace privé d’Atelier Dimanche : le catalogue, les ateliers et les demandes reçues. Réservé à l’atelier."
+      footer={
+        <>
+          Compte invité par l’atelier et jamais activé ?{" "}
+          <Link to={"/register" + query} className="border-b border-ink/30 pb-0.5 text-ink hover:border-ink">
+            Activer mon accès
+          </Link>
+        </>
+      }
     >
       <form onSubmit={handleSubmit} className="space-y-5">
         <div className="space-y-2">
@@ -62,9 +72,17 @@ export default function Login() {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="password" className={authLabelClass}>
-            Mot de passe
-          </Label>
+          <div className="flex items-baseline justify-between gap-3">
+            <Label htmlFor="password" className={authLabelClass}>
+              Mot de passe
+            </Label>
+            <Link
+              to="/forgot-password"
+              className="text-[11px] font-light text-ink/50 transition-colors hover:text-ink"
+            >
+              Oublié ?
+            </Link>
+          </div>
           <div className="relative">
             <Lock
               className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/30"
