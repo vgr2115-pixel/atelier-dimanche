@@ -37,7 +37,7 @@ export default function Contact() {
   return (
     <div className="bg-cream">
       <Container className="pb-20 pt-14 lg:pt-20">
-        <p className="eyebrow text-forest/80">Contact</p>
+        <p className="eyebrow text-forest/80">Visite &amp; contact</p>
         <div className="mt-4 grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
           <h1 className="font-display text-[2.4rem] leading-[1.06] tracking-[-0.02em] text-ink sm:text-[3.3rem]">
             Un projet, une question,

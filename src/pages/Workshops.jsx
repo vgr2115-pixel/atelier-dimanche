@@ -122,15 +122,16 @@ export default function Workshops() {
   return (
     <div className="bg-cream">
       <Container className="pb-12 pt-14 lg:pt-20">
-        <p className="eyebrow text-forest/80">Les ateliers</p>
+        <p className="eyebrow text-forest/80">Ateliers création</p>
         <div className="mt-4 grid gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
           <h1 className="font-display text-[2.4rem] leading-[1.05] tracking-[-0.02em] text-ink sm:text-[3.4rem]">
             Trois ateliers, deux mains,
             <span className="block italic text-clay">une pièce à vous.</span>
           </h1>
           <p className="max-w-md text-[15px] font-light leading-[1.8] text-ink/60 lg:pb-2">
-            En petit comité dans l’atelier-boutique : découpe, couture sellier, finitions. Tous les
-            outils et le cuir sont fournis — vous repartez avec votre pièce.
+            En petit comité : découpe, couture sellier, finitions. Tous les outils et le cuir sont
+            fournis — vous repartez avec votre pièce. Les séances ont lieu au 23 rue Burdeau, dans
+            l’atelier même où sont faites les pièces de la boutique.
           </p>
         </div>
         <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.16em] text-ink/40">

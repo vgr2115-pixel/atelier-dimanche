@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { Instagram, Facebook, Mail } from 'lucide-react';
 import Container from '@/components/site/Container';
 import NewsletterForm from '@/components/site/NewsletterForm';
+import { Image } from '@/components/ui/image';
+import { IMAGES } from '@/lib/images';
 
 const COLUMNS = [
   {
@@ -9,7 +11,7 @@ const COLUMNS = [
     links: [
       { label: 'La marque', to: '/histoire' },
       { label: 'Le savoir-faire', to: '/savoir-faire' },
-      { label: 'Les ateliers', to: '/ateliers' },
+      { label: 'Ateliers création', to: '/ateliers' },
       { label: 'La boutique', to: '/boutique' },
     ],
   },
@@ -41,9 +43,8 @@ export default function Footer() {
 
         <div className="grid gap-12 lg:grid-cols-[1.4fr_1fr_1fr_1.1fr]">
           <div>
-            <Link to="/" className="flex flex-col leading-[0.95]">
-              <span className="font-display text-[22px] tracking-[0.08em] text-cream">ATELIER</span>
-              <span className="font-display text-[22px] italic tracking-[0.08em] text-sand">Dimanche</span>
+            <Link to="/" className="inline-flex items-center bg-cream px-4 py-3" aria-label="Dimanche — accueil">
+              <Image src={IMAGES.logo} alt="Dimanche" className="h-8 w-[108px]" fittingType="fit" />
             </Link>
             <p className="mt-6 max-w-xs text-sm font-light leading-relaxed text-cream/60">
               Maroquinerie artisanale et ateliers de fabrication, au cœur de Lyon. Cuirs de grandes

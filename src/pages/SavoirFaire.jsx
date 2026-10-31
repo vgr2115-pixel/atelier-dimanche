@@ -5,6 +5,7 @@ import ProcessTimeline from '@/components/savoirfaire/ProcessTimeline';
 import Glossary from '@/components/savoirfaire/Glossary';
 import HandmadeChecklist from '@/components/savoirfaire/HandmadeChecklist';
 import AfterSalesSection from '@/components/savoirfaire/AfterSalesSection';
+import MaterialsSection from '@/components/home/MaterialsSection';
 import Faq from '@/components/savoirfaire/Faq';
 import IdentityBlock from '@/components/savoirfaire/IdentityBlock';
 
@@ -45,6 +46,11 @@ export default function SavoirFaire() {
 
       <Container>
         <ProcessTimeline />
+      </Container>
+
+      <MaterialsSection />
+
+      <Container>
         <Glossary />
         <HandmadeChecklist />
         <AfterSalesSection />

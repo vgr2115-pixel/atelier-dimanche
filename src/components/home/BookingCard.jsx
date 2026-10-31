@@ -22,7 +22,7 @@ export default function BookingCard() {
   return (
     <div className="lg:sticky lg:top-28">
       <div className="border border-ink/12 bg-cream p-7 shadow-[0_24px_60px_-40px_rgba(26,26,26,0.5)] sm:p-9">
-        <p className="eyebrow text-forest/80">Atelier de fabrication</p>
+        <p className="eyebrow text-forest/80">Atelier création</p>
         <h3 className="mt-4 font-display text-[26px] leading-[1.15] text-ink sm:text-[30px]">
           Créez votre propre ceinture en 3 h
         </h3>

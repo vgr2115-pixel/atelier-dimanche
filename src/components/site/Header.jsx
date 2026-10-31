@@ -2,13 +2,15 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ShoppingBag } from 'lucide-react';
 import { useCart } from '@/components/cart/CartContext';
+import { Image } from '@/components/ui/image';
+import { IMAGES } from '@/lib/images';
 
 const NAV = [
   { label: 'Boutique', to: '/boutique' },
+  { label: 'Ateliers création', to: '/ateliers' },
   { label: 'Savoir-faire', to: '/savoir-faire' },
-  { label: 'Ateliers', to: '/ateliers' },
   { label: 'La marque', to: '/histoire' },
-  { label: 'L’atelier', to: '/contact' },
+  { label: 'Visite & contact', to: '/contact' },
 ];
 
 export default function Header() {
@@ -38,12 +40,16 @@ export default function Header() {
         }`}
       >
         <div className="mx-auto flex h-[72px] w-full max-w-[1400px] items-center justify-between px-6 sm:px-10 lg:h-20 lg:px-16">
-          <Link to="/" className="flex flex-col leading-[0.95]" aria-label="Atelier Dimanche, accueil">
-            <span className="font-display text-[19px] tracking-[0.08em] text-ink">ATELIER</span>
-            <span className="font-display text-[19px] italic tracking-[0.08em] text-clay">Dimanche</span>
+          <Link to="/" className="flex items-center" aria-label="Dimanche — Atelier Dimanche, accueil">
+            <Image
+              src={IMAGES.logo}
+              alt="Dimanche"
+              className="h-9 w-[116px] lg:h-11 lg:w-[146px]"
+              fittingType="fit"
+            />
           </Link>
 
-          <nav className="hidden items-center gap-7 md:flex lg:gap-9">
+          <nav className="hidden items-center gap-6 md:flex lg:gap-8">
             {NAV.map((item) => (
               <Link
                 key={item.to}

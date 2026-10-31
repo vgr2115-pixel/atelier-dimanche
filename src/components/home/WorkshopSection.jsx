@@ -24,7 +24,7 @@ export default function WorkshopSection() {
           </div>
 
           <div>
-            <p className="eyebrow text-sand/80">Les ateliers</p>
+            <p className="eyebrow text-sand/80">Ateliers création · au 23 rue Burdeau</p>
             <h2 className="mt-4 font-display text-[2rem] leading-[1.12] tracking-[-0.01em] text-cream sm:text-[2.8rem]">
               Trois ateliers, deux mains,
               <span className="block italic text-sand">une pièce à vous.</span>
@@ -50,9 +50,14 @@ export default function WorkshopSection() {
               <Cta to="/ateliers" variant="sand">
                 Voir les dates
               </Cta>
-              <p className="text-[11px] uppercase leading-relaxed tracking-[0.16em] text-cream/40">
-                Mercredi soir, samedi matin et après-midi
-              </p>
+              <div className="space-y-1.5">
+                <p className="text-[11px] uppercase leading-relaxed tracking-[0.16em] text-cream/40">
+                  Mercredi soir, samedi matin et après-midi
+                </p>
+                <p className="text-[11px] font-light leading-relaxed text-cream/40">
+                  Ici on fabrique : le cuir est fourni, vous repartez avec votre pièce.
+                </p>
+              </div>
             </div>
           </div>
         </div>
