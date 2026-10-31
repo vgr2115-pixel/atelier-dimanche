@@ -1,12 +1,27 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowUpRight, Mail } from 'lucide-react';
 import Container from '@/components/site/Container';
 import Cta from '@/components/site/Cta';
-import { REVIEWS, REVIEW_THEMES, REVIEWS_GOOGLE_URL } from '@/components/reviews/reviews';
+import { getPublishedReviews } from '@/api/catalog';
+import { REVIEW_THEMES, REVIEWS_GOOGLE_URL } from '@/components/reviews/reviews';
 
 export default function Avis() {
+  const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     document.title = 'Avis clients — Dimanche, maroquinerie artisanale à Lyon';
+    let active = true;
+    getPublishedReviews(30)
+      .then((data) => {
+        if (active) setReviews(data);
+      })
+      .finally(() => {
+        if (active) setLoading(false);
+      });
+    return () => {
+      active = false;
+    };
   }, []);
 
   return (
@@ -19,8 +34,8 @@ export default function Avis() {
             <span className="block italic text-clay">avec leur pièce.</span>
           </h1>
           <p className="mt-6 max-w-[34rem] text-[15px] font-light leading-[1.75] text-ink/65">
-            Trois personnes racontent leur atelier ceinture. Les témoignages ci-dessous sont repris
-            tels qu’ils ont été écrits et publiés sur le site officiel de Dimanche.
+            Les personnes qui ont suivi un atelier racontent. Les témoignages ci-dessous sont repris
+            tels qu’ils ont été écrits et publiés, avec leur source.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
             <Cta to="/ateliers" className="w-full sm:w-auto">
@@ -35,31 +50,53 @@ export default function Avis() {
 
       <section className="bg-cream py-14 lg:py-24">
         <Container>
-          <div className="grid gap-px bg-ink/10 sm:grid-cols-2 lg:grid-cols-3">
-            {REVIEWS.map((review) => (
-              <blockquote key={review.id} className="flex flex-col justify-between bg-cream p-6 sm:p-8">
-                <div>
-                  <p className="text-[10px] uppercase tracking-[0.18em] text-clay">{review.context}</p>
-                  <p className="mt-5 font-display text-[17px] leading-[1.8] text-ink/85">
-                    « {review.text} »
-                  </p>
-                </div>
-                <footer className="mt-7 border-t border-ink/10 pt-4">
-                  <p className="text-[11px] uppercase tracking-[0.18em] text-ink">{review.name}</p>
-                  <p className="mt-1 text-[10px] uppercase tracking-[0.16em] text-ink/50">{review.date}</p>
-                  <a
-                    href={review.source.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-3 inline-flex items-center gap-1.5 border-b border-ink/20 pb-0.5 text-[10px] uppercase tracking-[0.14em] text-ink/60 transition-colors hover:border-ink hover:text-ink"
-                  >
-                    Publié sur {review.source.label}
-                    <ArrowUpRight className="h-3 w-3" strokeWidth={1.4} />
-                  </a>
-                </footer>
-              </blockquote>
-            ))}
-          </div>
+          {loading ? (
+            <p className="text-[13px] font-light text-ink/40">Chargement des avis…</p>
+          ) : reviews.length === 0 ? (
+            <p className="max-w-[34rem] text-[15px] font-light leading-[1.8] text-ink/55">
+              Les premiers témoignages seront publiés ici prochainement.
+            </p>
+          ) : (
+            <div className="grid gap-px bg-ink/10 sm:grid-cols-2 lg:grid-cols-3">
+              {reviews.map((review) => (
+                <blockquote key={review.id} className="flex flex-col justify-between bg-cream p-6 sm:p-8">
+                  <div>
+                    {review.context && (
+                      <p className="text-[10px] uppercase tracking-[0.18em] text-clay">
+                        {review.context}
+                      </p>
+                    )}
+                    <p className="mt-5 font-display text-[17px] leading-[1.8] text-ink/85">
+                      « {review.text} »
+                    </p>
+                  </div>
+                  <footer className="mt-7 border-t border-ink/10 pt-4">
+                    <p className="text-[11px] uppercase tracking-[0.18em] text-ink">{review.name}</p>
+                    {review.date_label && (
+                      <p className="mt-1 text-[10px] uppercase tracking-[0.16em] text-ink/50">
+                        {review.date_label}
+                      </p>
+                    )}
+                    {review.source_url ? (
+                      <a
+                        href={review.source_url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="mt-3 inline-flex items-center gap-1.5 border-b border-ink/20 pb-0.5 text-[10px] uppercase tracking-[0.14em] text-ink/60 transition-colors hover:border-ink hover:text-ink"
+                      >
+                        Publié sur {review.source_label}
+                        <ArrowUpRight className="h-3 w-3" strokeWidth={1.4} />
+                      </a>
+                    ) : (
+                      <p className="mt-3 text-[10px] uppercase tracking-[0.14em] text-ink/60">
+                        Publié sur {review.source_label}
+                      </p>
+                    )}
+                  </footer>
+                </blockquote>
+              ))}
+            </div>
+          )}
         </Container>
       </section>
 

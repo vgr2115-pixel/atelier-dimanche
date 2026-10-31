@@ -39,6 +39,14 @@ export async function getRelatedProducts(product) {
     .slice(0, 3);
 }
 
+export async function getPublishedReviews(limit = 20) {
+  const data = await base44.entities.Review.filter(
+    { is_published: true },
+    { sort: 'position', limit },
+  );
+  return asArray(data);
+}
+
 export async function getWorkshops() {
   const data = await base44.entities.Workshop.list('position', 50);
   return asArray(data).filter((workshop) => workshop.is_active !== false);

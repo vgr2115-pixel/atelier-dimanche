@@ -122,7 +122,12 @@ export default function Footer() {
           </p>
           <div className="mt-4 flex flex-col gap-2 text-[11px] uppercase tracking-[0.18em] text-cream/35 sm:flex-row sm:items-center sm:justify-between">
             <p>© {new Date().getFullYear()} Atelier Dimanche — Lyon</p>
-            <p>Fait main, à Lyon, une pièce à la fois.</p>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+              <p>Fait main, à Lyon, une pièce à la fois.</p>
+              <Link to="/admin" className="transition-colors hover:text-cream">
+                Accès gestion
+              </Link>
+            </div>
           </div>
         </div>
       </Container>

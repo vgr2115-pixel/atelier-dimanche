@@ -25,14 +25,22 @@ export default function StorySection() {
                 focalPointY={0.35}
               />
             </div>
-            <div className="mt-6 flex items-center gap-4 lg:absolute lg:-bottom-8 lg:-right-8 lg:mt-0 lg:max-w-[260px] lg:flex-col lg:items-start lg:bg-cream lg:p-6 lg:shadow-[0_24px_50px_-40px_rgba(26,26,26,0.6)]">
-              <p className="font-display text-[15px] italic leading-snug text-clay">
-                « Personne ne veut me donner de boulot alors je vais faire mon propre boulot et on
-                verra. »
+            <div className="mt-6 flex flex-col gap-3 lg:absolute lg:-bottom-8 lg:-right-8 lg:mt-0 lg:max-w-[280px] lg:bg-cream lg:p-6 lg:shadow-[0_24px_50px_-40px_rgba(26,26,26,0.6)]">
+              <p className="text-[10px] uppercase leading-relaxed tracking-[0.18em] text-forest/70">
+                Repères
               </p>
-              <p className="text-[10px] uppercase leading-relaxed tracking-[0.18em] text-ink/40">
-                Marie Bodilis · Étonnantes, 2019
+              <p className="font-display text-[15px] leading-snug text-ink/80">
+                Initiation au cuir en 2015, CAP maroquinerie en 2016, et depuis, chaque pièce coupée
+                et cousue au 23 rue Burdeau.
               </p>
+              <a
+                href="https://www.atelier-dimanche.fr/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-[10px] uppercase leading-relaxed tracking-[0.16em] text-ink/40 transition-colors hover:text-ink"
+              >
+                Source : site officiel de Dimanche
+              </a>
             </div>
           </div>
 
