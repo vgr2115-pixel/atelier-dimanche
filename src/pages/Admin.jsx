@@ -4,10 +4,12 @@ import { LogOut, ArrowLeft } from 'lucide-react';
 import { useAuth } from '@/lib/AuthContext';
 import Container from '@/components/site/Container';
 import AdminProducts from '@/components/admin/AdminProducts';
+import AdminWorkshops from '@/components/admin/AdminWorkshops';
 import AdminReviews from '@/components/admin/AdminReviews';
 
 const TABS = [
   { key: 'produits', label: 'Pièces' },
+  { key: 'ateliers', label: 'Ateliers' },
   { key: 'avis', label: 'Avis' },
 ];
 
@@ -52,7 +54,7 @@ export default function Admin() {
           <div>
             <p className="eyebrow text-forest/80">Dimanche · espace de gestion</p>
             <h1 className="mt-3 font-display text-[1.9rem] leading-tight text-ink sm:text-[2.3rem]">
-              Le catalogue et les avis
+              Le catalogue, les ateliers et les avis
             </h1>
             <p className="mt-2 text-[12px] font-light text-ink/50">
               Connectée en tant que {user.email}
@@ -96,7 +98,11 @@ export default function Admin() {
           ))}
         </div>
 
-        <div className="mt-8">{tab === 'produits' ? <AdminProducts /> : <AdminReviews />}</div>
+        <div className="mt-8">
+          {tab === 'produits' && <AdminProducts />}
+          {tab === 'ateliers' && <AdminWorkshops />}
+          {tab === 'avis' && <AdminReviews />}
+        </div>
       </Container>
     </div>
   );
