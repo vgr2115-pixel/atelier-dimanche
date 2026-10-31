@@ -68,8 +68,8 @@ export default function ReviewsSection() {
         )}
 
         <p className="mt-7 text-[12px] font-light leading-relaxed text-ink/55">
-          Témoignages publiés avec leur source, repris tels quels. Ils concernent les ateliers
-          création —{' '}
+          Témoignages recueillis à l’atelier, repris tels qu’ils nous ont été confiés. Ils concernent
+          les ateliers création —{' '}
           <Link to="/ateliers" className="border-b border-ink/25 pb-0.5 text-ink hover:border-ink">
             réservez le vôtre
           </Link>

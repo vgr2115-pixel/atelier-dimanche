@@ -19,8 +19,6 @@ const emptyForm = {
   date_label: '',
   context: '',
   text: '',
-  source_label: '',
-  source_url: '',
   is_published: true,
   position: 0,
 };
@@ -38,10 +36,6 @@ export default function ReviewForm({ open, review, onClose, onSaved }) {
       setError('Le prénom et le témoignage sont obligatoires.');
       return;
     }
-    if (!form.source_label.trim() || !form.source_url.trim()) {
-      setError('La source est obligatoire : indiquez où le témoignage a été publié, avec son lien.');
-      return;
-    }
     setError('');
     setSaving(true);
     try {
@@ -50,8 +44,6 @@ export default function ReviewForm({ open, review, onClose, onSaved }) {
         date_label: form.date_label.trim(),
         context: form.context.trim(),
         text: form.text.trim(),
-        source_label: form.source_label.trim(),
-        source_url: form.source_url.trim(),
         is_published: form.is_published,
         position: Number(form.position) || 0,
       };
@@ -129,28 +121,6 @@ export default function ReviewForm({ open, review, onClose, onSaved }) {
               className={inputClass}
             />
           </AdminField>
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            <AdminField label="Publié sur">
-              <Input
-                aria-label="Source de l’avis"
-                value={form.source_label}
-                onChange={(e) => set('source_label', e.target.value)}
-                className={inputClass}
-                placeholder="Site officiel Dimanche"
-              />
-            </AdminField>
-            <AdminField label="Lien de la source">
-              <Input
-                aria-label="Lien de la source"
-                type="url"
-                value={form.source_url}
-                onChange={(e) => set('source_url', e.target.value)}
-                className={inputClass}
-                placeholder="https://…"
-              />
-            </AdminField>
-          </div>
 
           <div className="flex items-center justify-between gap-4 border-t border-ink/10 pt-5">
             <span className="text-[12px] font-light text-ink/70">Afficher sur le site</span>

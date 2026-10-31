@@ -14,12 +14,6 @@
     "text": {
       "type": "string"
     },
-    "source_label": {
-      "type": "string"
-    },
-    "source_url": {
-      "type": "string"
-    },
     "is_published": {
       "type": "boolean",
       "default": true
@@ -31,8 +25,7 @@
   },
   "required": [
     "name",
-    "text",
-    "source_label"
+    "text"
   ],
   "rls": {
     "read": {

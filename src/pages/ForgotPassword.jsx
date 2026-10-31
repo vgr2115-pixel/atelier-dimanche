@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { base44 } from "@/api/base44Client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Mail, ArrowLeft, Loader2 } from "lucide-react";
-import AuthLayout from "@/components/AuthLayout";
+import AuthLayout, { authInputClass, authLabelClass } from "@/components/AuthLayout";
+import AuthNotice from "@/components/auth/AuthNotice";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -18,7 +19,7 @@ export default function ForgotPassword() {
     try {
       await base44.auth.resetPasswordRequest(email);
     } catch {
-      // Always show success regardless
+      // On affiche toujours la même confirmation, par discrétion.
     } finally {
       setLoading(false);
       setSent(true);
@@ -27,46 +28,61 @@ export default function ForgotPassword() {
 
   return (
     <AuthLayout
-      icon={Mail}
-      title="Reset password"
-      subtitle="We'll send you a link to reset it"
+      title="Mot de passe oublié"
+      subtitle="Indiquez l’adresse email de votre compte : vous recevrez un lien pour choisir un nouveau mot de passe."
       footer={
-        <Link to="/login" className="text-primary font-medium hover:underline">
-          <ArrowLeft className="w-3 h-3 inline mr-1" />Back to log in
+        <Link
+          to="/login"
+          className="inline-flex items-center gap-2 text-ink/60 transition-colors hover:text-ink"
+        >
+          <ArrowLeft className="h-3 w-3" strokeWidth={1.6} />
+          Revenir à la connexion
         </Link>
       }
     >
       {sent ? (
-        <p className="text-sm text-foreground text-center">
-          If an account exists with that email, you'll receive a password reset link shortly.
-        </p>
+        <AuthNotice tone="success">
+          Si un compte existe avec cette adresse, vous recevrez un lien de réinitialisation dans les
+          prochaines minutes. Pensez à regarder les indésirables.
+        </AuthNotice>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5">
           <div className="space-y-2">
-            <Label htmlFor="email">Email address</Label>
+            <Label htmlFor="email" className={authLabelClass}>
+              Adresse email
+            </Label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" aria-hidden="true" />
+              <Mail
+                className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/30"
+                strokeWidth={1.5}
+                aria-hidden="true"
+              />
               <Input
                 id="email"
                 type="email"
                 autoComplete="email"
                 autoFocus
-                placeholder="you@example.com"
+                placeholder="marie@atelier-dimanche.fr"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="pl-10 h-12"
+                className={authInputClass}
                 required
               />
             </div>
           </div>
-          <Button type="submit" className="w-full h-12 font-medium" disabled={loading}>
+
+          <Button
+            type="submit"
+            disabled={loading}
+            className="h-12 w-full rounded-none bg-ink text-[11px] uppercase tracking-[0.22em] text-cream hover:bg-forest"
+          >
             {loading ? (
               <>
-                <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                Sending...
+                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                Envoi…
               </>
             ) : (
-              "Send reset link"
+              "Recevoir le lien"
             )}
           </Button>
         </form>

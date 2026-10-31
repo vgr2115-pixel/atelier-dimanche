@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { base44 } from "@/api/base44Client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Lock, Loader2, AlertTriangle } from "lucide-react";
-import AuthLayout from "@/components/AuthLayout";
+import { Lock, Loader2 } from "lucide-react";
+import AuthLayout, { authInputClass, authLabelClass } from "@/components/AuthLayout";
+import AuthNotice from "@/components/auth/AuthNotice";
+import { authErrorMessage } from "@/lib/authMessages";
 
 export default function ResetPassword() {
   const [searchParams] = useSearchParams();
@@ -20,7 +22,7 @@ export default function ResetPassword() {
     e.preventDefault();
     setError("");
     if (newPassword !== confirmPassword) {
-      setError("Passwords do not match");
+      setError("Les deux mots de passe ne correspondent pas. Vérifiez votre saisie.");
       return;
     }
     setLoading(true);
@@ -28,7 +30,12 @@ export default function ResetPassword() {
       await base44.auth.resetPassword({ resetToken, newPassword });
       window.location.href = "/login";
     } catch (err) {
-      setError(err.message || "Failed to reset password");
+      setError(
+        authErrorMessage(
+          err,
+          "Le mot de passe n’a pas pu être modifié. Le lien a peut-être expiré : demandez-en un nouveau.",
+        ),
+      );
     } finally {
       setLoading(false);
     }
@@ -37,55 +44,67 @@ export default function ResetPassword() {
   if (!resetToken) {
     return (
       <AuthLayout
-        icon={AlertTriangle}
-        title="Invalid reset link"
-        subtitle="This password reset link is missing or invalid"
+        title="Lien incomplet"
+        subtitle="Ce lien de réinitialisation est incomplet ou a déjà servi. Demandez-en un nouveau, il reste valable une heure."
         footer={
-          <Link to="/forgot-password" className="text-primary font-medium hover:underline">
-            Request a new link
+          <Link to="/forgot-password" className="border-b border-ink/30 pb-0.5 text-ink hover:border-ink">
+            Demander un nouveau lien
           </Link>
         }
       >
-        <p className="text-sm text-foreground text-center">
-          The link you used appears to be incomplete. Please request a new password reset email.
-        </p>
+        <AuthNotice>
+          Ouvrez le lien directement depuis l’email reçu : il contient un jeton qui n’a pas été
+          transmis ici.
+        </AuthNotice>
       </AuthLayout>
     );
   }
 
   return (
     <AuthLayout
-      icon={Lock}
-      title="New password"
-      subtitle="Enter your new password below"
+      title="Nouveau mot de passe"
+      subtitle="Choisissez un mot de passe d’au moins 8 caractères, que vous n’utilisez nulle part ailleurs."
+      footer={
+        <Link to="/login" className="text-ink/60 hover:text-ink">
+          Revenir à la connexion
+        </Link>
+      }
     >
-      {error && (
-        <div className="mb-4 p-3 rounded-lg bg-destructive/10 text-destructive text-sm">
-          {error}
-        </div>
-      )}
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit} className="space-y-5">
         <div className="space-y-2">
-          <Label htmlFor="password">New Password</Label>
+          <Label htmlFor="password" className={authLabelClass}>
+            Nouveau mot de passe
+          </Label>
           <div className="relative">
-            <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" aria-hidden="true" />
+            <Lock
+              className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/30"
+              strokeWidth={1.5}
+              aria-hidden="true"
+            />
             <Input
               id="password"
               type="password"
               autoComplete="new-password"
               autoFocus
-              placeholder="••••••••"
+              placeholder="8 caractères minimum"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              className="pl-10 h-12"
+              className={authInputClass}
               required
             />
           </div>
         </div>
+
         <div className="space-y-2">
-          <Label htmlFor="confirm">Confirm Password</Label>
+          <Label htmlFor="confirm" className={authLabelClass}>
+            Confirmer le mot de passe
+          </Label>
           <div className="relative">
-            <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" aria-hidden="true" />
+            <Lock
+              className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/30"
+              strokeWidth={1.5}
+              aria-hidden="true"
+            />
             <Input
               id="confirm"
               type="password"
@@ -93,19 +112,26 @@ export default function ResetPassword() {
               placeholder="••••••••"
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="pl-10 h-12"
+              className={authInputClass}
               required
             />
           </div>
         </div>
-        <Button type="submit" className="w-full h-12 font-medium" disabled={loading}>
+
+        <AuthNotice>{error}</AuthNotice>
+
+        <Button
+          type="submit"
+          disabled={loading}
+          className="h-12 w-full rounded-none bg-ink text-[11px] uppercase tracking-[0.22em] text-cream hover:bg-forest"
+        >
           {loading ? (
             <>
-              <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-              Resetting...
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+              Enregistrement…
             </>
           ) : (
-            "Reset password"
+            "Enregistrer le mot de passe"
           )}
         </Button>
       </form>

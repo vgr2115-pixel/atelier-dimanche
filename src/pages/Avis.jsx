@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { ArrowUpRight, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import Container from '@/components/site/Container';
 import Cta from '@/components/site/Cta';
 import { getPublishedReviews } from '@/api/catalog';
-import { REVIEW_THEMES, REVIEWS_GOOGLE_URL } from '@/components/reviews/reviews';
+import { REVIEW_THEMES } from '@/components/reviews/reviews';
 
 export default function Avis() {
   const [reviews, setReviews] = useState([]);
@@ -34,8 +34,8 @@ export default function Avis() {
             <span className="block italic text-clay">avec leur pièce.</span>
           </h1>
           <p className="mt-6 max-w-[34rem] text-[15px] font-light leading-[1.75] text-ink/65">
-            Les personnes qui ont suivi un atelier racontent. Les témoignages ci-dessous sont repris
-            tels qu’ils ont été écrits et publiés, avec leur source.
+            Les personnes qui ont suivi un atelier racontent. Les témoignages ci-dessous sont
+            reproduits mot pour mot, tels qu’ils nous ont été confiés.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
             <Cta to="/ateliers" className="w-full sm:w-auto">
@@ -77,21 +77,7 @@ export default function Avis() {
                         {review.date_label}
                       </p>
                     )}
-                    {review.source_url ? (
-                      <a
-                        href={review.source_url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="mt-3 inline-flex items-center gap-1.5 border-b border-ink/20 pb-0.5 text-[10px] uppercase tracking-[0.14em] text-ink/60 transition-colors hover:border-ink hover:text-ink"
-                      >
-                        Publié sur {review.source_label}
-                        <ArrowUpRight className="h-3 w-3" strokeWidth={1.4} />
-                      </a>
-                    ) : (
-                      <p className="mt-3 text-[10px] uppercase tracking-[0.14em] text-ink/60">
-                        Publié sur {review.source_label}
-                      </p>
-                    )}
+
                   </footer>
                 </blockquote>
               ))}
@@ -115,9 +101,9 @@ export default function Avis() {
             ))}
           </ul>
           <p className="mt-10 max-w-[38rem] text-[13px] font-light leading-relaxed text-ink/55">
-            Ces avis portent sur les ateliers création. Dimanche n’a pas mis en place de système de
-            notation en ligne sur ce site : les témoignages affichés sont ceux publiés par la marque,
-            et vous pouvez aussi consulter la fiche Google de l’atelier-boutique.
+            Ces avis portent sur les ateliers création. Dimanche ne met pas en place de notation
+            chiffrée : les témoignages affichés sont ceux que les participants nous ont confiés, et
+            nous les publions tels quels.
           </p>
         </Container>
       </section>
@@ -140,15 +126,6 @@ export default function Avis() {
               >
                 <Mail className="h-3.5 w-3.5" strokeWidth={1.4} />
                 Écrire à Marie
-              </a>
-              <a
-                href={REVIEWS_GOOGLE_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 border-b border-ink/25 pb-1 text-[11px] uppercase tracking-[0.2em] text-ink/70 transition-colors hover:border-ink hover:text-ink"
-              >
-                Fiche Google de l’atelier
-                <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.4} />
               </a>
             </div>
           </div>
