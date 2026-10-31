@@ -26,8 +26,8 @@ export default function WorkshopSection() {
           <div>
             <p className="eyebrow text-sand/80">Ateliers création · au 23 rue Burdeau</p>
             <h2 className="mt-4 font-display text-[2rem] leading-[1.12] tracking-[-0.01em] text-cream sm:text-[2.8rem]">
-              Trois ateliers, deux mains,
-              <span className="block italic text-sand">une pièce à vous.</span>
+              Venez couper, coudre,
+              <span className="block italic text-sand">et repartir avec.</span>
             </h2>
             <p className="mt-6 max-w-[32rem] text-[15px] font-light leading-[1.8] text-cream/65">
               Ceinture, porte-monnaie ou boucles d’oreilles : on découpe, on perce, on coud. Le cuir,

@@ -115,7 +115,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-14 border-t border-cream/15 pt-6">
-          <p className="text-[11px] font-light leading-relaxed text-cream/45">
+          <p className="text-[11px] font-light leading-relaxed text-cream/60">
             Dimanche — Marie Bodilis, micro-entreprise · SIRET 795 268 812 00034 · 23 rue Burdeau,
             69001 Lyon · marie@atelier-dimanche.fr
           </p>

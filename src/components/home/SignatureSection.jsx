@@ -21,6 +21,7 @@ export default function SignatureSection() {
                 controls
                 playsInline
                 preload="metadata"
+                aria-label="Vidéo tournée dans l’atelier Dimanche, à Lyon"
                 poster={IMAGES.atelierLarge}
                 className="aspect-video w-full object-cover"
               >

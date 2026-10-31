@@ -159,6 +159,7 @@ export default function Cart() {
               <div className="mt-5 grid gap-3 sm:grid-cols-2">
                 <input
                   required
+                  aria-label="Nom et prénom"
                   placeholder="Nom et prénom"
                   value={form.name}
                   onChange={(event) => setForm({ ...form, name: event.target.value })}
@@ -167,12 +168,14 @@ export default function Cart() {
                 <input
                   required
                   type="email"
+                  aria-label="Email"
                   placeholder="Email"
                   value={form.email}
                   onChange={(event) => setForm({ ...form, email: event.target.value })}
                   className="w-full border border-ink/15 bg-cream px-3 py-3 text-sm placeholder:text-ink/30 focus:border-forest focus:outline-none"
                 />
                 <input
+                  aria-label="Téléphone (optionnel)"
                   placeholder="Téléphone"
                   value={form.phone}
                   onChange={(event) => setForm({ ...form, phone: event.target.value })}
@@ -180,12 +183,14 @@ export default function Cart() {
                 />
                 <input
                   required
+                  aria-label="Adresse"
                   placeholder="Adresse"
                   value={form.address}
                   onChange={(event) => setForm({ ...form, address: event.target.value })}
                   className="w-full border border-ink/15 bg-cream px-3 py-3 text-sm placeholder:text-ink/30 focus:border-forest focus:outline-none sm:col-span-2"
                 />
                 <input
+                  aria-label="Code postal"
                   placeholder="Code postal"
                   value={form.postal_code}
                   onChange={(event) => setForm({ ...form, postal_code: event.target.value })}
@@ -193,6 +198,7 @@ export default function Cart() {
                 />
                 <input
                   required
+                  aria-label="Ville"
                   placeholder="Ville"
                   value={form.city}
                   onChange={(event) => setForm({ ...form, city: event.target.value })}
@@ -200,6 +206,7 @@ export default function Cart() {
                 />
                 <textarea
                   rows={3}
+                  aria-label="Message pour Marie"
                   placeholder="Un mot pour Marie (emballage cadeau, retrait à l’atelier…)"
                   value={form.notes}
                   onChange={(event) => setForm({ ...form, notes: event.target.value })}

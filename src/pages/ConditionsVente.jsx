@@ -52,9 +52,9 @@ export default function ConditionsVente() {
           <section>
             <h2 className="font-display text-xl text-ink">4. Commande et paiement</h2>
             <p className="mt-3">
-              La commande est enregistrée sur le site, puis confirmée par email. Le règlement s’effectue
-              par carte bancaire sur une page de paiement sécurisée. Aucun montant n’est prélevé avant
-              la confirmation de la commande.
+              La commande est enregistrée sur le site, puis confirmée par email sous 24 heures. Le
+              règlement s’effectue par carte bancaire sur une page de paiement sécurisée, dont le lien
+              est adressé avec cette confirmation. Aucun montant n’est prélevé avant.
             </p>
           </section>
 

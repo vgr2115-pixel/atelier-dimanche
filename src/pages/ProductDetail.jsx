@@ -197,9 +197,8 @@ export default function ProductDetail() {
                     <li key={detail}>{detail}</li>
                   ))}
                   <li>
-                    Peau choisie une à une dans les chutes et sur-stocks de grandes maisons, ou cuir au
-                    tannage végétal. Couture au point sellier, fil de lin ciré, tranches teintées et
-                    marquage à chaud dans l’atelier.
+                    Couture au point sellier, fil de lin ciré, tranches teintées et lustrées, marquage
+                    à chaud — tout est fait dans l’atelier lyonnais.
                   </li>
                 </ul>
               </details>

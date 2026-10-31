@@ -73,6 +73,7 @@ export default function Contact() {
               <form onSubmit={handleSubmit} className="grid gap-3 sm:grid-cols-2">
                 <input
                   required
+                  aria-label="Nom et prénom"
                   placeholder="Nom et prénom"
                   value={form.name}
                   onChange={(event) => setForm({ ...form, name: event.target.value })}
@@ -81,18 +82,21 @@ export default function Contact() {
                 <input
                   required
                   type="email"
+                  aria-label="Email"
                   placeholder="Email"
                   value={form.email}
                   onChange={(event) => setForm({ ...form, email: event.target.value })}
                   className="w-full border border-ink/15 bg-cream px-3 py-3 text-sm placeholder:text-ink/30 focus:border-forest focus:outline-none"
                 />
                 <input
+                  aria-label="Téléphone (optionnel)"
                   placeholder="Téléphone (optionnel)"
                   value={form.phone}
                   onChange={(event) => setForm({ ...form, phone: event.target.value })}
                   className="w-full border border-ink/15 bg-cream px-3 py-3 text-sm placeholder:text-ink/30 focus:border-forest focus:outline-none sm:col-span-2"
                 />
                 <select
+                  aria-label="Sujet du message"
                   value={form.subject}
                   onChange={(event) => setForm({ ...form, subject: event.target.value })}
                   className="w-full border border-ink/15 bg-cream px-3 py-3 text-sm text-ink focus:border-forest focus:outline-none sm:col-span-2"
@@ -106,6 +110,7 @@ export default function Contact() {
                 <textarea
                   required
                   rows={6}
+                  aria-label="Votre message"
                   placeholder="Votre message"
                   value={form.body}
                   onChange={(event) => setForm({ ...form, body: event.target.value })}

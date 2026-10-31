@@ -64,8 +64,12 @@ export default function Shop() {
               {item}
             </button>
           ))}
-          <p className="ml-auto text-[11px] uppercase tracking-[0.16em] text-ink/35">
-            {loading ? 'Chargement…' : `${products.length} pièce${products.length > 1 ? 's' : ''}`}
+          <p className="ml-auto text-[11px] uppercase tracking-[0.16em] text-ink/50">
+            {loading
+              ? 'Chargement…'
+              : `${products.length} pièce${products.length > 1 ? 's' : ''}${
+                  products.some((product) => product.is_available === false) ? ' · dont pièces vendues' : ''
+                }`}
           </p>
         </div>
       </Container>

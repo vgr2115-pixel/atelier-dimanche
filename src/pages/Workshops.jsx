@@ -328,6 +328,7 @@ export default function Workshops() {
                     <input
                       type="text"
                       required
+                      aria-label="Votre nom"
                       placeholder="Votre nom"
                       value={form.name}
                       onChange={(event) => setForm({ ...form, name: event.target.value })}
@@ -336,6 +337,7 @@ export default function Workshops() {
                     <input
                       type="email"
                       required
+                      aria-label="Votre email"
                       placeholder="Votre email"
                       value={form.email}
                       onChange={(event) => setForm({ ...form, email: event.target.value })}
@@ -343,6 +345,7 @@ export default function Workshops() {
                     />
                     <input
                       type="tel"
+                      aria-label="Téléphone (optionnel)"
                       placeholder="Téléphone (optionnel)"
                       value={form.phone}
                       onChange={(event) => setForm({ ...form, phone: event.target.value })}
@@ -350,6 +353,7 @@ export default function Workshops() {
                     />
                     <textarea
                       rows={2}
+                      aria-label="Précisions pour la réservation"
                       placeholder="Une date particulière, un cadeau, une question ?"
                       value={form.notes}
                       onChange={(event) => setForm({ ...form, notes: event.target.value })}

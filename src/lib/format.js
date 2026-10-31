@@ -1,6 +1,9 @@
 export function formatPrice(value) {
   const number = Number(value) || 0;
-  return `${number.toLocaleString('fr-FR', { maximumFractionDigits: 0 })} €`;
+  return `${number.toLocaleString('fr-FR', {
+    minimumFractionDigits: Number.isInteger(number) ? 0 : 2,
+    maximumFractionDigits: 2,
+  })} €`;
 }
 
 export function formatDateLong(dateString) {

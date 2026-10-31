@@ -31,7 +31,7 @@ export default function ReviewsSection() {
               <span className="block italic text-clay">avec leur pièce.</span>
             </h2>
           </div>
-          <p className="max-w-xs text-[11px] uppercase leading-relaxed tracking-[0.16em] text-ink/40">
+          <p className="max-w-xs text-[11px] uppercase leading-relaxed tracking-[0.16em] text-ink/55">
             Témoignages reçus après les ateliers de 2024 et 2025
           </p>
         </div>
@@ -42,7 +42,7 @@ export default function ReviewsSection() {
               <p className="font-display text-[16px] leading-[1.75] text-ink/80">« {review.text} »</p>
               <footer className="mt-7 flex items-center justify-between border-t border-ink/10 pt-4">
                 <p className="text-[11px] uppercase tracking-[0.18em] text-ink">{review.name}</p>
-                <p className="text-[10px] uppercase tracking-[0.16em] text-ink/35">{review.date}</p>
+                <p className="text-[10px] uppercase tracking-[0.16em] text-ink/50">{review.date}</p>
               </footer>
             </blockquote>
           ))}
