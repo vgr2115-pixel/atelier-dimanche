@@ -63,7 +63,7 @@ export default function AdminReviews() {
         <p className="text-[13px] font-light leading-relaxed text-ink/55">
           {loading
             ? 'Chargement…'
-            : `${reviews.length} avis · ${reviews.filter((r) => r.is_published !== false).length} affiché(s) sur le site`}
+            : `${reviews.length} avis · ${reviews.filter((r) => r.is_published !== false).length} affiché(s) sur le site · ${reviews.filter((r) => r.type === 'produit').length} sur les pièces · ${reviews.filter((r) => r.type !== 'produit').length} sur les ateliers`}
         </p>
         <Button
           onClick={openNew}
@@ -93,6 +93,9 @@ export default function AdminReviews() {
                   }`}
                 >
                   {published ? 'Publié' : 'Masqué'}
+                </span>
+                <span className="bg-linen px-2 py-0.5 text-[9px] uppercase tracking-[0.16em] text-ink/60">
+                  {review.type === 'produit' ? 'Achat' : 'Atelier'}
                 </span>
                 {review.context && (
                   <span className="text-[10px] uppercase tracking-[0.14em] text-ink/40">

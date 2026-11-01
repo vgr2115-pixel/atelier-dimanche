@@ -15,6 +15,7 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 import JournalForm from '@/components/admin/JournalForm';
+import { selectHomeEntries } from '@/lib/journal';
 
 const asArray = (data) => (Array.isArray(data) ? data : data?.items ?? []);
 
@@ -70,6 +71,9 @@ export default function AdminJournal() {
     load();
   };
 
+  const published = entries.filter((entry) => entry.is_published !== false);
+  const homeIds = new Set(selectHomeEntries(published, 3).map((entry) => entry.id));
+
   const remove = async () => {
     if (!toDelete) return;
     await base44.entities.JournalEntry.delete(toDelete.id);
@@ -86,7 +90,7 @@ export default function AdminJournal() {
           </p>
           <p className="mt-1.5 text-[12px] font-light leading-relaxed text-ink/50">
             {sectionEnabled
-              ? 'Visible. Les trois dernières arrivées publiées s’affichent après la section « L’atelier ».'
+              ? 'Visible. Les trois dernières pièces distinctes publiées s’affichent après la section « L’atelier ».'
               : 'Masquée. La section disparaît de l’accueil ; le contenu reste enregistré.'}
           </p>
         </div>
@@ -122,7 +126,7 @@ export default function AdminJournal() {
           </p>
         )}
         {entries.map((entry) => {
-          const published = entry.is_published !== false;
+          const isLive = entry.is_published !== false;
           return (
             <div key={entry.id} className="py-6">
               <div className="flex flex-wrap items-center gap-2">
@@ -131,10 +135,10 @@ export default function AdminJournal() {
                 </p>
                 <span
                   className={`px-2 py-0.5 text-[9px] uppercase tracking-[0.16em] ${
-                    published ? 'bg-forest/10 text-forest' : 'bg-linen text-ink/50'
+                    isLive ? 'bg-forest/10 text-forest' : 'bg-linen text-ink/50'
                   }`}
                 >
-                  {published ? 'En ligne' : 'Masqué'}
+                  {isLive ? (homeIds.has(entry.id) ? 'Sur l’accueil' : 'En réserve') : 'Masqué'}
                 </span>
               </div>
               <p className="mt-2 font-display text-[17px] leading-snug text-ink">{entry.title}</p>
@@ -184,11 +188,13 @@ export default function AdminJournal() {
       </div>
 
       <p className="mt-6 text-[12px] font-light leading-relaxed text-ink/45">
-        Les trois dernières arrivées publiées apparaissent dans la section « Nouvelles pièces » de{' '}
+        L’accueil affiche au maximum trois pièces distinctes, les plus récentes : deux finitions du
+        même modèle n’occupent qu’une place. Les autres restent « en réserve » et apparaissent dans
+        la section « Nouvelles pièces » de{' '}
         <Link to="/" className="underline decoration-ink/25 hover:text-ink">
           l’accueil
-        </Link>
-        , avec la mention « Nouveau » pendant trois semaines.
+        </Link>{' '}
+        dès qu’une place se libère, avec la mention « Nouveau » pendant trois semaines.
       </p>
 
       {formOpen && (

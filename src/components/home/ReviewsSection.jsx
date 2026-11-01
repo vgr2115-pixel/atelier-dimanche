@@ -4,15 +4,26 @@ import { ArrowRight } from 'lucide-react';
 import Container from '@/components/site/Container';
 import { getPublishedReviews } from '@/api/catalog';
 
+const HIGHLIGHTED = [
+  { type: 'produit', label: 'Après un achat' },
+  { type: 'atelier', label: 'Après un atelier' },
+];
+
 export default function ReviewsSection() {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let active = true;
-    getPublishedReviews(4)
+    getPublishedReviews(40)
       .then((data) => {
-        if (active) setReviews(data.slice(0, 2));
+        if (!active) return;
+        // Un retour de chaque famille : l'achat et l'atelier.
+        const picked = HIGHLIGHTED.map(({ type, label }) => {
+          const review = data.find((item) => (item.type ?? 'atelier') === type);
+          return review ? { ...review, label } : null;
+        }).filter(Boolean);
+        setReviews(picked);
       })
       .finally(() => {
         if (active) setLoading(false);
@@ -31,8 +42,8 @@ export default function ReviewsSection() {
           <div>
             <p className="eyebrow text-forest/80">Avis</p>
             <h2 className="mt-3 font-display text-[1.9rem] leading-[1.12] text-ink sm:mt-4 sm:text-[2.6rem]">
-              Elles sont reparties
-              <span className="block italic text-clay">avec leur pièce.</span>
+              Ce qu’on nous écrit
+              <span className="block italic text-clay">après l’achat ou l’atelier.</span>
             </h2>
           </div>
           <Link
@@ -53,9 +64,15 @@ export default function ReviewsSection() {
                 key={review.id}
                 className="flex flex-col justify-between bg-cream py-6 sm:p-8 lg:p-9"
               >
-                <p className="font-display text-[16px] leading-[1.75] text-ink/80 sm:text-[17px]">
-                  « {review.text} »
-                </p>
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.18em] text-clay">
+                    {review.label}
+                    {review.context ? ` · ${review.context}` : ''}
+                  </p>
+                  <p className="mt-4 font-display text-[16px] leading-[1.75] text-ink/80 sm:text-[17px]">
+                    « {review.text} »
+                  </p>
+                </div>
                 <footer className="mt-5 flex items-center justify-between gap-4 border-t border-ink/10 pt-4 sm:mt-7">
                   <p className="text-[11px] uppercase tracking-[0.18em] text-ink">{review.name}</p>
                   <p className="text-[10px] uppercase tracking-[0.16em] text-ink/50">
@@ -68,12 +85,8 @@ export default function ReviewsSection() {
         )}
 
         <p className="mt-7 text-[12px] font-light leading-relaxed text-ink/55">
-          Témoignages recueillis à l’atelier, repris tels qu’ils nous ont été confiés. Ils concernent
-          les ateliers création —{' '}
-          <Link to="/ateliers" className="border-b border-ink/25 pb-0.5 text-ink hover:border-ink">
-            réservez le vôtre
-          </Link>
-          .
+          Deux retours parmi ceux publiés sur la page Avis : l’un après une commande, l’autre après
+          un atelier. Reproduits tels qu’ils nous ont été confiés.
         </p>
       </Container>
     </section>

@@ -4,6 +4,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { Image } from '@/components/ui/image';
 import Container from '@/components/site/Container';
 import { base44 } from '@/api/base44Client';
+import { selectHomeEntries } from '@/lib/journal';
 
 const NEW_DAYS = 21;
 
@@ -51,11 +52,11 @@ export default function SocialSection() {
     const load = async () => {
       const [settingsList, page] = await Promise.all([
         base44.entities.SiteSettings.list('created_date', 1),
-        base44.entities.JournalEntry.filter({ is_published: true }, { sort: '-date', limit: 3 }),
+        base44.entities.JournalEntry.filter({ is_published: true }, { sort: '-date', limit: 12 }),
       ]);
       if (!active) return;
       const settings = Array.isArray(settingsList) ? settingsList[0] : settingsList?.items?.[0];
-      setEntries(page.items ?? []);
+      setEntries(selectHomeEntries(page.items ?? [], 3));
       setVisible(settings?.journal_enabled !== false);
     };
     load();

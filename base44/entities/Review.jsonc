@@ -8,6 +8,15 @@
     "date_label": {
       "type": "string"
     },
+    "type": {
+      "type": "string",
+      "enum": [
+        "produit",
+        "atelier"
+      ],
+      "default": "atelier",
+      "description": "produit = avis apr\u00e8s un achat, atelier = avis apr\u00e8s un atelier cr\u00e9ation"
+    },
     "context": {
       "type": "string"
     },

@@ -17,6 +17,7 @@ import { inputClass } from '@/components/admin/formUtils';
 const emptyForm = {
   name: '',
   date_label: '',
+  type: 'atelier',
   context: '',
   text: '',
   is_published: true,
@@ -42,6 +43,7 @@ export default function ReviewForm({ open, review, onClose, onSaved }) {
       const payload = {
         name: form.name.trim(),
         date_label: form.date_label.trim(),
+        type: form.type || 'atelier',
         context: form.context.trim(),
         text: form.text.trim(),
         is_published: form.is_published,
@@ -92,7 +94,18 @@ export default function ReviewForm({ open, review, onClose, onSaved }) {
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            <AdminField label="Contexte">
+            <AdminField label="Type d’avis" hint="Détermine la rubrique sur la page Avis.">
+              <select
+                aria-label="Type d’avis"
+                value={form.type ?? 'atelier'}
+                onChange={(e) => set('type', e.target.value)}
+                className={inputClass}
+              >
+                <option value="atelier">Atelier création</option>
+                <option value="produit">Achat d’une pièce</option>
+              </select>
+            </AdminField>
+            <AdminField label="Contexte" hint="Atelier ceinture, nom de la pièce…">
               <Input
                 aria-label="Contexte de l’avis"
                 value={form.context}
@@ -101,16 +114,17 @@ export default function ReviewForm({ open, review, onClose, onSaved }) {
                 placeholder="Atelier ceinture"
               />
             </AdminField>
-            <AdminField label="Ordre d’affichage">
-              <Input
-                aria-label="Ordre d’affichage"
-                type="number"
-                value={form.position}
-                onChange={(e) => set('position', e.target.value)}
-                className={inputClass}
-              />
-            </AdminField>
           </div>
+
+          <AdminField label="Ordre d’affichage">
+            <Input
+              aria-label="Ordre d’affichage"
+              type="number"
+              value={form.position}
+              onChange={(e) => set('position', e.target.value)}
+              className={inputClass}
+            />
+          </AdminField>
 
           <AdminField label="Témoignage" hint="Recopié mot pour mot, sans reformulation.">
             <Textarea

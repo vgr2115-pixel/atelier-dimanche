@@ -7,9 +7,13 @@ import { useEffect } from 'react';
  * contenu saisi depuis l'espace de gestion, qui n'est pas dans le code.
  */
 const RULES = [
-  [/ ([:;!?»])/g, (match, punctuation) => `\u00A0${punctuation}`],
-  [/« /g, '«\u00A0'],
-  [/(\d) (€|%)/g, (match, number, unit) => `${number}\u00A0${unit}`],
+  // Ponctuation double : espace insécable, jamais en début de ligne.
+  [/[ \t\u00A0]+([:;!?»])/g, (match, punctuation) => `\u00A0${punctuation}`],
+  [/«[ \t\u00A0]*/g, '«\u00A0'],
+  // Point et points de suspension : collés au mot précédent (liant invisible),
+  // quelle que soit la saisie d'origine.
+  [/[ \t\u00A0]+([.…])/g, (match, punctuation) => `\u2060${punctuation}`],
+  [/(\d)[ \t\u00A0]+(€|%)/g, (match, number, unit) => `${number}\u00A0${unit}`],
 ];
 
 const SKIP = ['SCRIPT', 'STYLE', 'TEXTAREA', 'INPUT'];

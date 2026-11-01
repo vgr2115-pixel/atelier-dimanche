@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react';
 import { Mail } from 'lucide-react';
 import Container from '@/components/site/Container';
 import Cta from '@/components/site/Cta';
+import AvisSection from '@/components/avis/AvisSection';
 import { getPublishedReviews } from '@/api/catalog';
-import { REVIEW_THEMES } from '@/components/reviews/reviews';
+
+const ofType = (reviews, type) =>
+  reviews.filter((review) => (review.type ?? 'atelier') === type);
 
 export default function Avis() {
   const [reviews, setReviews] = useState([]);
@@ -12,7 +15,7 @@ export default function Avis() {
   useEffect(() => {
     document.title = 'Avis clients — Dimanche, maroquinerie artisanale à Lyon';
     let active = true;
-    getPublishedReviews(30)
+    getPublishedReviews(60)
       .then((data) => {
         if (active) setReviews(data);
       })
@@ -24,91 +27,93 @@ export default function Avis() {
     };
   }, []);
 
+  const productReviews = ofType(reviews, 'produit');
+  const workshopReviews = ofType(reviews, 'atelier');
+
   return (
     <>
       <section className="border-b border-ink/10 bg-cream pb-12 pt-12 sm:pb-16 sm:pt-16 lg:pb-20 lg:pt-20">
         <Container>
           <p className="eyebrow text-forest/80">Avis</p>
-          <h1 className="mt-4 max-w-[24ch] font-display text-[2.1rem] leading-[1.1] tracking-[-0.02em] text-ink sm:max-w-[30ch] sm:text-[3rem] lg:text-[3.4rem]">
-            Elles sont reparties
-            <span className="block italic text-clay">avec leur pièce.</span>
+          <h1 className="mt-4 max-w-[26ch] font-display text-[2.1rem] leading-[1.1] tracking-[-0.02em] text-ink sm:max-w-[32ch] sm:text-[3rem] lg:text-[3.4rem]">
+            Ce qu’on nous écrit
+            <span className="block italic text-clay">après l’achat ou l’atelier.</span>
           </h1>
-          <p className="mt-6 max-w-[34rem] text-[15px] font-light leading-[1.75] text-ink/65">
-            Les personnes qui ont suivi un atelier racontent. Les témoignages ci-dessous sont
-            reproduits mot pour mot, tels qu’ils nous ont été confiés.
+          <p className="mt-6 max-w-[36rem] text-[15px] font-light leading-[1.75] text-ink/65">
+            Deux familles de témoignages, présentées séparément : celles et ceux qui sont repartis
+            avec une pièce, et celles et ceux qui l’ont fabriquée à l’établi. Tous sont reproduits
+            mot pour mot, tels qu’ils nous ont été confiés.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
-            <Cta to="/ateliers" className="w-full sm:w-auto">
-              Réserver un atelier
-            </Cta>
-            <Cta to="/boutique" variant="outline" className="w-full sm:w-auto">
-              Voir la boutique
-            </Cta>
+
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-5">
+            <a
+              href="#pieces"
+              className="inline-flex items-center justify-center gap-2 border border-ink/25 px-6 py-3.5 text-[11px] uppercase tracking-[0.2em] text-ink transition-colors hover:border-ink hover:bg-ink hover:text-cream"
+            >
+              Les avis sur les pièces
+              {!loading && productReviews.length > 0 && (
+                <span className="text-ink/40">{productReviews.length}</span>
+              )}
+            </a>
+            <a
+              href="#ateliers"
+              className="inline-flex items-center justify-center gap-2 border border-ink/25 px-6 py-3.5 text-[11px] uppercase tracking-[0.2em] text-ink transition-colors hover:border-ink hover:bg-ink hover:text-cream"
+            >
+              Les avis sur les ateliers
+              {!loading && workshopReviews.length > 0 && (
+                <span className="text-ink/40">{workshopReviews.length}</span>
+              )}
+            </a>
           </div>
         </Container>
       </section>
 
-      <section className="bg-cream py-14 lg:py-24">
-        <Container>
-          {loading ? (
-            <p className="text-[13px] font-light text-ink/40">Chargement des avis…</p>
-          ) : reviews.length === 0 ? (
-            <p className="max-w-[34rem] text-[15px] font-light leading-[1.8] text-ink/55">
-              Les premiers témoignages seront publiés ici prochainement.
-            </p>
-          ) : (
-            <div className="grid gap-px bg-ink/10 sm:grid-cols-2 lg:grid-cols-3">
-              {reviews.map((review) => (
-                <blockquote key={review.id} className="flex flex-col justify-between bg-cream p-6 sm:p-8">
-                  <div>
-                    {review.context && (
-                      <p className="text-[10px] uppercase tracking-[0.18em] text-clay">
-                        {review.context}
-                      </p>
-                    )}
-                    <p className="mt-5 font-display text-[17px] leading-[1.8] text-ink/85">
-                      « {review.text} »
-                    </p>
-                  </div>
-                  <footer className="mt-7 border-t border-ink/10 pt-4">
-                    <p className="text-[11px] uppercase tracking-[0.18em] text-ink">{review.name}</p>
-                    {review.date_label && (
-                      <p className="mt-1 text-[10px] uppercase tracking-[0.16em] text-ink/50">
-                        {review.date_label}
-                      </p>
-                    )}
+      <AvisSection
+        id="pieces"
+        eyebrow="Achats & pièces"
+        title="Elles sont reparties"
+        accent="avec leur pièce."
+        intro="Des retours reçus après une commande : la matière, le poids, la façon dont la pièce vieillit. Les pièces étant uniques, certaines ne sont plus disponibles."
+        note="Commandes expédiées depuis Lyon sous 3 à 4 jours, retrait possible à l’atelier-boutique."
+        reviews={productReviews}
+        loading={loading}
+        empty="Les premiers retours d’achat seront publiés ici prochainement."
+      />
 
-                  </footer>
-                </blockquote>
-              ))}
+      <div className="border-t border-ink/10 bg-linen/50 py-10 lg:py-12">
+        <Container>
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="eyebrow text-forest/80">Ateliers création</p>
+              <h2 className="mt-3 font-display text-[1.6rem] leading-[1.15] text-ink sm:text-[2rem]">
+                Trois heures à l’établi,
+                <span className="italic text-clay"> une pièce au bout.</span>
+              </h2>
+              <p className="mt-3 max-w-[36rem] text-[14px] font-light leading-[1.8] text-ink/60">
+                Cuir, outils et patronage fournis. Les ateliers se font en très petit comité, sans
+                prérequis — c’est souvent le premier geste de maroquinerie des participants.
+              </p>
             </div>
-          )}
+            <Cta to="/ateliers" className="w-full shrink-0 sm:w-auto">
+              Voir les dates
+            </Cta>
+          </div>
         </Container>
-      </section>
+      </div>
 
-      <section className="border-y border-ink/10 bg-linen/60 py-14 lg:py-20">
-        <Container>
-          <h2 className="font-display text-[1.9rem] leading-[1.12] text-ink sm:text-[2.4rem]">
-            Ce qu’ils disent,
-            <span className="block italic text-clay">sans qu’on leur demande.</span>
-          </h2>
-          <ul className="mt-9 grid gap-8 sm:grid-cols-3 sm:gap-10">
-            {REVIEW_THEMES.map((theme) => (
-              <li key={theme.title}>
-                <p className="text-[11px] uppercase tracking-[0.18em] text-ink">{theme.title}</p>
-                <p className="mt-2 text-[14px] font-light leading-[1.8] text-ink/60">{theme.text}</p>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-10 max-w-[38rem] text-[13px] font-light leading-relaxed text-ink/55">
-            Ces avis portent sur les ateliers création. Dimanche ne met pas en place de notation
-            chiffrée : les témoignages affichés sont ceux que les participants nous ont confiés, et
-            nous les publions tels quels.
-          </p>
-        </Container>
-      </section>
+      <AvisSection
+        id="ateliers"
+        eyebrow="Ateliers création"
+        title="Elles ont cousu"
+        accent="leur première ceinture."
+        intro="Ce qui revient dans les retours d’atelier : les gestes transmis un par un, le petit nombre de places, et la pièce qu’on emporte le soir même."
+        note="Ces avis portent sur les ateliers création. Dimanche ne met pas en place de notation chiffrée : les témoignages affichés sont ceux que les participants nous ont confiés, et nous les publions tels quels."
+        reviews={workshopReviews}
+        loading={loading}
+        empty="Les premiers témoignages d’atelier seront publiés ici prochainement."
+      />
 
-      <section className="bg-cream py-14 lg:py-20">
+      <section className="border-t border-ink/10 bg-cream py-14 lg:py-20">
         <Container>
           <div className="max-w-[34rem]">
             <p className="eyebrow text-forest/80">Vous avez fabriqué ou acheté</p>
@@ -116,12 +121,12 @@ export default function Avis() {
               Racontez votre pièce.
             </h2>
             <p className="mt-5 text-[15px] font-light leading-[1.8] text-ink/65">
-              Un atelier suivi, une ceinture portée tous les jours, une réparation faite à l’atelier :
-              votre retour aide les suivants à se lancer.
+              Un atelier suivi, une ceinture portée tous les jours, une réparation faite à
+              l’atelier : votre retour aide les suivants à se lancer.
             </p>
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
               <a
-                href={`mailto:marie@atelier-dimanche.fr?subject=Mon%20avis%20sur%20Dimanche`}
+                href="mailto:marie@atelier-dimanche.fr?subject=Mon%20avis%20sur%20Dimanche"
                 className="inline-flex items-center justify-center gap-2 bg-ink px-8 py-4 text-[11px] uppercase tracking-[0.24em] text-cream transition-colors hover:bg-forest"
               >
                 <Mail className="h-3.5 w-3.5" strokeWidth={1.4} />
