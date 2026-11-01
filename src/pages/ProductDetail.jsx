@@ -219,18 +219,11 @@ export default function ProductDetail() {
 
               <details className="group py-4">
                 <summary className="flex cursor-pointer items-center justify-between text-[11px] uppercase tracking-[0.2em] text-ink">
-                  Dimensions &amp; entretien
+                  {product.dimensions ? 'Dimensions & entretien' : 'Entretien'}
                   <Plus className="h-3.5 w-3.5 transition-transform group-open:rotate-45" strokeWidth={1.4} />
                 </summary>
                 <div className="mt-4 space-y-2 text-[13px] font-light leading-relaxed text-ink/60">
-                  {product.dimensions ? (
-                    <p>Dimensions : {product.dimensions}</p>
-                  ) : (
-                    <p>
-                      Dimensions et poids précis communiqués sur demande : chaque pièce est taillée à
-                      l’unité, dans une peau différente.
-                    </p>
-                  )}
+                  {product.dimensions && <p>Dimensions : {product.dimensions}</p>}
                   <p>
                     Nourrir le cuir une à deux fois par an avec une crème incolore. Éviter l’exposition
                     prolongée au soleil : le cuir tanné végétal se patine, c’est normal et c’est beau.

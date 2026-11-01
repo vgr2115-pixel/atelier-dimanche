@@ -60,8 +60,8 @@ export default function AfterSalesSection() {
 
         <figure className="overflow-hidden bg-cream">
           <Image
-            src={IMAGES.portefeuille}
-            alt="Portefeuille Dimanche en cuir de vache au tannage végétal, poche zippée et bouton pression"
+            src={IMAGES.geste}
+            alt="Cuirs choisis sur l’établi de l’atelier Dimanche"
             className="aspect-[4/5] w-full"
             fittingType="fill"
           />
