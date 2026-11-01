@@ -119,10 +119,19 @@ export default function SocialSection() {
           ))}
         </div>
 
-        <p className="mt-10 max-w-xl text-[13px] font-light leading-relaxed text-ink/55">
-          Chaque pièce est unique et n’est pas rééditée. Les arrivées sont datées ici, dans l’ordre
-          où elles quittent l’établi.
-        </p>
+        <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <p className="max-w-xl text-[13px] font-light leading-relaxed text-ink/55">
+            Chaque pièce est unique et n’est pas rééditée. Les arrivées sont datées ici, dans l’ordre
+            où elles quittent l’établi.
+          </p>
+          <Link
+            to="/nouvelles-pieces"
+            className="inline-flex shrink-0 items-center gap-2 border-b border-ink/25 pb-1.5 text-[11px] uppercase tracking-[0.18em] text-ink transition-colors hover:border-ink hover:text-clay"
+          >
+            Tout le journal
+            <ArrowUpRight className="h-3 w-3" strokeWidth={1.4} />
+          </Link>
+        </div>
       </Container>
     </section>
   );
