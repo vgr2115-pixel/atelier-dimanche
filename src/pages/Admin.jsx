@@ -19,7 +19,7 @@ const TABS = [
   { key: 'demandes', label: 'Demandes' },
   { key: 'commandes', label: 'Commandes' },
   { key: 'reservations', label: 'Réservations' },
-  { key: 'abonnes', label: 'Lettre' },
+  { key: 'abonnes', label: 'Newsletter' },
 ];
 
 export default function Admin() {

@@ -45,7 +45,7 @@ export default function AdminSubscribers() {
         <p className="text-[13px] font-light leading-relaxed text-ink/55">
           {loading
             ? 'Chargement…'
-            : `${subscribers.length} adresse${subscribers.length > 1 ? 's' : ''} inscrite${subscribers.length > 1 ? 's' : ''} à la lettre`}
+            : `${subscribers.length} adresse${subscribers.length > 1 ? 's' : ''} inscrite${subscribers.length > 1 ? 's' : ''} à la newsletter`}
         </p>
         <button
           type="button"
@@ -71,7 +71,7 @@ export default function AdminSubscribers() {
         {loading && <p className="py-10 text-[13px] font-light text-ink/40">Chargement des inscriptions…</p>}
         {!loading && subscribers.length === 0 && (
           <p className="py-10 text-[13px] font-light text-ink/45">
-            Aucune inscription pour l’instant. Le formulaire de la lettre se trouve en bas de chaque page.
+            Aucune inscription pour l’instant. Le formulaire Newsletter se trouve en bas de chaque page.
           </p>
         )}
         {subscribers.map((subscriber) => (
@@ -84,7 +84,7 @@ export default function AdminSubscribers() {
             </div>
             <AdminDeleteButton
               label="Retirer l’adresse"
-              description={`${subscriber.email} ne recevra plus la lettre de l’atelier.`}
+              description={`${subscriber.email} ne recevra plus la newsletter de l’atelier.`}
               onConfirm={() => remove(subscriber.id)}
             />
           </div>

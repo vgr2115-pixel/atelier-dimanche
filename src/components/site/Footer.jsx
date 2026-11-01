@@ -34,7 +34,7 @@ export default function Footer() {
       <Container className="py-16 lg:py-20">
         <div className="mb-14 flex flex-col gap-6 border-b border-cream/15 pb-10 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="eyebrow text-cream/40">Les nouvelles pièces</p>
+            <p className="eyebrow text-cream/40">Newsletter</p>
             <p className="mt-3 max-w-md font-display text-[22px] leading-snug text-cream">
               Chaque pièce est unique. Recevez-les avant qu’elles ne partent.
             </p>
