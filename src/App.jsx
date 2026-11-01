@@ -8,6 +8,7 @@ import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import AccessDenied from '@/components/site/AccessDenied';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import ScrollToTop from './components/ScrollToTop';
+import Typography from '@/components/site/Typography';
 import { CartProvider } from '@/components/cart/CartContext';
 import SiteLayout from '@/components/site/SiteLayout';
 // Add page imports here
@@ -101,6 +102,7 @@ function App() {
         <CartProvider>
           <Router>
             <ScrollToTop />
+            <Typography />
             <AuthenticatedApp />
           </Router>
         </CartProvider>
