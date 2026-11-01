@@ -60,8 +60,8 @@ export default function AfterSalesSection() {
 
         <figure className="overflow-hidden bg-cream">
           <Image
-            src={IMAGES.couture}
-            alt="Détail d’une couture au point sellier sur une pièce en cuir Dimanche"
+            src={IMAGES.geste}
+            alt="Geste de reprise à l’établi sur une pièce Dimanche, des années après l’achat"
             className="aspect-[4/5] w-full"
             fittingType="fill"
           />
