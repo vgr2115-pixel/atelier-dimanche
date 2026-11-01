@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Plus, Pencil, Trash2 } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { Button } from '@/components/ui/button';
+import { Switch } from '@/components/ui/switch';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -30,6 +31,8 @@ export default function AdminJournal() {
   const [formOpen, setFormOpen] = useState(false);
   const [editing, setEditing] = useState(null);
   const [toDelete, setToDelete] = useState(null);
+  const [sectionEnabled, setSectionEnabled] = useState(true);
+  const [settingsId, setSettingsId] = useState(null);
 
   const load = async () => {
     setLoading(true);
@@ -41,6 +44,26 @@ export default function AdminJournal() {
   useEffect(() => {
     load();
   }, []);
+
+  useEffect(() => {
+    base44.entities.SiteSettings.list('created_date', 1).then((data) => {
+      const current = asArray(data)[0];
+      if (current) {
+        setSettingsId(current.id);
+        setSectionEnabled(current.journal_enabled !== false);
+      }
+    });
+  }, []);
+
+  const toggleSection = async (value) => {
+    setSectionEnabled(value);
+    if (settingsId) {
+      await base44.entities.SiteSettings.update(settingsId, { journal_enabled: value });
+    } else {
+      const created = await base44.entities.SiteSettings.create({ journal_enabled: value });
+      setSettingsId(created.id);
+    }
+  };
 
   const togglePublished = async (entry) => {
     await base44.entities.JournalEntry.update(entry.id, { is_published: entry.is_published === false });
@@ -56,11 +79,28 @@ export default function AdminJournal() {
 
   return (
     <div>
+      <div className="mb-8 flex flex-col gap-4 border border-ink/15 bg-linen/40 px-5 py-5 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <p className="text-[11px] uppercase tracking-[0.18em] text-ink">
+            Section « Nouvelles pièces » sur l’accueil
+          </p>
+          <p className="mt-1.5 text-[12px] font-light leading-relaxed text-ink/50">
+            {sectionEnabled
+              ? 'Visible. Les trois dernières arrivées publiées s’affichent après la section « L’atelier ».'
+              : 'Masquée. La section disparaît de l’accueil ; le contenu reste enregistré.'}
+          </p>
+        </div>
+        <label className="flex shrink-0 items-center gap-3 text-[11px] uppercase tracking-[0.16em] text-ink/70">
+          <Switch checked={sectionEnabled} onCheckedChange={toggleSection} />
+          {sectionEnabled ? 'Affichée' : 'Masquée'}
+        </label>
+      </div>
+
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-[13px] font-light leading-relaxed text-ink/55">
           {loading
             ? 'Chargement…'
-            : `${entries.length} page(s) de journal · ${entries.filter((e) => e.is_published !== false).length} en ligne`}
+            : `${entries.length} arrivée(s) · ${entries.filter((e) => e.is_published !== false).length} en ligne`}
         </p>
         <Button
           onClick={() => {
@@ -70,7 +110,7 @@ export default function AdminJournal() {
           className="rounded-none bg-ink text-[11px] uppercase tracking-[0.2em] text-cream hover:bg-forest"
         >
           <Plus className="mr-2 h-3.5 w-3.5" strokeWidth={1.6} />
-          Nouvelle page
+          Nouvelle arrivée
         </Button>
       </div>
 
@@ -78,7 +118,7 @@ export default function AdminJournal() {
         {loading && <p className="py-10 text-[13px] font-light text-ink/40">Chargement du journal…</p>}
         {!loading && entries.length === 0 && (
           <p className="py-10 text-[13px] font-light text-ink/45">
-            Aucune page pour l’instant. Racontez un geste, une matière, une pièce en cours.
+            Aucune arrivée pour l’instant. Ajoutez la première pièce dès sa mise en ligne.
           </p>
         )}
         {entries.map((entry) => {
@@ -144,11 +184,11 @@ export default function AdminJournal() {
       </div>
 
       <p className="mt-6 text-[12px] font-light leading-relaxed text-ink/45">
-        Les trois dernières pages publiées apparaissent dans la section « Coulisses » de{' '}
+        Les trois dernières arrivées publiées apparaissent dans la section « Nouvelles pièces » de{' '}
         <Link to="/" className="underline decoration-ink/25 hover:text-ink">
           l’accueil
         </Link>
-        .
+        , avec la mention « Nouveau » pendant trois semaines.
       </p>
 
       {formOpen && (

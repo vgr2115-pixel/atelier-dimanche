@@ -83,17 +83,17 @@ export default function JournalForm({ open, entry, onClose, onSaved }) {
       <DialogContent className="max-h-[92vh] max-w-[640px] overflow-y-auto rounded-none border-ink/15 bg-cream">
         <DialogHeader>
           <DialogTitle className="font-display text-[22px] font-normal text-ink">
-            {entry ? 'Modifier une page du journal' : 'Nouvelle page du journal'}
+            {entry ? 'Modifier une arrivée' : 'Nouvelle arrivée'}
           </DialogTitle>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="mt-2 space-y-5">
           <div className="grid gap-5 sm:grid-cols-2">
-            <AdminField label="Titre">
+            <AdminField label="Nom de la pièce">
               <Input
                 value={form.title}
                 onChange={(event) => set('title', event.target.value)}
-                placeholder="Un cabas taillé dans un cuir de sellerie"
+                placeholder="Pochette Le Diben — les algues brunes"
                 className={inputClass}
               />
             </AdminField>
@@ -107,7 +107,7 @@ export default function JournalForm({ open, entry, onClose, onSaved }) {
             </AdminField>
           </div>
 
-          <AdminField label="Texte" hint="Deux ou trois phrases suffisent : la matière, le geste, l’avancement.">
+          <AdminField label="Note" hint="Deux phrases suffisent : la matière, le détail qui distingue la pièce.">
             <Textarea
               value={form.body}
               onChange={(event) => set('body', event.target.value)}
@@ -147,11 +147,11 @@ export default function JournalForm({ open, entry, onClose, onSaved }) {
                 className={inputClass}
               />
             </AdminField>
-            <AdminField label="Destination du lien" hint="Adresse interne (/boutique) ou externe.">
+            <AdminField label="Destination du lien" hint="Adresse interne (/produit/…) ou externe.">
               <Input
                 value={form.link_url}
                 onChange={(event) => set('link_url', event.target.value)}
-                placeholder="/boutique"
+                placeholder="/produit/pochette-le-diben-les-algues-brunes"
                 className={inputClass}
               />
             </AdminField>

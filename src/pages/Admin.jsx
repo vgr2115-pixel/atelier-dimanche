@@ -17,7 +17,7 @@ const TABS = [
   { key: 'produits', label: 'Pièces' },
   { key: 'ateliers', label: 'Ateliers' },
   { key: 'avis', label: 'Avis' },
-  { key: 'coulisses', label: 'Coulisses' },
+  { key: 'coulisses', label: 'Nouvelles pièces' },
   { key: 'demandes', label: 'Demandes' },
   { key: 'commandes', label: 'Commandes' },
   { key: 'reservations', label: 'Réservations' },
