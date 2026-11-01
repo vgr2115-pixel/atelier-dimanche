@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ShoppingBag } from 'lucide-react';
 import { useCart } from '@/components/cart/CartContext';
 import { Image } from '@/components/ui/image';
 import { IMAGES } from '@/lib/images';
+import HeaderBanner from '@/components/site/HeaderBanner';
 
 const NAV = [
   { label: 'Boutique', to: '/boutique' },
@@ -19,6 +20,18 @@ export default function Header() {
   const { pathname } = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [bannerHeight, setBannerHeight] = useState(0);
+  const bannerRef = useRef(null);
+
+  // Le bandeau peut passer sur deux lignes : on mesure sa hauteur réelle.
+  useEffect(() => {
+    if (!bannerRef.current) return undefined;
+    const observer = new ResizeObserver((entries) => {
+      setBannerHeight(entries[0]?.contentRect.height ?? 0);
+    });
+    observer.observe(bannerRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -32,7 +45,7 @@ export default function Header() {
   }, [pathname]);
 
   return (
-    <>
+    <div style={{ '--banner-h': `${bannerHeight}px` }}>
       <header
         className={`fixed inset-x-0 top-0 z-40 transition-all duration-500 ${
           scrolled || menuOpen
@@ -40,6 +53,9 @@ export default function Header() {
             : 'border-b border-transparent bg-cream/40 backdrop-blur-[2px]'
         }`}
       >
+        <div ref={bannerRef}>
+          <HeaderBanner />
+        </div>
         <div className="mx-auto flex h-[72px] w-full max-w-[1400px] items-center justify-between px-6 sm:px-10 lg:h-20 lg:px-16">
           <Link to="/" className="flex items-center" aria-label="Dimanche — Atelier Dimanche, accueil">
             {/* Mobile : l'emblème seul reste lisible dans une barre étroite. */}
@@ -114,7 +130,10 @@ export default function Header() {
           </div>
         )}
       </header>
-      <div className="h-[72px] lg:h-20" aria-hidden="true" />
-    </>
+      <div
+        className="h-[calc(72px+var(--banner-h,0px))] lg:h-[calc(80px+var(--banner-h,0px))]"
+        aria-hidden="true"
+      />
+    </div>
   );
 }

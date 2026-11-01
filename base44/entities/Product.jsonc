@@ -11,6 +11,10 @@
     "price": {
       "type": "number"
     },
+    "sale_price": {
+      "type": "number",
+      "description": "Prix remis\u00e9. Vide ou 0 = pas de remise."
+    },
     "category": {
       "type": "string",
       "enum": [

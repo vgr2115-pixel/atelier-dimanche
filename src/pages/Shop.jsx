@@ -3,6 +3,7 @@ import ProductCard from '@/components/product/ProductCard';
 import { useCart } from '@/components/cart/CartContext';
 import { useEffect, useState } from 'react';
 import { getProductsByCategory } from '@/api/catalog';
+import { salePrice } from '@/lib/pricing';
 
 const CATEGORIES = ['Tout', 'Sacs', 'Bananes', 'Petite maroquinerie', 'Accessoires'];
 
@@ -30,7 +31,7 @@ export default function Shop() {
       id: product.id,
       slug: product.slug,
       name: product.name,
-      price: product.price,
+      price: salePrice(product),
       image: product.image,
       meta: product.leather,
       type: 'product',

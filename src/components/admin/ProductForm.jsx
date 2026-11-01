@@ -28,6 +28,7 @@ const emptyForm = {
   name: '',
   slug: '',
   price: '',
+  sale_price: '',
   category: 'Sacs',
   leather: '',
   badge: '',
@@ -49,6 +50,7 @@ const toForm = (product) =>
         ...emptyForm,
         ...product,
         price: product.price ?? '',
+        sale_price: product.sale_price ?? '',
         details: (product.details ?? []).join('\n'),
         gallery: product.gallery ?? [],
         is_available: product.is_available !== false,
@@ -98,6 +100,11 @@ export default function ProductForm({ open, product, onClose, onSaved }) {
       setError('Le nom, le prix et la photo principale sont obligatoires.');
       return;
     }
+    const salePriceValue = Number(form.sale_price) || 0;
+    if (salePriceValue > 0 && salePriceValue >= Number(form.price)) {
+      setError('Le prix remisé doit être inférieur au prix affiché.');
+      return;
+    }
     setError('');
     setSaving(true);
     try {
@@ -105,6 +112,7 @@ export default function ProductForm({ open, product, onClose, onSaved }) {
         name: form.name.trim(),
         slug: form.slug.trim() || slugify(form.name),
         price: Number(form.price),
+        sale_price: salePriceValue,
         category: form.category,
         leather: form.leather,
         badge: form.badge,
@@ -145,16 +153,17 @@ export default function ProductForm({ open, product, onClose, onSaved }) {
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-5">
+          <AdminField label="Nom de la pièce">
+            <Input
+              aria-label="Nom de la pièce"
+              value={form.name}
+              onChange={(e) => set('name', e.target.value)}
+              className={inputClass}
+              placeholder="Sac Cabas Burdeau"
+            />
+          </AdminField>
+
           <div className="grid gap-4 sm:grid-cols-2">
-            <AdminField label="Nom de la pièce">
-              <Input
-                aria-label="Nom de la pièce"
-                value={form.name}
-                onChange={(e) => set('name', e.target.value)}
-                className={inputClass}
-                placeholder="Sac Cabas Burdeau"
-              />
-            </AdminField>
             <AdminField label="Prix affiché (€)">
               <Input
                 aria-label="Prix affiché en euros"
@@ -165,6 +174,21 @@ export default function ProductForm({ open, product, onClose, onSaved }) {
                 onChange={(e) => set('price', e.target.value)}
                 className={inputClass}
                 placeholder="240"
+              />
+            </AdminField>
+            <AdminField
+              label="Prix remisé (€)"
+              hint="Laissez vide s’il n’y a pas de remise. Le pourcentage est calculé automatiquement."
+            >
+              <Input
+                aria-label="Prix remisé en euros"
+                type="number"
+                min="0"
+                step="0.01"
+                value={form.sale_price}
+                onChange={(e) => set('sale_price', e.target.value)}
+                className={inputClass}
+                placeholder="190"
               />
             </AdminField>
           </div>

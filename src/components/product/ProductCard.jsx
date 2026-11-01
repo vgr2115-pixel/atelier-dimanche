@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom';
 import { Plus } from 'lucide-react';
 import { Image } from '@/components/ui/image';
 import { formatPrice } from '@/lib/format';
+import { discountPercent, salePrice } from '@/lib/pricing';
 
 export default function ProductCard({ product, onQuickAdd, className = '' }) {
   const soldOut = product.is_available === false;
+  const percent = soldOut ? 0 : discountPercent(product);
 
   return (
     <article className={`group ${className}`}>
@@ -58,9 +60,17 @@ export default function ProductCard({ product, onQuickAdd, className = '' }) {
             {soldOut ? 'Pièce vendue' : product.leather}
           </p>
         </div>
-        <p className={`shrink-0 text-[13px] tabular-nums ${soldOut ? 'text-ink/35' : 'text-ink/80'}`}>
-          {formatPrice(product.price)}
-        </p>
+        <div className={`shrink-0 text-right text-[13px] tabular-nums ${soldOut ? 'text-ink/35' : 'text-ink/80'}`}>
+          <p>{formatPrice(soldOut ? product.price : salePrice(product))}</p>
+          {percent > 0 && (
+            <>
+              <p className="text-[11px] text-ink/35 line-through">{formatPrice(product.price)}</p>
+              <p className="mt-1 inline-block bg-forest px-1.5 py-0.5 text-[9px] uppercase tracking-[0.12em] text-cream">
+                −{percent}&nbsp;%
+              </p>
+            </>
+          )}
+        </div>
       </div>
     </article>
   );

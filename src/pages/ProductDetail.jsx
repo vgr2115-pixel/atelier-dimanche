@@ -7,6 +7,7 @@ import ProductCard from '@/components/product/ProductCard';
 import { useCart } from '@/components/cart/CartContext';
 import { getProductBySlug, getRelatedProducts } from '@/api/catalog';
 import { formatPrice } from '@/lib/format';
+import { discountPercent, salePrice } from '@/lib/pricing';
 
 export default function ProductDetail() {
   const { slug } = useParams();
@@ -63,13 +64,14 @@ export default function ProductDetail() {
 
   const soldOut = product.is_available === false;
   const maxQuantity = Math.max(1, product.stock ?? 1);
+  const percent = soldOut ? 0 : discountPercent(product);
 
   const handleAdd = () =>
     addItem({
       id: product.id,
       slug: product.slug,
       name: product.name,
-      price: product.price,
+      price: salePrice(product),
       image: product.image,
       meta: product.leather,
       type: 'product',
@@ -118,8 +120,20 @@ export default function ProductDetail() {
             <h1 className="mt-4 font-display text-[2.2rem] leading-[1.08] tracking-[-0.02em] text-ink sm:text-[3rem]">
               {product.name}
             </h1>
-            <div className="mt-4 flex items-center gap-4">
-              <p className="font-display text-2xl text-ink">{formatPrice(product.price)}</p>
+            <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+              <p className="font-display text-2xl text-ink">
+                {formatPrice(soldOut ? product.price : salePrice(product))}
+              </p>
+              {percent > 0 && (
+                <>
+                  <p className="text-[15px] font-light text-ink/40 line-through">
+                    {formatPrice(product.price)}
+                  </p>
+                  <span className="bg-forest px-2 py-1 text-[9px] uppercase tracking-[0.16em] text-cream">
+                    −{percent}&nbsp;%
+                  </span>
+                </>
+              )}
               {product.badge && (
                 <span className="border border-forest/25 px-2.5 py-1 text-[9px] uppercase tracking-[0.18em] text-forest">
                   {product.badge}
@@ -266,7 +280,7 @@ export default function ProductDetail() {
                     id: entry.id,
                     slug: entry.slug,
                     name: entry.name,
-                    price: entry.price,
+                    price: salePrice(entry),
                     image: entry.image,
                     meta: entry.leather,
                     type: 'product',

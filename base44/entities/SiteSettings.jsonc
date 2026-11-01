@@ -5,8 +5,26 @@
     "journal_enabled": {
       "type": "boolean",
       "default": true
+    },
+    "banner_enabled": {
+      "type": "boolean",
+      "default": false
+    },
+    "banner_messages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Messages du bandeau, affich\u00e9s l'un apr\u00e8s l'autre."
+    },
+    "banner_link_label": {
+      "type": "string"
+    },
+    "banner_link_url": {
+      "type": "string"
     }
   },
+  "required": [],
   "rls": {
     "read": {},
     "create": {

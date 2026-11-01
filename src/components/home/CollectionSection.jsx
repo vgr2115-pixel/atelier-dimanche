@@ -5,6 +5,7 @@ import Container from '@/components/site/Container';
 import ProductCard from '@/components/product/ProductCard';
 import { useCart } from '@/components/cart/CartContext';
 import { getAvailableProducts } from '@/api/catalog';
+import { salePrice } from '@/lib/pricing';
 
 export default function CollectionSection() {
   const { addItem } = useCart();
@@ -25,7 +26,7 @@ export default function CollectionSection() {
       id: product.id,
       slug: product.slug,
       name: product.name,
-      price: product.price,
+      price: salePrice(product),
       image: product.image,
       meta: product.leather,
       type: 'product',
