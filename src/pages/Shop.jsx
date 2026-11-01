@@ -4,10 +4,12 @@ import { useCart } from '@/components/cart/CartContext';
 import { useEffect, useState } from 'react';
 import { getProductsByCategory } from '@/api/catalog';
 import { salePrice } from '@/lib/pricing';
+import useDocumentTitle from '@/hooks/useDocumentTitle';
 
 const CATEGORIES = ['Tout', 'Sacs', 'Bananes', 'Petite maroquinerie', 'Accessoires'];
 
 export default function Shop() {
+  useDocumentTitle('La boutique — Atelier Dimanche, maroquinerie à Lyon');
   const { addItem } = useCart();
   const [category, setCategory] = useState('Tout');
   const [products, setProducts] = useState([]);

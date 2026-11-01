@@ -6,10 +6,12 @@ import Container from '@/components/site/Container';
 import { getUpcomingSessions, getWorkshops } from '@/api/catalog';
 import { base44 } from '@/api/base44Client';
 import { formatPrice } from '@/lib/format';
+import useDocumentTitle from '@/hooks/useDocumentTitle';
 
 const EMPTY_FORM = { name: '', email: '', phone: '', notes: '' };
 
 export default function Workshops() {
+  useDocumentTitle('Ateliers création — Atelier Dimanche, Lyon');
   const [searchParams] = useSearchParams();
   const [workshops, setWorkshops] = useState([]);
   const [sessions, setSessions] = useState([]);

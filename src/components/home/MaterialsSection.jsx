@@ -60,8 +60,8 @@ export default function MaterialsSection() {
           <figure className="lg:sticky lg:top-28 lg:self-start">
             <div className="overflow-hidden bg-cream">
               <Image
-                src={IMAGES.hero}
-                alt="Macro sur des cuirs tannés végétaux et un fil de lin ciré"
+                src={IMAGES.cuirs}
+                alt="Cuirs tannés végétaux choisis un à un à l’atelier"
                 className="aspect-[4/5] w-full"
                 fittingType="fill"
               />

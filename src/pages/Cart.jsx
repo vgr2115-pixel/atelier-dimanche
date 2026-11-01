@@ -6,8 +6,10 @@ import Container from '@/components/site/Container';
 import { useCart } from '@/components/cart/CartContext';
 import { base44 } from '@/api/base44Client';
 import { formatPrice } from '@/lib/format';
+import useDocumentTitle from '@/hooks/useDocumentTitle';
 
 export default function Cart() {
+  useDocumentTitle('Panier — Atelier Dimanche');
   const { items, subtotal, setQuantity, removeItem, clear } = useCart();
   const navigate = useNavigate();
   const [form, setForm] = useState({

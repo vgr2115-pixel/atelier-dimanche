@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { MapPin, Clock, Mail, Instagram, Check } from 'lucide-react';
 import Container from '@/components/site/Container';
 import { base44 } from '@/api/base44Client';
+import useDocumentTitle from '@/hooks/useDocumentTitle';
 
 const SUBJECTS = ['Une commande', 'Un atelier', 'Une pièce sur-mesure', 'Autre'];
 
 export default function Contact() {
+  useDocumentTitle('Visite & contact — Atelier Dimanche, 23 rue Burdeau, Lyon');
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: 'Une commande', body: '' });
   const [status, setStatus] = useState('idle');
   const [error, setError] = useState('');

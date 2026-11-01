@@ -1,8 +1,10 @@
 import { Link, useSearchParams } from 'react-router-dom';
 import { Check, Mail, MapPin } from 'lucide-react';
 import Container from '@/components/site/Container';
+import useDocumentTitle from '@/hooks/useDocumentTitle';
 
 export default function OrderConfirmation() {
+  useDocumentTitle('Commande reçue — Atelier Dimanche');
   const [searchParams] = useSearchParams();
   const reference = searchParams.get('ref') ?? '';
 
