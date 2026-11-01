@@ -56,6 +56,11 @@ export default function ConditionsVente() {
               règlement s’effectue par carte bancaire sur une page de paiement sécurisée, dont le lien
               est adressé avec cette confirmation. Aucun montant n’est prélevé avant.
             </p>
+            <p className="mt-3">
+              Les données enregistrées par l’atelier constituent la preuve de la nature, du contenu et
+              de la date de la commande. Elles sont archivées dans les conditions et délais légaux ;
+              vous pouvez en demander une copie en écrivant à marie@atelier-dimanche.fr.
+            </p>
           </section>
 
           <section id="livraison" className="scroll-mt-28">
@@ -126,9 +131,10 @@ export default function ConditionsVente() {
             <h2 className="font-display text-xl text-ink">10. Litiges</h2>
             <p className="mt-3">
               Les présentes conditions sont régies par le droit français. En cas de litige, une
-              solution amiable sera recherchée en priorité ; à défaut, les tribunaux français sont
-              compétents. Le client particulier peut également recourir gratuitement à un médiateur de
-              la consommation.
+              solution amiable sera recherchée en priorité ; à défaut d’accord, le litige est porté
+              devant le Tribunal de Versailles, juridiction désignée par les conditions générales de
+              vente de la marque. Le client particulier peut également recourir gratuitement à un
+              médiateur de la consommation.
             </p>
           </section>
         </div>

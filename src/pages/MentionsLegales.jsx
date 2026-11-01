@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Container from '@/components/site/Container';
 
 export default function MentionsLegales() {
@@ -6,6 +7,10 @@ export default function MentionsLegales() {
       <Container className="py-16 lg:py-24">
         <p className="eyebrow text-forest/80">Informations légales</p>
         <h1 className="mt-4 font-display text-[2.2rem] leading-tight text-ink sm:text-[3rem]">Mentions légales</h1>
+        <p className="mt-4 max-w-2xl text-[13px] font-light leading-relaxed text-ink/55">
+          Micro-entreprise Marie Bodilis, 23 rue Burdeau, 69001 Lyon — SIRET 795 268 812 00034.
+          Dernière mise à jour : novembre 2026.
+        </p>
 
         <div className="mt-10 max-w-2xl space-y-8 text-[14px] font-light leading-[1.85] text-ink/65">
           <section>
@@ -49,8 +54,10 @@ export default function MentionsLegales() {
             <h2 className="font-display text-xl text-ink">Propriété intellectuelle</h2>
             <p className="mt-3">
               L’ensemble des contenus du site (textes, photographies, créations, modèles, logo) est la
-              propriété de Marie Bodilis et protégé par le droit d’auteur. Toute reproduction, même
-              partielle, suppose une autorisation écrite préalable.
+              propriété de Marie Bodilis et protégé par le droit d’auteur. Tous les textes et images du
+              site sont réservés pour le monde entier au titre des droits d’auteur et de la propriété
+              intellectuelle. Toute reproduction, même partielle, suppose une autorisation écrite
+              préalable de Dimanche — Marie Bodilis.
             </p>
             <p className="mt-3">
               Crédits photo : les portraits d’atelier ont été réalisés par Rémy Lidereau pour
@@ -79,6 +86,21 @@ export default function MentionsLegales() {
             <p className="mt-3">
               Le site ne dépose aucun cookie publicitaire ni traceur tiers. Seul le stockage local de
               votre navigateur conserve le contenu de votre panier entre deux visites.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="font-display text-xl text-ink">Vente en ligne</h2>
+            <p className="mt-3">
+              Les conditions de vente des pièces de maroquinerie et des ateliers — prix, commande,
+              paiement, livraison, rétractation, entretien et litiges — sont détaillées dans les{' '}
+              <Link
+                to="/conditions-de-vente"
+                className="border-b border-ink/25 pb-0.5 text-ink hover:border-ink"
+              >
+                conditions de vente
+              </Link>
+              .
             </p>
           </section>
 

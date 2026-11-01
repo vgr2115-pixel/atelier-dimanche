@@ -11,11 +11,13 @@ import AdminMessages from '@/components/admin/AdminMessages';
 import AdminOrders from '@/components/admin/AdminOrders';
 import AdminBookings from '@/components/admin/AdminBookings';
 import AdminSubscribers from '@/components/admin/AdminSubscribers';
+import AdminJournal from '@/components/admin/AdminJournal';
 
 const TABS = [
   { key: 'produits', label: 'Pièces' },
   { key: 'ateliers', label: 'Ateliers' },
   { key: 'avis', label: 'Avis' },
+  { key: 'coulisses', label: 'Coulisses' },
   { key: 'demandes', label: 'Demandes' },
   { key: 'commandes', label: 'Commandes' },
   { key: 'reservations', label: 'Réservations' },
@@ -130,6 +132,7 @@ export default function Admin() {
           {tab === 'produits' && <AdminProducts />}
           {tab === 'ateliers' && <AdminWorkshops />}
           {tab === 'avis' && <AdminReviews />}
+          {tab === 'coulisses' && <AdminJournal />}
           {tab === 'demandes' && <AdminMessages />}
           {tab === 'commandes' && <AdminOrders />}
           {tab === 'reservations' && <AdminBookings />}
