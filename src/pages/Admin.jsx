@@ -1,21 +1,44 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { LogOut, ArrowLeft } from 'lucide-react';
 import { useAuth } from '@/lib/AuthContext';
+import { base44 } from '@/api/base44Client';
 import Container from '@/components/site/Container';
 import AdminProducts from '@/components/admin/AdminProducts';
 import AdminWorkshops from '@/components/admin/AdminWorkshops';
 import AdminReviews from '@/components/admin/AdminReviews';
+import AdminMessages from '@/components/admin/AdminMessages';
+import AdminOrders from '@/components/admin/AdminOrders';
+import AdminBookings from '@/components/admin/AdminBookings';
+import AdminSubscribers from '@/components/admin/AdminSubscribers';
 
 const TABS = [
   { key: 'produits', label: 'Pièces' },
   { key: 'ateliers', label: 'Ateliers' },
   { key: 'avis', label: 'Avis' },
+  { key: 'demandes', label: 'Demandes' },
+  { key: 'commandes', label: 'Commandes' },
+  { key: 'reservations', label: 'Réservations' },
+  { key: 'abonnes', label: 'Lettre' },
 ];
 
 export default function Admin() {
   const { user, logout } = useAuth();
   const [tab, setTab] = useState('produits');
+  const [counts, setCounts] = useState({ demandes: 0, commandes: 0, reservations: 0 });
+
+  useEffect(() => {
+    if (user?.role !== 'admin') return;
+    const loadCounts = async () => {
+      const [demandes, commandes, reservations] = await Promise.all([
+        base44.entities.Message.count({ is_read: false }),
+        base44.entities.Order.count({ status: 'recue' }),
+        base44.entities.Booking.count({ status: 'demande' }),
+      ]);
+      setCounts({ demandes, commandes, reservations });
+    };
+    loadCounts();
+  }, [user, tab]);
 
   if (!user) {
     return (
@@ -54,7 +77,7 @@ export default function Admin() {
           <div>
             <p className="eyebrow text-forest/80">Dimanche · espace de gestion</p>
             <h1 className="mt-3 font-display text-[1.9rem] leading-tight text-ink sm:text-[2.3rem]">
-              Le catalogue, les ateliers et les avis
+              Le catalogue, les ateliers et les demandes
             </h1>
             <p className="mt-2 text-[12px] font-light text-ink/50">
               Connectée en tant que {user.email}
@@ -81,19 +104,24 @@ export default function Admin() {
       </header>
 
       <Container className="py-8 lg:py-12">
-        <div className="flex gap-2 border-b border-ink/10">
+        <div className="no-scrollbar flex gap-2 overflow-x-auto border-b border-ink/10">
           {TABS.map((item) => (
             <button
               key={item.key}
               type="button"
               onClick={() => setTab(item.key)}
-              className={`-mb-px border-b-2 px-4 py-3 text-[11px] uppercase tracking-[0.18em] transition-colors ${
+              className={`-mb-px flex shrink-0 items-center gap-1.5 border-b-2 px-4 py-3 text-[11px] uppercase tracking-[0.18em] transition-colors ${
                 tab === item.key
                   ? 'border-ink text-ink'
                   : 'border-transparent text-ink/45 hover:text-ink'
               }`}
             >
               {item.label}
+              {counts[item.key] > 0 && (
+                <span className="min-w-[16px] bg-forest px-1 py-0.5 text-center text-[9px] leading-none text-cream">
+                  {counts[item.key]}
+                </span>
+              )}
             </button>
           ))}
         </div>
@@ -102,6 +130,10 @@ export default function Admin() {
           {tab === 'produits' && <AdminProducts />}
           {tab === 'ateliers' && <AdminWorkshops />}
           {tab === 'avis' && <AdminReviews />}
+          {tab === 'demandes' && <AdminMessages />}
+          {tab === 'commandes' && <AdminOrders />}
+          {tab === 'reservations' && <AdminBookings />}
+          {tab === 'abonnes' && <AdminSubscribers />}
         </div>
       </Container>
     </div>
