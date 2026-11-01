@@ -60,8 +60,8 @@ export default function AfterSalesSection() {
 
         <figure className="overflow-hidden bg-cream">
           <Image
-            src={IMAGES.geste}
-            alt="Geste de reprise à l’établi sur une pièce Dimanche, des années après l’achat"
+            src={IMAGES.portefeuille}
+            alt="Portefeuille Dimanche en cuir de vache au tannage végétal, poche zippée et bouton pression"
             className="aspect-[4/5] w-full"
             fittingType="fill"
           />
