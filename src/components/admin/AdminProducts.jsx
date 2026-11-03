@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Plus, Pencil, Trash2 } from 'lucide-react';
+import { Plus, Pencil, Trash2, Search } from 'lucide-react';
 import { base44 } from '@/api/base44Client';
 import { Image } from '@/components/ui/image';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -15,6 +16,7 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
 import ProductForm from '@/components/admin/ProductForm';
+import { inputClass } from '@/components/admin/formUtils';
 import { formatPrice } from '@/lib/format';
 
 const asArray = (data) => (Array.isArray(data) ? data : data?.items ?? []);
@@ -25,6 +27,16 @@ export default function AdminProducts() {
   const [formOpen, setFormOpen] = useState(false);
   const [editing, setEditing] = useState(null);
   const [toDelete, setToDelete] = useState(null);
+  const [query, setQuery] = useState('');
+
+  const needle = query.trim().toLowerCase();
+  const filtered = needle
+    ? products.filter((product) =>
+        [product.name, product.category, product.leather, product.badge]
+          .filter(Boolean)
+          .some((value) => value.toLowerCase().includes(needle)),
+      )
+    : products;
 
   const load = async () => {
     setLoading(true);
@@ -64,7 +76,11 @@ export default function AdminProducts() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <p className="text-[13px] font-light leading-relaxed text-ink/55">
-            {loading ? 'Chargement…' : `${products.length} pièce${products.length > 1 ? 's' : ''} au catalogue`}
+            {loading
+              ? 'Chargement…'
+              : `${filtered.length} pièce${filtered.length > 1 ? 's' : ''}${
+                  needle ? ' trouvée' + (filtered.length > 1 ? 's' : '') : ' au catalogue'
+                }`}
           </p>
         </div>
         <Button
@@ -76,14 +92,30 @@ export default function AdminProducts() {
         </Button>
       </div>
 
+      <div className="relative mt-6 max-w-sm">
+        <Search
+          className="pointer-events-none absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-ink/35"
+          strokeWidth={1.6}
+        />
+        <Input
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          aria-label="Rechercher une pièce"
+          placeholder="Rechercher une pièce, une catégorie, une matière…"
+          className={`${inputClass} pl-9`}
+        />
+      </div>
+
       <div className="mt-8 divide-y divide-ink/10 border-y border-ink/10">
         {loading && <p className="py-10 text-[13px] font-light text-ink/40">Chargement du catalogue…</p>}
-        {!loading && products.length === 0 && (
+        {!loading && filtered.length === 0 && (
           <p className="py-10 text-[13px] font-light text-ink/45">
-            Aucune pièce pour l’instant. Créez la première avec « Nouvelle pièce ».
+            {needle
+              ? 'Aucune pièce ne correspond à cette recherche.'
+              : 'Aucune pièce pour l’instant. Créez la première avec « Nouvelle pièce ».'}
           </p>
         )}
-        {products.map((product) => {
+        {filtered.map((product) => {
           const sold = product.is_available === false;
           return (
             <div key={product.id} className="flex flex-col gap-4 py-5 sm:flex-row sm:items-center">

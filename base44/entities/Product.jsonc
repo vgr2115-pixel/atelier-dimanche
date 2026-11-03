@@ -20,6 +20,7 @@
       "enum": [
         "Sacs",
         "Bananes",
+        "Pochette",
         "Petite maroquinerie",
         "Accessoires"
       ]

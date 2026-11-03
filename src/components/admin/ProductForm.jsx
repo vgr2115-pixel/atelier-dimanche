@@ -22,7 +22,10 @@ import { Image } from '@/components/ui/image';
 import AdminField from '@/components/admin/AdminField';
 import { inputClass, slugify } from '@/components/admin/formUtils';
 
-const CATEGORIES = ['Sacs', 'Bananes', 'Petite maroquinerie', 'Accessoires'];
+const CATEGORIES = ['Sacs', 'Bananes', 'Pochette', 'Petite maroquinerie', 'Accessoires'];
+const BADGES = ['Nouveau', 'Pièce unique', 'Collaboration'];
+const LEATHERS = ['Cuir upcyclé', 'Tannage végétal'];
+const EMPTY = 'aucun';
 
 const emptyForm = {
   name: '',
@@ -209,25 +212,42 @@ export default function ProductForm({ open, product, onClose, onSaved }) {
               </Select>
             </AdminField>
             <AdminField label="Cuir / matière">
-              <Input
-                aria-label="Cuir ou matière"
-                value={form.leather}
-                onChange={(e) => set('leather', e.target.value)}
-                className={inputClass}
-                placeholder="Cuir végétal, chute de grande maison"
-              />
+              <Select
+                value={form.leather || EMPTY}
+                onValueChange={(value) => set('leather', value === EMPTY ? '' : value)}
+              >
+                <SelectTrigger aria-label="Cuir ou matière" className={inputClass}>
+                  <SelectValue placeholder="Choisir une matière" />
+                </SelectTrigger>
+                <SelectContent>
+                  {LEATHERS.map((leather) => (
+                    <SelectItem key={leather} value={leather}>
+                      {leather}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </AdminField>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            <AdminField label="Badge" hint="Vide, « Nouveau », « Pièce unique »… le badge « Vendu » est automatique.">
-              <Input
-                aria-label="Badge affiché sur la pièce"
-                value={form.badge}
-                onChange={(e) => set('badge', e.target.value)}
-                className={inputClass}
-                placeholder="Nouveau"
-              />
+            <AdminField label="Badge" hint="Le badge « Vendu » est automatique.">
+              <Select
+                value={form.badge || EMPTY}
+                onValueChange={(value) => set('badge', value === EMPTY ? '' : value)}
+              >
+                <SelectTrigger aria-label="Badge affiché sur la pièce" className={inputClass}>
+                  <SelectValue placeholder="Aucun badge" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value={EMPTY}>Aucun badge</SelectItem>
+                  {BADGES.map((badge) => (
+                    <SelectItem key={badge} value={badge}>
+                      {badge}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </AdminField>
             <AdminField label="Dimensions">
               <Input
@@ -239,16 +259,6 @@ export default function ProductForm({ open, product, onClose, onSaved }) {
               />
             </AdminField>
           </div>
-
-          <AdminField label="Phrase courte">
-            <Input
-              aria-label="Phrase courte de présentation"
-              value={form.short}
-              onChange={(e) => set('short', e.target.value)}
-              className={inputClass}
-              placeholder="Un cabas souple taillé dans une chute de cuir"
-            />
-          </AdminField>
 
           <AdminField label="Description">
             <Textarea

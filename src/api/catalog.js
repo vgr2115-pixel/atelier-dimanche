@@ -2,12 +2,20 @@ import { base44 } from '@/api/base44Client';
 
 const asArray = (data) => (Array.isArray(data) ? data : data?.items ?? []);
 
-// Les pièces vendues restent visibles (badge « Vendu ») mais passent en fin de liste.
+// Une pièce est « nouvelle » quand son badge le dit.
+export const isNew = (product) => /nouveau/i.test(product?.badge ?? '');
+
+// Les pièces vendues restent visibles (badge « Vendu ») mais passent en fin de liste,
+// puis les nouveautés remontent en tête.
 const sortByStatus = (list) =>
   [...list].sort((a, b) => {
     const soldA = a.is_available === false ? 1 : 0;
     const soldB = b.is_available === false ? 1 : 0;
-    return soldA - soldB || (a.position ?? 0) - (b.position ?? 0);
+    return (
+      soldA - soldB ||
+      (isNew(b) ? 1 : 0) - (isNew(a) ? 1 : 0) ||
+      (a.position ?? 0) - (b.position ?? 0)
+    );
   });
 
 export async function getProducts() {
@@ -18,6 +26,21 @@ export async function getProducts() {
 export async function getAvailableProducts() {
   const products = await getProducts();
   return products.filter((product) => product.is_available !== false);
+}
+
+// Sélection de l'accueil : les pièces mises en avant d'abord, complétées par les nouveautés.
+export async function getHomepageProducts(limit = 4) {
+  const available = await getAvailableProducts();
+  const featured = available.filter((product) => product.featured);
+  const others = available.filter((product) => !product.featured);
+  const picked = featured.slice(0, limit);
+  if (picked.length < limit) {
+    picked.push(...others.filter(isNew).slice(0, limit - picked.length));
+  }
+  if (picked.length < limit) {
+    picked.push(...others.filter((product) => !isNew(product)).slice(0, limit - picked.length));
+  }
+  return picked;
 }
 
 export async function getProductsByCategory(category) {

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Minus, Plus, Truck, ShieldCheck, Scissors } from 'lucide-react';
-import { Image } from '@/components/ui/image';
 import Container from '@/components/site/Container';
 import ProductCard from '@/components/product/ProductCard';
+import ProductGallery from '@/components/product/ProductGallery';
+import ProductReviews from '@/components/product/ProductReviews';
 import { useCart } from '@/components/cart/CartContext';
 import { getProductBySlug, getRelatedProducts } from '@/api/catalog';
 import { formatPrice } from '@/lib/format';
@@ -96,23 +97,7 @@ export default function ProductDetail() {
       <Container className="pb-16 pt-8 lg:pb-24">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div className="lg:sticky lg:top-28 lg:self-start">
-            <div className="overflow-hidden bg-linen">
-              <Image
-                src={gallery[0]}
-                alt={product.name}
-                className="aspect-[4/5] w-full"
-                fittingType="fill"
-              />
-            </div>
-            {gallery.length > 1 && (
-              <div className="mt-3 grid grid-cols-3 gap-3">
-                {gallery.slice(1, 4).map((src) => (
-                  <div key={src} className="overflow-hidden bg-linen">
-                    <Image src={src} alt={product.name} className="aspect-square w-full" fittingType="fill" />
-                  </div>
-                ))}
-              </div>
-            )}
+            <ProductGallery images={gallery} alt={product.name} />
           </div>
 
           <div>
@@ -258,6 +243,10 @@ export default function ProductDetail() {
             </div>
           </div>
         </div>
+      </Container>
+
+      <Container className="border-t border-ink/10 py-14 lg:py-20">
+        <ProductReviews />
       </Container>
 
       {related.length > 0 && (

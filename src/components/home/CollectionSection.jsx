@@ -4,7 +4,7 @@ import { ArrowRight, Truck, Store } from 'lucide-react';
 import Container from '@/components/site/Container';
 import ProductCard from '@/components/product/ProductCard';
 import { useCart } from '@/components/cart/CartContext';
-import { getAvailableProducts } from '@/api/catalog';
+import { getHomepageProducts } from '@/api/catalog';
 import { salePrice } from '@/lib/pricing';
 
 export default function CollectionSection() {
@@ -13,8 +13,8 @@ export default function CollectionSection() {
 
   useEffect(() => {
     let active = true;
-    getAvailableProducts().then((data) => {
-      if (active) setProducts(data.slice(0, 4));
+    getHomepageProducts(4).then((data) => {
+      if (active) setProducts(data);
     });
     return () => {
       active = false;
