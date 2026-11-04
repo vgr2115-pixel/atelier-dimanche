@@ -103,13 +103,6 @@ export default function Shop() {
           </div>
 
           <div className="flex items-center justify-between gap-4 sm:ml-auto sm:justify-end">
-            <p className="text-[11px] uppercase tracking-[0.16em] text-ink/50">
-              {loading
-                ? 'Chargement…'
-                : `${visible.length} pièce${visible.length > 1 ? 's' : ''}${
-                    visible.some((product) => product.is_available === false) ? ' · dont pièces vendues' : ''
-                  }`}
-            </p>
             <label className="flex items-center gap-1.5 text-ink/50">
               <ArrowUpDown className="h-3.5 w-3.5" strokeWidth={1.4} />
               <select
