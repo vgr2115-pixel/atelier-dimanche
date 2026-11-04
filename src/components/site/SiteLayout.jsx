@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
-import Header from '@/components/site/Header';
+// Variante « icône à gauche, logo centré » : repasser sur Header pour la version précédente.
+import Header from '@/components/site/HeaderBurger';
 import Footer from '@/components/site/Footer';
 import CartDrawer from '@/components/cart/CartDrawer';
 
