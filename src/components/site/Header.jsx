@@ -6,12 +6,13 @@ import { Image } from '@/components/ui/image';
 import { IMAGES } from '@/lib/images';
 import HeaderBanner from '@/components/site/HeaderBanner';
 
-// Menu resserré sur l'essentiel : le reste (savoir-faire, avis, marque) vit dans le pied de page.
+// Menu resserré sur l'essentiel : illustrations, marque et nouvelles pièces vivent dans le pied de page.
 const NAV = [
   { label: 'Boutique', to: '/boutique' },
   { label: 'Sur-mesure', to: '/sur-mesure' },
-  { label: 'Illustrations', to: '/illustrations' },
+  { label: 'Savoir-faire', to: '/savoir-faire' },
   { label: 'Ateliers', to: '/ateliers' },
+  { label: 'Avis', to: '/avis' },
   { label: 'Contact', to: '/contact' },
 ];
 
