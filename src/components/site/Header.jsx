@@ -6,15 +6,13 @@ import { Image } from '@/components/ui/image';
 import { IMAGES } from '@/lib/images';
 import HeaderBanner from '@/components/site/HeaderBanner';
 
+// Menu resserré sur l'essentiel : le reste (savoir-faire, avis, marque) vit dans le pied de page.
 const NAV = [
   { label: 'Boutique', to: '/boutique' },
   { label: 'Sur-mesure', to: '/sur-mesure' },
   { label: 'Illustrations', to: '/illustrations' },
-  { label: 'Ateliers création', to: '/ateliers' },
-  { label: 'Savoir-faire', to: '/savoir-faire' },
-  { label: 'Avis', to: '/avis' },
-  { label: 'La marque', to: '/histoire' },
-  { label: 'Visite & contact', to: '/contact' },
+  { label: 'Ateliers', to: '/ateliers' },
+  { label: 'Contact', to: '/contact' },
 ];
 
 export default function Header() {
