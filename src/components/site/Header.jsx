@@ -8,6 +8,8 @@ import HeaderBanner from '@/components/site/HeaderBanner';
 
 const NAV = [
   { label: 'Boutique', to: '/boutique' },
+  { label: 'Sur-mesure', to: '/sur-mesure' },
+  { label: 'Illustrations', to: '/illustrations' },
   { label: 'Ateliers création', to: '/ateliers' },
   { label: 'Savoir-faire', to: '/savoir-faire' },
   { label: 'Avis', to: '/avis' },
@@ -74,7 +76,7 @@ export default function Header() {
             />
           </Link>
 
-          <nav className="hidden items-center gap-5 lg:flex xl:gap-7">
+          <nav className="hidden items-center gap-4 lg:flex xl:gap-6">
             {NAV.map((item) => (
               <Link
                 key={item.to}

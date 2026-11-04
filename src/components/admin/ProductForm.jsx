@@ -22,7 +22,18 @@ import { Image } from '@/components/ui/image';
 import AdminField from '@/components/admin/AdminField';
 import { inputClass, slugify } from '@/components/admin/formUtils';
 
-const CATEGORIES = ['Sacs', 'Bananes', 'Pochette', 'Petite maroquinerie', 'Accessoires'];
+const CATEGORIES = [
+  'Sacs',
+  'Bananes',
+  'Pochette',
+  'Mini pochette',
+  'Petite maroquinerie',
+  'Porte-clés',
+  'Le bois',
+  'Divers',
+  'Illustrations',
+  'Accessoires',
+];
 const BADGES = ['Nouveau', 'Pièce unique', 'Collaboration'];
 const LEATHERS = ['Cuir upcyclé', 'Tannage végétal'];
 const EMPTY = 'aucun';

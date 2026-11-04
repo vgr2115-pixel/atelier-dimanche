@@ -7,7 +7,19 @@ import { getProductsByCategory } from '@/api/catalog';
 import { salePrice } from '@/lib/pricing';
 import useDocumentTitle from '@/hooks/useDocumentTitle';
 
-const CATEGORIES = ['Tout', 'Sacs', 'Bananes', 'Pochette', 'Petite maroquinerie', 'Accessoires'];
+const CATEGORIES = [
+  'Tout',
+  'Sacs',
+  'Bananes',
+  'Pochette',
+  'Mini pochette',
+  'Petite maroquinerie',
+  'Porte-clés',
+  'Le bois',
+  'Divers',
+  'Illustrations',
+  'Accessoires',
+];
 
 const SORTS = [
   { id: 'nouveautes', label: 'Nouveautés' },

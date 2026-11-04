@@ -2,6 +2,7 @@ import Hero from '@/components/home/Hero';
 import TrustBar from '@/components/home/TrustBar';
 import CollectionSection from '@/components/home/CollectionSection';
 import SignatureSection from '@/components/home/SignatureSection';
+import SurMesureTeaser from '@/components/home/SurMesureTeaser';
 import WorkshopSection from '@/components/home/WorkshopSection';
 import ReviewsSection from '@/components/home/ReviewsSection';
 import StorySection from '@/components/home/StorySection';
@@ -14,6 +15,7 @@ export default function Home() {
       <Hero />
       <TrustBar />
       <CollectionSection />
+      <SurMesureTeaser />
       <SignatureSection />
       <WorkshopSection />
       <ReviewsSection />

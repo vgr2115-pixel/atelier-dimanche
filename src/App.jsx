@@ -24,6 +24,8 @@ import Workshops from '@/pages/Workshops';
 import SavoirFaire from '@/pages/SavoirFaire';
 import Avis from '@/pages/Avis';
 import Journal from '@/pages/Journal';
+import SurMesure from '@/pages/SurMesure';
+import Illustrations from '@/pages/Illustrations';
 import Story from '@/pages/Story';
 import Contact from '@/pages/Contact';
 import Cart from '@/pages/Cart';
@@ -66,6 +68,8 @@ const AuthenticatedApp = () => {
         <Route path="/" element={<Home />} />
         <Route path="/boutique" element={<Shop />} />
         <Route path="/produit/:slug" element={<ProductDetail />} />
+        <Route path="/sur-mesure" element={<SurMesure />} />
+        <Route path="/illustrations" element={<Illustrations />} />
         <Route path="/savoir-faire" element={<SavoirFaire />} />
         <Route path="/avis" element={<Avis />} />
         <Route path="/nouvelles-pieces" element={<Journal />} />

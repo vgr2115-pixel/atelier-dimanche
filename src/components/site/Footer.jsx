@@ -13,6 +13,8 @@ const COLUMNS = [
       { label: 'Le savoir-faire', to: '/savoir-faire' },
       { label: 'Ateliers création', to: '/ateliers' },
       { label: 'La boutique', to: '/boutique' },
+      { label: 'Le sur-mesure', to: '/sur-mesure' },
+      { label: 'Illustrations', to: '/illustrations' },
       { label: 'Nouvelles pièces', to: '/nouvelles-pieces' },
       { label: 'Avis clients', to: '/avis' },
     ],
