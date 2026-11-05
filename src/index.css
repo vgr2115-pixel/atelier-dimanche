@@ -135,3 +135,43 @@
     @apply h-px w-full bg-ink/10;
   }
 }
+
+/* Bande beige défilante de l’accueil. */
+@keyframes marquee-scroll {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee-track {
+  animation: marquee-scroll var(--marquee-duration, 36s) linear infinite;
+  will-change: transform;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Léger zoom lent sur l’image d’ouverture (mobile). */
+@keyframes hero-zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+.hero-zoom {
+  animation: hero-zoom 24s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .hero-zoom {
+    animation: none;
+  }
+}

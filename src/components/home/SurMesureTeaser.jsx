@@ -26,7 +26,7 @@ const CARDS = [
 export default function SurMesureTeaser() {
   return (
     <section className="bg-linen/60">
-      <Container className="py-16 lg:py-24">
+      <Container className="py-12 lg:py-24">
         <div className="grid gap-8 lg:grid-cols-2">
           {CARDS.map((card) => (
             <Link key={card.to} to={card.to} className="group block">

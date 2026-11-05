@@ -12,7 +12,7 @@ export default function HeroMobile() {
         <Image
           src={IMAGES.hero}
           alt="L’atelier Dimanche, 23 rue Burdeau à Lyon"
-          className="h-full w-full"
+          className="hero-zoom h-full w-full"
           fittingType="fill"
           focalPointX={0.5}
           focalPointY={0.4}

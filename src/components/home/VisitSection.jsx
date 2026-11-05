@@ -67,7 +67,7 @@ export default function VisitSection() {
             <div className="mt-9 flex flex-wrap items-center gap-6">
               <a
                 href="mailto:marie@atelier-dimanche.fr?subject=Rendez-vous%20%C3%A0%20l%27atelier"
-                className="inline-flex items-center justify-center bg-ink px-8 py-4 text-[11px] uppercase tracking-[0.24em] text-cream transition-colors hover:bg-forest"
+                className="inline-flex w-full items-center justify-center bg-ink px-8 py-4 text-[11px] uppercase tracking-[0.24em] text-cream transition-colors hover:bg-forest sm:w-auto"
               >
                 Prendre rendez-vous
               </a>

@@ -47,7 +47,7 @@ export default function WorkshopSection() {
             </div>
 
             <div className="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
-              <Cta to="/ateliers" variant="sand">
+              <Cta to="/ateliers" variant="sand" className="w-full sm:w-auto">
                 Voir les dates
               </Cta>
               <div className="space-y-1.5">
