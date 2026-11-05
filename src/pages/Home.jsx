@@ -1,4 +1,5 @@
 import Hero from '@/components/home/Hero';
+import MobileBuyBar from '@/components/home/MobileBuyBar';
 import TrustBar from '@/components/home/TrustBar';
 import CollectionSection from '@/components/home/CollectionSection';
 import SurMesureTeaser from '@/components/home/SurMesureTeaser';
@@ -25,6 +26,7 @@ export default function Home() {
       <StorySection />
       <SocialSection />
       <VisitSection />
+      <MobileBuyBar />
     </>
   );
 }

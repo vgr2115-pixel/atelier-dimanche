@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Image } from '@/components/ui/image';
 import Cta from '@/components/site/Cta';
 import Container from '@/components/site/Container';
+import HeroMobile from '@/components/home/HeroMobile';
 import { IMAGES } from '@/lib/images';
 
 const PROOF = ['Cuirs de grandes maisons', 'Point sellier, fil de lin', 'Fabriqué à Lyon'];
@@ -15,7 +16,8 @@ export default function Hero() {
 
   return (
     <section ref={ref} className="relative overflow-hidden bg-cream">
-      <Container className="px-0 sm:px-0 lg:px-0">
+      <HeroMobile />
+      <Container className="hidden px-0 sm:px-0 lg:block lg:px-0">
         <div className="grid grid-cols-1 lg:grid-cols-[1.02fr_0.98fr]">
           <div className="relative z-10 flex flex-col justify-center px-6 pb-9 pt-9 sm:px-10 sm:pb-14 sm:pt-14 lg:px-16 lg:py-24">
             <motion.p

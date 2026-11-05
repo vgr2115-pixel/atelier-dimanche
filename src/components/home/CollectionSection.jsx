@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Truck, Store } from 'lucide-react';
 import Container from '@/components/site/Container';
 import ProductCard from '@/components/product/ProductCard';
+import Cta from '@/components/site/Cta';
 import { useCart } from '@/components/cart/CartContext';
 import { getHomepageProducts } from '@/api/catalog';
 import { salePrice } from '@/lib/pricing';
@@ -34,7 +35,7 @@ export default function CollectionSection() {
     });
 
   return (
-    <section id="collection" className="bg-cream py-14 lg:py-28">
+    <section id="collection" className="bg-cream py-10 lg:py-28">
       <Container>
         <div className="flex flex-col justify-between gap-5 border-b border-ink/10 pb-6 sm:flex-row sm:items-end sm:gap-6 sm:pb-7">
           <div>
@@ -42,14 +43,19 @@ export default function CollectionSection() {
             <h2 className="mt-4 font-display text-[2rem] leading-[1.1] tracking-[-0.01em] text-ink sm:text-[2.6rem]">
               Les pièces disponibles
             </h2>
-            <p className="mt-4 max-w-lg text-[14px] font-light leading-[1.8] text-ink/60">
-              Photographiées une à une, telles qu’elles sont. Une fois vendue, une pièce ne revient
-              pas : c’est la conséquence du cuir réemployé, et ce qui la rend unique.
+            <p className="mt-3 max-w-lg text-[14px] font-light leading-[1.8] text-ink/60">
+              <span className="sm:hidden">
+                Une pièce, un exemplaire. Vendue, elle ne revient pas.
+              </span>
+              <span className="hidden sm:inline">
+                Photographiées une à une, telles qu’elles sont. Une fois vendue, une pièce ne revient
+                pas : c’est la conséquence du cuir réemployé, et ce qui la rend unique.
+              </span>
             </p>
           </div>
           <Link
             to="/boutique"
-            className="inline-flex shrink-0 items-center gap-2 pb-1 text-[11px] uppercase tracking-[0.2em] text-ink/55 transition-colors hover:text-ink"
+            className="hidden shrink-0 items-center gap-2 pb-1 text-[11px] uppercase tracking-[0.2em] text-ink/55 transition-colors hover:text-ink sm:inline-flex"
           >
             Toute la collection
             <ArrowRight className="h-3.5 w-3.5" strokeWidth={1.4} />
@@ -61,6 +67,12 @@ export default function CollectionSection() {
             <ProductCard key={product.id} product={product} onQuickAdd={handleAdd} />
           ))}
         </div>
+
+        {products.length > 0 && (
+          <Cta to="/boutique" className="mt-8 w-full sm:hidden">
+            Voir toute la collection
+          </Cta>
+        )}
 
         {products.length === 0 && (
           <p className="mt-10 text-sm font-light text-ink/40">La collection arrive dans quelques instants…</p>
