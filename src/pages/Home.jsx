@@ -1,5 +1,4 @@
 import Hero from '@/components/home/Hero';
-import MarqueeBand from '@/components/home/MarqueeBand';
 import MobileBuyBar from '@/components/home/MobileBuyBar';
 import TrustBar from '@/components/home/TrustBar';
 import CollectionSection from '@/components/home/CollectionSection';
@@ -18,7 +17,6 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <MarqueeBand />
       <TrustBar />
       <CollectionSection />
       <SurMesureTeaser />

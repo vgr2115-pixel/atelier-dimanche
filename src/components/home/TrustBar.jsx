@@ -25,11 +25,29 @@ const ITEMS = [
 ];
 
 export default function TrustBar() {
+  const track = [...ITEMS, ...ITEMS];
+
   return (
     <section className="border-y border-ink/10 bg-linen/60">
       <Container className="py-3.5 sm:py-9">
-        {/* Mobile : une seule ligne qui défile, pour laisser les pièces remonter haut. */}
-        <ul className="no-scrollbar -mx-6 flex items-center gap-x-5 overflow-x-auto px-6 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-y-7 sm:overflow-visible sm:px-0 lg:grid-cols-4 lg:divide-x lg:divide-ink/10">
+        {/* Mobile : une seule ligne qui défile toute seule, pour laisser les pièces remonter haut. */}
+        <div className="marquee -mx-6 overflow-hidden sm:hidden">
+          <div
+            className="marquee-track flex w-max items-center py-0.5"
+            style={{ '--marquee-duration': '26s' }}
+          >
+            {track.map(({ icon: Icon, title }, index) => (
+              <span key={`${title}-${index}`} className="flex shrink-0 items-center gap-2 pr-6">
+                <Icon className="h-4 w-4 shrink-0 text-forest" strokeWidth={1.3} />
+                <span className="whitespace-nowrap text-[10px] uppercase tracking-[0.16em] text-ink">
+                  {title}
+                </span>
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <ul className="hidden sm:grid sm:grid-cols-2 sm:gap-y-7 lg:grid-cols-4 lg:divide-x lg:divide-ink/10">
           {ITEMS.map(({ icon: Icon, title, text }) => (
             <li
               key={title}
